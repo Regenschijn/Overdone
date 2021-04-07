@@ -7,7 +7,7 @@ using Terraria.DataStructures;
 
 namespace Overdone.Items
 {
-	public class Bouquet : ModItem
+	public class BouquetBasic : ModItem
 	{
 
 		private int counter;
