@@ -11,8 +11,8 @@ namespace Overdone.Items {
         private int _shootTimeoutCounter;
 
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Flink bouquet");
-            Tooltip.SetDefault( "Ik ga deze bloemen helemaal op je schouders kapotslaan!" );
+            DisplayName.SetDefault( "Flink bouquet" );
+            Tooltip.SetDefault( "Ik ga deze bloemen stuk slaan op je schouders!" );
         }
 
         public override void SetDefaults() {
@@ -40,7 +40,16 @@ namespace Overdone.Items {
             if ( _shootTimeoutCounter < 4 ) return false;
 
             for ( var i = 0; i < 7; i++ ) {
-                Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + ( float ) Main.rand.Next( -130, 330 ) / 150f, speedY + ( float ) Main.rand.Next( -330, 130 ) / 150f, ProjectileID.Leaf, damage - 7, knockBack, ( ( Entity ) player ).whoAmI, 0f, 0f );
+                Projectile.NewProjectile(
+                    position.X - 8f,
+                    position.Y + 8f,
+                    speedX + Main.rand.Next( -130, 330 ) / 150f,
+                    speedY + Main.rand.Next( -330, 130 ) / 150f,
+                    ProjectileID.Leaf,
+                    damage - 7,
+                    knockBack,
+                    player.whoAmI
+                );
             }
             _shootTimeoutCounter = 0;
             return false;
