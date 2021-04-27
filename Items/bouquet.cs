@@ -46,7 +46,7 @@ namespace Overdone.Items
 			{
 				for (int i = 0; i < 7; i++)
 				{
-					Projectile.NewProjectile(position.X - 8f, position.Y + 8f, speedX + (float)Main.rand.Next(-130, 330) / 150f, speedY + (float)Main.rand.Next(-330, 130) / 150f, ProjectileID.Leaf, damage - 7, knockBack, ((Entity)player).whoAmI, 0f, 0f);
+					Projectile.NewProjectile(position.X - 8f, position.Y + 8f, speedX + (float)Main.rand.Next(-130, 330) / 150f, speedY + (float)Main.rand.Next(-330, 130) / 150f, ProjectileID.FlowerPetal, damage - 7, knockBack, ((Entity)player).whoAmI, 0f, 0f);
 				}
 				counter = 0;
 			}
