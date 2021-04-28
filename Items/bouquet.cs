@@ -44,7 +44,7 @@ namespace Overdone.Items
 			counter++;
 			if (counter >= 4)
 			{
-				for (int i = 0; i < 7; i++)
+				for (var i = 0; i < 7; i++)
 				{
 					Projectile.NewProjectile(position.X - 8f, position.Y + 8f, speedX + (float)Main.rand.Next(-130, 330) / 150f, speedY + (float)Main.rand.Next(-330, 130) / 150f, ProjectileID.FlowerPetal, damage - 7, knockBack, ((Entity)player).whoAmI, 0f, 0f);
 				}
@@ -56,7 +56,7 @@ namespace Overdone.Items
 
 		public override void AddRecipes() 
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+			var recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.DirtBlock, 10);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
