@@ -9,20 +9,22 @@ using Overdone;
 namespace Overdone.Projectiles {
     public class SpearOfOlyndicusProjectile : ModProjectile {
         public override void SetDefaults() {
-            projectile.width = 80;
-            projectile.height = 80;
-            // projectile.scale = 0.5f;
+            projectile.width = 26;
+            projectile.height = 26;
             projectile.aiStyle = 19;
-            projectile.friendly = true;
-            projectile.melee = true;
+            projectile.penetrate = -1;
+
             projectile.hide = false;
             projectile.ownerHitCheck = true;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 600;
+            projectile.melee = true;
             projectile.tileCollide = false;
-            aiType = 49;
+            projectile.friendly = true;
 
-            drawOriginOffsetX = -500;
+            aiType = 49;
+        }
+
+        public override void AI() {
+            base.AI();
         }
 
         public override void OnHitNPC( NPC target, int damage, float knockback, bool crit ) {

@@ -5,19 +5,14 @@ using Terraria.ModLoader;
 using Terraria;
 using Terraria.DataStructures;
 
-namespace Overdone.Items
-{
-    public class BoulderStick : ModItem
-    {
-
-        public override void SetStaticDefaults()
-        {
+namespace Overdone.Items {
+    public class BoulderStick : ModItem {
+        public override void SetStaticDefaults() {
             // DisplayName.SetDefault("Bouquet"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            Tooltip.SetDefault("The rod of Sisyphus\nLMB: Smack. RMB: Shoot boulders");
+            Tooltip.SetDefault( "The rod of Sisyphus\nLMB: Smack. RMB: Shoot boulders" );
         }
 
-        public override void SetDefaults()
-        {
+        public override void SetDefaults() {
             item.damage = 13;
             item.melee = true;
             item.width = 40;
@@ -33,27 +28,21 @@ namespace Overdone.Items
             item.autoReuse = true;
             item.shootSpeed = 10f;
             item.shoot = ProjectileID.Boulder;
-
         }
 
-        public override bool AltFunctionUse(Player player)
-        {
+        public override bool AltFunctionUse( Player player ) {
             return true;
         }
 
-        public override bool CanUseItem(Player player)
-        {
-            if (player.altFunctionUse == 2)
-            {
+        public override bool CanUseItem( Player player ) {
+            if ( player.altFunctionUse == 2 ) {
                 item.noMelee = true;
                 item.mana = 3;
                 item.melee = false;
                 item.magic = true;
                 item.useAnimation = 40;
                 item.useTime = 40;
-                            }
-            else
-            {
+            } else {
                 item.useStyle = 1;
                 item.noMelee = false;
                 item.mana = 0;
@@ -61,13 +50,12 @@ namespace Overdone.Items
                 item.useTime = 30;
                 item.useAnimation = 20;
             }
-            return base.CanUseItem(player);
+
+            return base.CanUseItem( player );
         }
 
-        public override void HoldItem(Player player)
-        {
-            if (player.altFunctionUse == 2)
-            {
+        public override void HoldItem( Player player ) {
+            if ( player.altFunctionUse == 2 ) {
                 player.itemRotation = -20f * player.direction;
                 player.itemLocation.Y = player.Center.Y;
                 player.itemLocation.X = player.Center.X;
@@ -75,22 +63,23 @@ namespace Overdone.Items
         }
 
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
-            if (player.altFunctionUse == 2)
-            {
-                Projectile.NewProjectile(position.X -20f * player.direction, position.Y - 46, speedX * 1.85f, speedY * 1.85f, ProjectileID.Boulder, (int)((double)damage * 1.5), 10f, ((Entity)player).whoAmI, 0f, 0f);
-                Main.PlaySound(SoundID.Item45, ((Entity)player).position);
+        public override bool Shoot( Player player, ref Vector2 position, ref float speedX, ref float speedY,
+            ref int type, ref int damage, ref float knockBack ) {
+            if ( player.altFunctionUse == 2 ) {
+                Projectile.NewProjectile( position.X - 20f * player.direction, position.Y - 46, speedX * 1.85f,
+                    speedY * 1.85f, ProjectileID.Boulder, (int) ((double) damage * 1.5), 10f, ((Entity) player).whoAmI,
+                    0f, 0f );
+                Main.PlaySound( SoundID.Item45, ((Entity) player).position );
             }
+
             return false;
         }
 
-        public override void AddRecipes()
-        {
-            var recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.DirtBlock, 1);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
+        public override void AddRecipes() {
+            var recipe = new ModRecipe( mod );
+            recipe.AddIngredient( ItemID.DirtBlock, 1 );
+            recipe.AddTile( TileID.WorkBenches );
+            recipe.SetResult( this );
             recipe.AddRecipe();
         }
     }
