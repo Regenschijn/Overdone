@@ -13,7 +13,7 @@ namespace Overdone.Items
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Bouquet"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            Tooltip.SetDefault("LMB: Smack. RMB: Shoot boulders");
+            Tooltip.SetDefault("The rod of Sisyphus\nLMB: Smack. RMB: Shoot boulders");
         }
 
         public override void SetDefaults()
@@ -45,22 +45,41 @@ namespace Overdone.Items
         {
             if (player.altFunctionUse == 2)
             {
-                item.useStyle = 4;
                 item.noMelee = true;
+                item.mana = 3;
+                item.melee = false;
+                item.magic = true;
+                item.useAnimation = 40;
+                item.useTime = 40;
                             }
             else
             {
                 item.useStyle = 1;
                 item.noMelee = false;
+                item.mana = 0;
+                item.melee = true;
+                item.useTime = 30;
+                item.useAnimation = 20;
             }
             return base.CanUseItem(player);
         }
+
+        public override void HoldItem(Player player)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                player.itemRotation = -20f * player.direction;
+                player.itemLocation.Y = player.Center.Y;
+                player.itemLocation.X = player.Center.X;
+            }
+        }
+
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             if (player.altFunctionUse == 2)
             {
-                Projectile.NewProjectile(position.X, position.Y - 30, speedX * 1.85f, speedY * 1.85f, ProjectileID.Boulder, (int)((double)damage * 1.5), 10f, ((Entity)player).whoAmI, 0f, 0f);
+                Projectile.NewProjectile(position.X -20f * player.direction, position.Y - 46, speedX * 1.85f, speedY * 1.85f, ProjectileID.Boulder, (int)((double)damage * 1.5), 10f, ((Entity)player).whoAmI, 0f, 0f);
                 Main.PlaySound(SoundID.Item45, ((Entity)player).position);
             }
             return false;
