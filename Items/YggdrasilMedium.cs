@@ -8,10 +8,10 @@ using Terraria;
 using Terraria.DataStructures;
 
 namespace Overdone.Items {
-    public class BranchOfYggdrasil : ModItem {
+    public class YggdrasilMedium : ModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("branch of Yggdrasil");
-            Tooltip.SetDefault( "Someone tore a branch off of the world tree. \n LMB: Shoot leaves. RMB: melee attack that restores health and mana" );
+            DisplayName.SetDefault("Lush Twig of Yggdrasil");
+            Tooltip.SetDefault( "Someone tore a lush branch off of the world tree. \n LMB: Shoot leaves. RMB: Burst of leaves." );
         }
 
         // I switched around throw and melee for fun
@@ -21,7 +21,7 @@ namespace Overdone.Items {
             item.width = 40;
             item.height = 40;
             item.value = Item.sellPrice( silver: 50 );
-            item.rare = ItemRarityID.Blue;
+            item.rare = ItemRarityID.Green;
             item.noMelee = false;
             item.noUseGraphic = false;
             SetStabMode();
@@ -36,7 +36,7 @@ namespace Overdone.Items {
             item.knockBack = 5f;
             item.UseSound = SoundID.Item40;
             item.shoot = ProjectileID.Leaf;
-            item.shootSpeed = 20f;
+            item.shootSpeed = 10;
             item.autoReuse = true;
             item.noMelee = true;
         }
@@ -44,12 +44,13 @@ namespace Overdone.Items {
         private void SetThrowMode() {
             item.damage = 13;
             item.mana = 15;
-            item.useTime = 50;
-            item.useAnimation = 50;
-            item.useStyle = ItemUseStyleID.EatingUsing;
-            item.knockBack = 15f;
-            item.UseSound = SoundID.Item2;
+            item.useTime = 25;
+            item.useAnimation = 36;
+            item.useStyle = ItemUseStyleID.HoldingOut;
+            item.knockBack = 4f;
+            item.UseSound = SoundID.Item56;
             item.shoot = ProjectileID.Leaf;
+            item.shootSpeed = 20f;
             item.noMelee = true;
             item.autoReuse = true;
         }
@@ -57,16 +58,23 @@ namespace Overdone.Items {
         public override bool AltFunctionUse( Player player ) => true;
         public override bool CanUseItem( Player player ) {
             if ( player.altFunctionUse == 2 ) { // Throw mode
-                if ( player.HasBuff( BuffID.Regeneration ) && player.HasBuff( BuffID.ManaRegeneration ) ) {
-
-                }
-                else {
-                    player.AddBuff( BuffID.Regeneration, 900 );
-                    player.AddBuff( BuffID.ManaRegeneration, 900 );
-                }
                 SetThrowMode();
              } else { // Stab mode
                 SetStabMode();
+            }
+            return true;
+        }
+
+        public override bool Shoot( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+
+            for ( var i = 0; i < 1; i++ ) {
+                Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + (float)Main.rand.Next( -130, 330 ) / 150f, speedY + (float)Main.rand.Next( -330, 130 ) / 150f, ProjectileID.Leaf, damage, knockBack, ((Entity)player).whoAmI, 0f, 0f );
+            }
+
+            if ( player.altFunctionUse == 2 ) {
+                for ( var i = 0; i < 10; i++ ) {
+                    Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + (float)Main.rand.Next( -190, 590 ) / 150f, speedY + (float)Main.rand.Next( -590, 190 ) / 150f, ProjectileID.Leaf, damage, knockBack, ((Entity)player).whoAmI, 0f, 0f );
+                }
             }
             return true;
         }

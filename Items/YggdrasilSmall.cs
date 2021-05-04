@@ -8,10 +8,10 @@ using Terraria;
 using Terraria.DataStructures;
 
 namespace Overdone.Items {
-    public class BranchOfYggdrasil : ModItem {
+    public class YggdrasilSmall : ModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("branch of Yggdrasil");
-            Tooltip.SetDefault( "Someone tore a branch off of the world tree. \n LMB: Shoot leaves. RMB: melee attack that restores health and mana" );
+            DisplayName.SetDefault("Twig of Yggdrasil");
+            Tooltip.SetDefault( "Someone tore a branch off of the world tree. \n LMB: Shoot leaves. RMB: Take a bite of world tree wood for HP/MP regen" );
         }
 
         // I switched around throw and melee for fun
@@ -21,7 +21,7 @@ namespace Overdone.Items {
             item.width = 40;
             item.height = 40;
             item.value = Item.sellPrice( silver: 50 );
-            item.rare = ItemRarityID.Blue;
+            item.rare = ItemRarityID.Green;
             item.noMelee = false;
             item.noUseGraphic = false;
             SetStabMode();
@@ -42,14 +42,15 @@ namespace Overdone.Items {
         }
 
         private void SetThrowMode() {
-            item.damage = 13;
+            item.damage = 5;
             item.mana = 15;
             item.useTime = 50;
             item.useAnimation = 50;
             item.useStyle = ItemUseStyleID.EatingUsing;
-            item.knockBack = 15f;
+            item.knockBack = 4f;
             item.UseSound = SoundID.Item2;
-            item.shoot = ProjectileID.Leaf;
+            item.shoot = ProjectileID.Seed;
+            item.shootSpeed = 10f;
             item.noMelee = true;
             item.autoReuse = true;
         }
