@@ -19,38 +19,38 @@ namespace Overdone.Items {
             item.width = 40;
             item.height = 40;
             item.value = Item.sellPrice( silver: 50 );
-            item.rare = ItemRarityID.Blue;
+            item.rare = ItemRarityID.Orange;
             item.noMelee = false;
             item.noUseGraphic = false;
+            item.autoReuse = true;
             SetStabMode();
         }
 
         private void SetStabMode() {
             item.damage = 13;
             item.mana = 0;
-            item.useTime = 20;
-            item.useAnimation = 20;
+            item.useTime = 25;
+            item.useAnimation = 25;
             item.useStyle = ItemUseStyleID.SwingThrow;
-            item.knockBack = 5f;
+            item.knockBack = 1f;
             item.UseSound = SoundID.Item1;
             item.shoot = ProjectileID.Arkhalis;
-            item.shootSpeed = 20f;
-            item.autoReuse = true;
-            item.healLife = 1;
+            item.noMelee = false;
+            item.reuseDelay = 25;
         }
 
         private void SetThrowMode() {
             item.damage = 13;
-            item.mana = 10;
-            item.useTime = 30;
-            item.useAnimation = 20;
+            item.mana = 20;
+            item.useTime = 50;
+            item.useAnimation = 50;
             item.useStyle = ItemUseStyleID.HoldingUp;
             item.knockBack = 5f;
             item.UseSound = SoundID.Item42;          
             item.shoot = ProjectileID.SandnadoFriendly;
-            item.shootSpeed = 3f;
-            
-            item.autoReuse = true;
+            item.shootSpeed = 4f;
+            item.noMelee = true;
+            item.reuseDelay = 50;
         }
 
         public override bool AltFunctionUse( Player player ) => true;

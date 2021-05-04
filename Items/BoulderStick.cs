@@ -22,6 +22,7 @@ namespace Overdone.Items {
             item.useStyle = 1;
             item.knockBack = 2;
             item.value = 10000;
+            item.rare = ItemRarityID.LightRed;
             item.crit = 0;
             item.rare = 1;
             item.UseSound = SoundID.Item1;

@@ -67,13 +67,13 @@ namespace Overdone.Items
             counter++;
             if ( counter >= 7 ) {
                 for ( int i = 0; i < 3; i++ ) {
-                    Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + (float)Main.rand.Next( -230, 230 ) / 100f, speedY + (float)Main.rand.Next( -230, 230 ) / 100f, ProjectileID.MedusaHeadRay, damage, knockBack, ((Entity)player).whoAmI, 0f, 0f );
+                    Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + (float)Main.rand.Next( -230, 230 ) / 100f, speedY + (float)Main.rand.Next( -230, 230 ) / 100f, ProjectileID.MedusaHead, damage, knockBack, ((Entity)player).whoAmI, 0f, 0f );
                 }
                 counter = 0;
             }
 
             if ( player.altFunctionUse == 2 ) {
-                Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ProjectileID.EnchantedBeam, (int)((double)damage * 1.5), 10f, ((Entity)player).whoAmI, 0f, 0f );
+                Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ModContent.ProjectileType<Projectiles.HarpeSwordHead>(), (int)((double)damage * 1.5), 10f, ((Entity)player).whoAmI, 0f, 0f );
                 Main.PlaySound( SoundID.Item45, ((Entity)player).position );
             }
             return false;
