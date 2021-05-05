@@ -7,46 +7,46 @@ using Terraria.DataStructures;
 
 namespace Overdone.Items
 {
-	public class Humblesmack : ModItem
+	public class Bouquet : ModItem
 	{
 
 		private int counter;
 
 		public override void SetStaticDefaults() 
 		{
-			// DisplayName.SetDefault("Humblesmack"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-			Tooltip.SetDefault("I came from humble besmackings");
+			// DisplayName.SetDefault("Bouquet"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
+			Tooltip.SetDefault("Ik ga deze bloemen helemaal op je schouders kapotslaan!");
 		}
 
 		public override void SetDefaults() 
 		{
-			item.damage = 5;
-			item.melee = true;
+			item.damage = 13;
+			item.magic = true;
 			item.width = 40;
 			item.height = 40;
-			item.useTime = 21;
+			item.useTime = 17;
 			item.useAnimation = 20;
 			item.useStyle = 1;
-			item.knockBack = 3;
+			item.knockBack = 2;
 			item.value = 10000;
-			item.crit = 11;
+			item.crit = 13;
 			item.rare = 1;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 
-			item.shootSpeed = 6f;
-			item.shoot = ProjectileID.Seed; 
+			item.shootSpeed = 10f;
+			item.shoot = ProjectileID.Leaf; 
 
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			counter++;
-			if (counter >= 3)
+			if (counter >= 4)
 			{
-				for (var i = 0; i < 3; i++)
+				for (var i = 0; i < 7; i++)
 				{
-					Projectile.NewProjectile(position.X - 8f, position.Y + 8f, speedX + (float)Main.rand.Next(-230, 230) / 100f, speedY + (float)Main.rand.Next(-230, 230) / 100f, ProjectileID.Seed, damage, knockBack, ((Entity)player).whoAmI, 0f, 0f);
+					Projectile.NewProjectile(position.X - 8f, position.Y + 8f, speedX + (float)Main.rand.Next(-130, 330) / 150f, speedY + (float)Main.rand.Next(-330, 130) / 150f, ProjectileID.FlowerPetal, damage - 7, knockBack, ((Entity)player).whoAmI, 0f, 0f);
 				}
 				counter = 0;
 			}
