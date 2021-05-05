@@ -49,7 +49,7 @@ namespace Overdone.Items {
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 4f;
             item.UseSound = SoundID.Item56;
-            item.shoot = ProjectileID.Leaf;
+            item.shoot = default;
             item.shootSpeed = 20f;
             item.noMelee = true;
             item.autoReuse = true;

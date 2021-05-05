@@ -36,6 +36,8 @@ namespace Overdone.Items {
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 13f;
             item.UseSound = SoundID.DD2_MonkStaffSwing;
+            item.shoot = default;
+            item.shootSpeed = default;
             item.noMelee = false;
             item.autoReuse = true;
         }

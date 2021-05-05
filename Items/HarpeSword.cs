@@ -26,16 +26,16 @@ namespace Overdone.Items
 			item.height = 40;
 			item.useTime = 20;
 			item.useAnimation = 40;
-			item.useStyle = 1;
+			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 15;
 			item.value = 10000;
 			item.crit = 27;
-			item.rare = 3;
-			item.UseSound = SoundID.Item1;
+            item.rare = ItemRarityID.LightRed;
+            item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 
 			item.shootSpeed = 6f;
-			item.shoot = ProjectileID.MedusaHead; 
+			item.shoot = default; 
 
 		}
 
@@ -50,9 +50,9 @@ namespace Overdone.Items
 
         public override bool CanUseItem( Player player ) {
             if ( player.altFunctionUse == 2 ) {
-                item.useStyle = 4;
+                item.useStyle = ItemUseStyleID.HoldingUp;
                 item.noMelee = true;
-                item.mana = 5;
+                item.mana = 8;
             }
             else {
                 item.useStyle = 1;

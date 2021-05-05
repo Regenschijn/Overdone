@@ -50,7 +50,7 @@ namespace Overdone.Items {
             item.knockBack = 4f;
             item.UseSound = SoundID.Item2;
             item.shoot = ProjectileID.Seed;
-            item.shootSpeed = 10f;
+            item.shootSpeed = 5f;
             item.noMelee = true;
             item.autoReuse = true;
         }
