@@ -6,9 +6,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.DataStructures;
+using Overdone.Base;
 
-namespace Overdone.Items {
-    public class YggdrasilSmall : ModItem {
+namespace Overdone.Items.Norse {
+    public class YggdrasilSmall : DoubleUseModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Twig of Yggdrasil");
             Tooltip.SetDefault( "Someone tore a branch off of the world tree. \n LMB: Shoot leaves. RMB: Take a bite of world tree wood for HP/MP regen" );
@@ -24,10 +25,10 @@ namespace Overdone.Items {
             item.rare = ItemRarityID.Green;
             item.noMelee = false;
             item.noUseGraphic = false;
-            SetStabMode();
+            base.SetDefaults();
         }
 
-        private void SetStabMode() {
+        protected override void SetLeftClickMode() {
             item.damage = 10;
             item.mana = 4;
             item.useTime = 20;
@@ -41,7 +42,7 @@ namespace Overdone.Items {
             item.noMelee = true;
         }
 
-        private void SetThrowMode() {
+        protected override void SetRightClickMode() {
             item.damage = 5;
             item.mana = 15;
             item.useTime = 50;
@@ -55,19 +56,16 @@ namespace Overdone.Items {
             item.autoReuse = true;
         }
 
-        public override bool AltFunctionUse( Player player ) => true;
-        public override bool CanUseItem( Player player ) {
-            if ( player.altFunctionUse == 2 ) { // Throw mode
-                if ( player.HasBuff( BuffID.Regeneration ) && player.HasBuff( BuffID.ManaRegeneration ) ) {
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+            return true;
+        }
 
-                }
-                else {
-                    player.AddBuff( BuffID.Regeneration, 900 );
-                    player.AddBuff( BuffID.ManaRegeneration, 900 );
-                }
-                SetThrowMode();
-             } else { // Stab mode
-                SetStabMode();
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+            if ( player.HasBuff( BuffID.Regeneration ) && player.HasBuff( BuffID.ManaRegeneration ) ) {
+
+            } else {
+                player.AddBuff( BuffID.Regeneration, 900 );
+                player.AddBuff( BuffID.ManaRegeneration, 900 );
             }
             return true;
         }

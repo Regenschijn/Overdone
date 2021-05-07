@@ -7,22 +7,35 @@ using Terraria.ModLoader;
 using Overdone;
 
 namespace Overdone.Projectiles {
-    public class ExampleBulletB : ModProjectile {
+    public class AhnkTinyProjectile : ModProjectile {
         public override void SetDefaults() {
             projectile.Name = "Tiny Ahnk";
             projectile.width = 16;
             projectile.height = 16;
-            projectile.timeLeft = 180;
+            projectile.timeLeft = 90;
             projectile.penetrate = 3;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            projectile.ranged = true;
-            projectile.aiStyle = 18; 
+            projectile.ranged = true;                    
         }
-        public override void AI() {
-            projectile.type = 45;
+
+        public override void PostAI() {            
+            Lighting.AddLight( projectile.position + projectile.velocity * 5, new Vector3( 1f, .5f, .5f ) );
         }
+
+        public override void Kill( int timeLeft ) {
+            Projectile.NewProjectile(
+                projectile.position.X,
+                projectile.position.Y,
+                0, 0,
+                ProjectileID.InfernoFriendlyBlast,
+                (int) (projectile.damage * 1.5f),
+                projectile.knockBack,
+                Main.myPlayer
+            );
+        }
+
     }
 }
