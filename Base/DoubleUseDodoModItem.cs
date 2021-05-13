@@ -9,7 +9,7 @@ using Terraria;
 using Terraria.ModLoader;
 
 namespace Overdone.Base {
-    public abstract class DoubleUseModItem : ModItem {
+    public abstract class DoubleUseDodoModItem : DodoModItem {
 
         public override bool AltFunctionUse( Player player ) => true;
 

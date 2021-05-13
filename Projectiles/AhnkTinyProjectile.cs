@@ -5,9 +5,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Overdone;
+using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class AhnkTinyProjectile : ModProjectile {
+    public class AhnkTinyProjectile : DodoModProjectile {
         public override void SetDefaults() {
             projectile.Name = "Tiny Ahnk";
             projectile.width = 16;

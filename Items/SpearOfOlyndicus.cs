@@ -1,6 +1,7 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Overdone.Base;
 using Overdone.Projectiles;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,13 +9,14 @@ using Terraria;
 using Terraria.DataStructures;
 
 namespace Overdone.Items {
-    public class SpearOfOlyndicus : ModItem {
+    public class SpearOfOlyndicus : DodoModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "The Spear Of Olyndicus" );
             Tooltip.SetDefault( "LMB: Stab. RMB: Throw." );
         }
 
         public override void SetDefaults() {
+            UseCombo = true;
             item.melee = true;
             item.width = 40;
             item.height = 40;

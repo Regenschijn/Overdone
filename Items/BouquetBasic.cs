@@ -1,12 +1,13 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Overdone.Base;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.DataStructures;
 
 namespace Overdone.Items {
-    public class BouquetBasic : ModItem {
+    public class BouquetBasic : DodoModItem {
 
         private int _shootTimeoutCounter;
 
@@ -16,23 +17,24 @@ namespace Overdone.Items {
         }
 
         public override void SetDefaults() {
+            UseCombo = true;
+            
             item.damage = 13;
             item.magic = true;
             item.width = 40;
             item.height = 40;
             item.useTime = 17;
             item.useAnimation = 20;
-            item.useStyle = 1;
+            item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 2;
             item.value = 10000;
             item.crit = 13;
-            item.rare = 1;
+            item.rare = ItemRarityID.Blue;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
 
             item.shootSpeed = 10f;
             item.shoot = ProjectileID.Leaf;
-
         }
 
         public override bool Shoot( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {

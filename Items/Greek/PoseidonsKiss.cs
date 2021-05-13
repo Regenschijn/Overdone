@@ -9,7 +9,7 @@ using Terraria.DataStructures;
 using Overdone.Base;
 
 namespace Overdone.Items.Greek {
-    public class PoseidonsKiss : DoubleUseModItem {
+    public class PoseidonsKiss : DoubleUseDodoModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Full Twig of Yggdrasil" );
             Tooltip.SetDefault( "Someone tore a full branch off of the world tree. \n LMB: Shoot leaves. RMB: Nova blast of leaves." );

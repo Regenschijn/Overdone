@@ -9,10 +9,9 @@ using Overdone.Projectiles;
 
 namespace Overdone.Items
 {
-	public class HarpeSword : DoubleUseModItem
+	public class HarpeSword : DoubleUseDodoModItem
 	{
-
-		private int counter;
+        private int _counter;
 
 		public override void SetStaticDefaults() 
 		{
@@ -51,26 +50,25 @@ namespace Overdone.Items
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
-            counter++;
-            if ( counter >= 7 ) {
-                for ( int i = 0; i < 3; i++ ) {
-                    Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + (float) Main.rand.Next( -230, 230 ) / 100f, speedY + (float) Main.rand.Next( -230, 230 ) / 100f, ProjectileID.MedusaHead, damage, knockBack, (player).whoAmI, 0f, 0f );
-                }
-                counter = 0;
+            _counter++;
+            if ( _counter < 7 ) return false;
+            
+            for ( var i = 0; i < 3; i++ ) {
+                Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + (float) Main.rand.Next( -230, 230 ) / 100f, speedY + (float) Main.rand.Next( -230, 230 ) / 100f, ProjectileID.MedusaHead, damage, knockBack, (player).whoAmI, 0f, 0f );
             }
+            _counter = 0;
             return false;
         }
 
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
-            if ( player.altFunctionUse == 2 ) {
-                Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ModContent.ProjectileType<HarpeSwordHead>(), (int) (damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
-                Main.PlaySound( SoundID.Item45, player.position );
-            }
+            if ( player.altFunctionUse != 2 ) return false;
+            Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ModContent.ProjectileType<HarpeSwordHead>(), (int) (damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
+            Main.PlaySound( SoundID.Item45, player.position );
             return false;
         }
         public override void AddRecipes() 
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+			var recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.DirtBlock, 10);
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.SetResult(this);
