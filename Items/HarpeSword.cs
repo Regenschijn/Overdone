@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Overdone.Base;
 using Overdone.Projectiles;
+using Overdone.Combo;
 
 namespace Overdone.Items
 {
@@ -15,7 +16,7 @@ namespace Overdone.Items
 
 		public override void SetStaticDefaults() 
 		{
-            Tooltip.SetDefault("Used to decapitate Medusa");
+            Tooltip.SetDefault("Used to decapitate Medusa \n LMB: Swing. Each 7th hit triggers a medusa ray. \n RMB: Use 10 favor to lob a medusa head. \n Passive: For every 10 combo, gain 1% crit chance.");
 		}
 
 		public override void SetDefaults() 
@@ -29,7 +30,7 @@ namespace Overdone.Items
 			item.useStyle = ItemUseStyleID.SwingThrow;
 			item.knockBack = 15;
 			item.value = 10000;
-			item.crit = 27;
+			item.crit = 7;
             item.rare = ItemRarityID.LightRed;
             item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
@@ -40,13 +41,14 @@ namespace Overdone.Items
         protected override void SetLeftClickMode() {
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.noMelee = false;
-            item.mana = 0;            
+            item.mana = 0;
+            item.crit = (int) (7 + (ComboManager.Combo / 5));
         }
 
         protected override void SetRightClickMode() {
             item.useStyle = ItemUseStyleID.HoldingUp;
             item.noMelee = true;
-            item.mana = 8;
+            item.mana = 8;            
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
@@ -61,9 +63,10 @@ namespace Overdone.Items
         }
 
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
-            if ( player.altFunctionUse != 2 ) return false;
-            Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ModContent.ProjectileType<HarpeSwordHead>(), (int) (damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
-            Main.PlaySound( SoundID.Item45, player.position );
+            if ( ComboManager.UseCombo( 10 ) ) {
+                Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ModContent.ProjectileType<HarpeSwordHead>(), (int) (damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
+                Main.PlaySound( SoundID.Item45, player.position );
+            }
             return false;
         }
         public override void AddRecipes() 
