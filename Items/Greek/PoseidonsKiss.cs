@@ -77,5 +77,7 @@ namespace Overdone.Items.Greek {
         }
 
 
+        protected override Mythology Mythology => Mythology.Greek;
+        protected override GodDomain GodDomain => GodDomain.Water;
     }
 }

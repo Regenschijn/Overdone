@@ -74,5 +74,8 @@ namespace Overdone.Items {
             recipe.SetResult( this );
             recipe.AddRecipe();
         }
+
+        protected override Mythology Mythology => Mythology.Iberian;
+        protected override GodDomain GodDomain => GodDomain.War;
     }
 }

@@ -26,10 +26,10 @@ namespace Overdone.Items.Roman {
             item.noMelee = false;
             item.noUseGraphic = false;
             item.shoot = ProjectileID.Leaf;
-            SetStabMode();
+            base.SetDefaults();
         }
 
-        private void SetStabMode() {
+        protected override void SetLeftClickMode() {
             item.damage = 10;
             item.mana = 4;
             item.useTime = 20;
@@ -43,7 +43,7 @@ namespace Overdone.Items.Roman {
             item.reuseDelay = 0;
         }
 
-        private void SetThrowMode() {
+        protected override void SetRightClickMode() {
             item.damage = 13;
             item.mana = 4;
             item.useTime = 50;
@@ -55,27 +55,6 @@ namespace Overdone.Items.Roman {
             item.noMelee = true;
             item.autoReuse = true;
             item.reuseDelay = 37;
-            
-        }
-
-        public override bool AltFunctionUse( Player player ) => true;
-        public override bool CanUseItem( Player player ) {
-            if ( player.altFunctionUse == 2 ) { // Throw mode
-                SetThrowMode();
-            }
-            else { // Stab mode
-                SetStabMode();
-            }
-            return true;
-        }
-
-
-        protected override void SetLeftClickMode() {
-            throw new NotImplementedException();
-        }
-
-        protected override void SetRightClickMode() {
-            throw new NotImplementedException();
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
@@ -88,10 +67,10 @@ namespace Overdone.Items.Roman {
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
             const float numberProjectiles = 24;
             const float rotation = (float) (2 * Math.PI);
-            position += Vector2.Normalize( new Vector2( speedX, speedY ) ) * 45f;
+            var pos = position + Vector2.Normalize( new Vector2( speedX, speedY ) ) * 45f;
             for ( int i = 0; i < numberProjectiles; i++ ) {
                 Vector2 perturbedSpeed = new Vector2( speedX, speedY ).RotatedBy( MathHelper.Lerp( -rotation, rotation, i / (numberProjectiles - 1) ) ) * .2f;
-                Projectile.NewProjectile( position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI );
+                Projectile.NewProjectile( pos.X, pos.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI );
             }
             return true;
         }
@@ -103,5 +82,8 @@ namespace Overdone.Items.Roman {
             recipe.SetResult( this );
             recipe.AddRecipe();
         }
+        
+        protected override Mythology Mythology => Mythology.Roman;
+        protected override GodDomain GodDomain => GodDomain.Water;
     }
 }

@@ -103,5 +103,8 @@ namespace Overdone.Items.Egyptian {
             recipe.SetResult( this );
             recipe.AddRecipe();
         }
+
+        protected override Mythology Mythology => Mythology.Egyptian;
+        protected override GodDomain GodDomain => GodDomain.Afterlife | GodDomain.Wisdom;
     }
 }

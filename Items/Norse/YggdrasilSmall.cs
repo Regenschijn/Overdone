@@ -77,5 +77,8 @@ namespace Overdone.Items.Norse {
             recipe.SetResult( this );
             recipe.AddRecipe();
         }
+        
+        protected override Mythology Mythology => Mythology.Norse;
+        protected override GodDomain GodDomain => GodDomain.Creation;
     }
 }

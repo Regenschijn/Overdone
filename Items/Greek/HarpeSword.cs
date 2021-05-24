@@ -10,30 +10,30 @@ using Overdone.Combo;
 
 namespace Overdone.Items
 {
-	public class HarpeSword : DoubleUseDodoModItem
-	{
+    public class HarpeSword : DoubleUseDodoModItem
+    {
         private int _counter;
 
-		public override void SetStaticDefaults() 
-		{
+        public override void SetStaticDefaults() 
+        {
             Tooltip.SetDefault("Used to decapitate Medusa \n LMB: Swing. Each 7th hit triggers a medusa ray. \n RMB: Use 10 favor to lob a medusa head. \n Passive: For every 10 combo, gain 1% crit chance.");
-		}
+        }
 
-		public override void SetDefaults() 
-		{
-			item.damage = 17;
-			item.melee = true;
-			item.width = 40;
-			item.height = 40;
-			item.useTime = 20;
-			item.useAnimation = 20;
-			item.useStyle = ItemUseStyleID.SwingThrow;
-			item.knockBack = 15;
-			item.value = 10000;
-			item.crit = 7;
+        public override void SetDefaults() 
+        {
+            item.damage = 17;
+            item.melee = true;
+            item.width = 40;
+            item.height = 40;
+            item.useTime = 20;
+            item.useAnimation = 20;
+            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.knockBack = 15;
+            item.value = 10000;
+            item.crit = 7;
             item.rare = ItemRarityID.LightRed;
             item.UseSound = SoundID.Item1;
-			item.autoReuse = true;
+            item.autoReuse = true;
             item.shootSpeed = 8f;                 
             base.SetDefaults();
         }        
@@ -63,21 +63,23 @@ namespace Overdone.Items
         }
 
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
-            if ( ComboManager.UseCombo( 10 ) ) {
-                Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ModContent.ProjectileType<HarpeSwordHead>(), (int) (damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
-                Main.PlaySound( SoundID.Item45, player.position );
-            }
+            if ( !ComboManager.UseCombo( 10 ) ) return false;
+            
+            Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ModContent.ProjectileType<HarpeSwordHead>(), (int) (damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
+            Main.PlaySound( SoundID.Item45, player.position );
             return false;
         }
         public override void AddRecipes() 
-		{
-			var recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.DirtBlock, 10);
-			recipe.AddTile(TileID.WorkBenches);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
+        {
+            var recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.DirtBlock, 10);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
 
 
+        protected override Mythology Mythology => Mythology.Greek;
+        protected override GodDomain GodDomain => GodDomain.Agriculture | GodDomain.Creation;
     }
 }

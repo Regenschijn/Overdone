@@ -8,6 +8,9 @@ namespace Overdone.Base {
         protected int ComboBuildPerHit = 1;
         protected int HitsBeforeComboHit = 1;
         private long _hitCount;
+        
+        protected abstract Mythology Mythology { get; }
+        protected abstract GodDomain GodDomain { get; }
 
         public override void OnHitNPC( Player player, NPC target, int damage, float knockBack, bool crit ) {
             if ( UseCombo ) {

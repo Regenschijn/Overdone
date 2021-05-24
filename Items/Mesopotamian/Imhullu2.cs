@@ -6,9 +6,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.DataStructures;
+using Overdone.Base;
 
 namespace Overdone.Items {
-    public class Imhullu2 : ModItem {
+    public class Imhullu2 : DoubleUseDodoModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Imhullu Restored " );
             Tooltip.SetDefault( "LMB: Stab. RMB: Shoot Imhullu" );
@@ -23,10 +24,10 @@ namespace Overdone.Items {
             item.noMelee = false;
             item.noUseGraphic = false;
             item.autoReuse = true;
-            SetStabMode();
-        }
+            base.SetDefaults();
+        }        
 
-        private void SetStabMode() {
+        protected override void SetLeftClickMode () {
             item.damage = 26;
             item.mana = 0;
             item.useTime = 22;
@@ -34,12 +35,12 @@ namespace Overdone.Items {
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 1f;
             item.UseSound = SoundID.Item1;
-            item.shoot = ProjectileID.WaterStream;
             item.noMelee = false;
             item.reuseDelay = 25;
         }
 
-        private void SetThrowMode() {
+        
+        protected override void SetRightClickMode() {
             item.damage = 20;
             item.mana = 20;
             item.useTime = 50;
@@ -53,14 +54,14 @@ namespace Overdone.Items {
             item.reuseDelay = 50;
         }
 
-        public override bool AltFunctionUse( Player player ) => true;
-        public override bool CanUseItem( Player player ) {
-            if ( player.altFunctionUse == 2 ) { // Throw mode
-                SetThrowMode();
-            } else { // Stab mode
-                SetStabMode();
-            }
-            return true;
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
+            ref int damage, ref float knockBack ) {
+            return false;
+        }
+
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
+            ref int damage, ref float knockBack ) {
+            return false;
         }
 
         public override void AddRecipes() {
@@ -70,5 +71,8 @@ namespace Overdone.Items {
             recipe.SetResult( this );
             recipe.AddRecipe();
         }
+
+        protected override Mythology Mythology => Mythology.Mesopotamian;
+        protected override GodDomain GodDomain => GodDomain.Weather | GodDomain.Thunder;
     }
 }
