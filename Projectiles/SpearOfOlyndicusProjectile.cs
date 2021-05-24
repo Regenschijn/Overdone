@@ -5,9 +5,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Overdone;
+using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class SpearOfOlyndicusProjectile : ModProjectile {
+    public class SpearOfOlyndicusProjectile : DodoModProjectile {
         public override void SetDefaults() {
             projectile.width = 26;
             projectile.height = 26;
@@ -29,6 +30,7 @@ namespace Overdone.Projectiles {
 
         public override void OnHitNPC( NPC target, int damage, float knockback, bool crit ) {
             // een of ander on hit effect?
+            base.OnHitNPC(target, damage, knockback, crit);
         }
     }
 }
