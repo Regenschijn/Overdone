@@ -1,13 +1,9 @@
-using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Overdone.Projectiles;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Terraria.DataStructures;
 
-namespace Overdone.Items {
+namespace Overdone.Items.Egyptian {
     public class WasSeptreOfSet : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Set's Was Septre" );

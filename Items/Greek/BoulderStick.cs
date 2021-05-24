@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Terraria.DataStructures;
 
-namespace Overdone.Items {
+namespace Overdone.Items.Greek {
     public class BoulderStick : ModItem {
         public override void SetStaticDefaults() {
             // DisplayName.SetDefault("Bouquet"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.

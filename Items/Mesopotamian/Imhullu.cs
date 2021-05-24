@@ -1,13 +1,8 @@
-using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Overdone.Projectiles;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Terraria.DataStructures;
 
-namespace Overdone.Items {
+namespace Overdone.Items.Mesopotamian {
     public class Imhullu : ModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Imhullu, the weapon used by the sky god Marduk " );

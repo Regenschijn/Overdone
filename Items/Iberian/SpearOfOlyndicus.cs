@@ -1,15 +1,12 @@
-using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Overdone.Base;
 using Overdone.Projectiles;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Terraria.DataStructures;
 
-namespace Overdone.Items {
-    public class SpearOfOlyndicus : DodoModItem {
+namespace Overdone.Items.Iberian {
+    public class SpearOfOlyndicus : DoubleUseDodoModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "The Spear Of Olyndicus" );
             Tooltip.SetDefault( "LMB: Stab. RMB: Throw." );
@@ -24,46 +21,57 @@ namespace Overdone.Items {
             item.rare = ItemRarityID.Blue;
             item.noMelee = true;
             item.noUseGraphic = true;
-            SetStabMode();
+            base.SetDefaults();
+        }
+        
+        public override bool CanUseItem(Player player) {
+            base.CanUseItem( player );
+            if (IsUsingLeftClick)
+                return player.ownedProjectileCounts[item.shoot] < 1;
+            return true;
         }
 
-        private void SetStabMode() {
-            item.damage = 13;
+        protected override void SetLeftClickMode() {
+            item.damage = 25;
             item.mana = 0;
             item.thrown = false;
-            item.useTime = 15;
+            
+            item.shootSpeed = 4f;
+            item.useTime = 40;
             item.useAnimation = 40;
+
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 5f;
             item.UseSound = SoundID.Item1;
             item.shoot = ModContent.ProjectileType<SpearOfOlyndicusProjectile>();
-            item.shootSpeed = 4f;
+            
             item.autoReuse = true;
         }
 
-        private void SetThrowMode() {
+        protected override void SetRightClickMode() {
             item.damage = 13;
             item.mana = 1;
             item.thrown = true;
+
+            item.shootSpeed = 15f;
             item.useTime = 18;
             item.useAnimation = 18;
+            
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 5f;
             item.UseSound = SoundID.Item5;
-            
             item.shoot = ModContent.ProjectileType<SpearOfOlyndicusThrownProjectile>();
-            item.shootSpeed = 15f;
-            
+
             item.autoReuse = true;
         }
 
-        public override bool AltFunctionUse( Player player ) => true;
-        public override bool CanUseItem( Player player ) {
-            if ( player.altFunctionUse == 2 ) { // Throw mode
-                SetThrowMode();
-            } else { // Stab mode
-                SetStabMode();
-            }
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
+            ref int damage, ref float knockBack ) {
+            return true;
+        }
+
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
+            ref int damage, ref float knockBack ) {
             return true;
         }
 

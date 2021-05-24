@@ -1,14 +1,10 @@
-using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Overdone.Projectiles;
+using Overdone.Base;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Terraria.DataStructures;
-using Overdone.Base;
 
-namespace Overdone.Items {
+namespace Overdone.Items.Mesopotamian {
     public class Imhullu2 : DoubleUseDodoModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Imhullu Restored " );
@@ -32,7 +28,7 @@ namespace Overdone.Items {
             item.mana = 0;
             item.useTime = 22;
             item.useAnimation = 22;
-            item.useStyle = ItemUseStyleID.SwingThrow;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 1f;
             item.UseSound = SoundID.Item1;
             item.noMelee = false;
@@ -45,7 +41,7 @@ namespace Overdone.Items {
             item.mana = 20;
             item.useTime = 50;
             item.useAnimation = 50;
-            item.useStyle = ItemUseStyleID.HoldingUp;
+            item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 5f;
             item.UseSound = SoundID.Item42;
             item.shoot = ProjectileID.SandnadoFriendly;
@@ -70,6 +66,14 @@ namespace Overdone.Items {
             recipe.AddTile( TileID.WorkBenches );
             recipe.SetResult( this );
             recipe.AddRecipe();
+        }
+
+        public override Vector2? HoldoutOffset() => new Vector2( -5, -4 );
+        
+        
+        
+        public override void UseStyle( Player player ) {
+            base.UseStyle( player );
         }
 
         protected override Mythology Mythology => Mythology.Mesopotamian;

@@ -1,14 +1,12 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using Overdone.Base;
+using Overdone.Combo;
+using Overdone.Projectiles;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
-using Terraria.DataStructures;
-using Overdone.Base;
-using Overdone.Projectiles;
-using Overdone.Combo;
 
-namespace Overdone.Items
+namespace Overdone.Items.Greek
 {
     public class HarpeSword : DoubleUseDodoModItem
     {

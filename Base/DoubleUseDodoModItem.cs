@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 
 namespace Overdone.Base {
     public abstract class DoubleUseDodoModItem : DodoModItem {
+        protected bool IsUsingLeftClick = true;
 
         public override bool AltFunctionUse( Player player ) => true;
 
@@ -20,8 +21,10 @@ namespace Overdone.Base {
 
         public override bool CanUseItem( Player player ) {
             if ( player.altFunctionUse == 2 ) {
+                IsUsingLeftClick = false;
                 SetRightClickMode();                
             } else {
+                IsUsingLeftClick = true;
                 SetLeftClickMode();
             }
             return true;
