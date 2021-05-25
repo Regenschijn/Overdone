@@ -33,7 +33,7 @@ namespace Overdone.Items.Greek {
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 1f;
             item.UseSound = SoundID.Item79;
-            item.shoot = ProjectileID.Bubble;
+            item.shoot = ProjectileID.PoisonFang;
             item.noMelee = true;
             item.reuseDelay = 25;
             item.mana = (int) (20 - ComboManager.Combo / 10);
@@ -48,7 +48,7 @@ namespace Overdone.Items.Greek {
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 5f;
             item.UseSound = SoundID.Item42;
-            item.shoot = ProjectileID.PoisonFang;
+            item.shoot = ModContent.ProjectileType<PoisonAura>();
             item.shootSpeed = 4f;
             item.noMelee = true;
             item.reuseDelay = 50;
@@ -56,17 +56,20 @@ namespace Overdone.Items.Greek {
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
             ref int damage, ref float knockBack ) {
+            Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ProjectileID.PoisonFang, (int)(damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
+            Main.PlaySound( SoundID.Item45, player.position );
             return false;
         }
 
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
             ref int damage, ref float knockBack ) {
-            if ( !ComboManager.UseCombo( 10 ) ) return false;
-            
-            Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ProjectileID.PoisonFang, (int) (damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
-            Main.PlaySound( SoundID.Item45, player.position );
-            return false;
+            if ( !ComboManager.UseCombo( 10 ) )
+                Projectile.NewProjectile( ((Entity)player). Center, new Vector2( 0f, 0f ), ModContent.ProjectileType<PoisonAura>(), 0, 0f, ((Entity)player).whoAmI, 0f, 0f );;
+            return false;       
+
         }
+
+      
 
         public override void AddRecipes() {
             var recipe = new ModRecipe( mod );

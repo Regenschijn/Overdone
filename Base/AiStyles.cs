@@ -8,14 +8,22 @@ using System.Threading.Tasks;
 
 namespace Overdone.Base {
     public static class AiStyles {
-        /// <summary>
-        /// Boulder
-        /// </summary>
-        public const int Boulder = 25;
 
         /// <summary>
         /// Magic bounce effect. Projectile bounces. Bouncing is much 'springier' than effect #14 or #16.
         /// </summary>
         public const int MagicBounce = 8;
+
+        /// <summary>
+        /// Used for: Tombstones.
+        /// </summary>
+        public const int Stationary = 17;
+
+        /// <summary>
+        /// Boulder
+        /// </summary>
+        public const int Boulder = 25;
+
+
     }
 }
