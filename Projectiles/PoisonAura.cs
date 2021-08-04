@@ -11,8 +11,8 @@ namespace Overdone.Projectiles {
     public class PoisonAura : DodoModProjectile {
         public override void SetDefaults() {
             projectile.Name = "Asclepius' Cloud";
-            projectile.width = 70;
-            projectile.height = 70;
+            projectile.width = 100;
+            projectile.height = 100;
             projectile.penetrate = -1;
             projectile.timeLeft = 600;
 

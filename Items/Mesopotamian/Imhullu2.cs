@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Overdone.Base;
+using Overdone.Projectiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -44,7 +45,7 @@ namespace Overdone.Items.Mesopotamian {
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 5f;
             item.UseSound = SoundID.Item42;
-            item.shoot = ProjectileID.SandnadoFriendly;
+            item.shoot = ModContent.ProjectileType<ImhulluSpin>();
             item.shootSpeed = 4f;
             item.noMelee = true;
             item.reuseDelay = 50;
@@ -57,6 +58,7 @@ namespace Overdone.Items.Mesopotamian {
 
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
             ref int damage, ref float knockBack ) {
+            Projectile.NewProjectile( ((Entity)player).Center, new Vector2( 0f, 0f ), ModContent.ProjectileType<ImhulluSpin>(), 0, 0f, ((Entity)player).whoAmI, 0f, 0f ); ;
             return false;
         }
 
