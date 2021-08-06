@@ -8,8 +8,7 @@ using Terraria.DataStructures;
 namespace Overdone.Items.Greek {
     public class BoulderStick : ModItem {
         public override void SetStaticDefaults() {
-            // DisplayName.SetDefault("Bouquet"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-            Tooltip.SetDefault( "The rod of Sisyphus\nLMB: Smack. RMB: Shoot boulders" );
+            Tooltip.SetDefault( "Sisyphus' problems on a stick\nLMB: Smack. RMB: Shoot boulders" );
         }
 
         public override void SetDefaults() {
@@ -68,9 +67,9 @@ namespace Overdone.Items.Greek {
             ref int type, ref int damage, ref float knockBack ) {
             if ( player.altFunctionUse == 2 ) {
                 Projectile.NewProjectile( position.X - 20f * player.direction, position.Y - 46, speedX * 1.85f,
-                    speedY * 1.85f, ProjectileID.Boulder, (int) ((double) damage * 1.5), 10f, ((Entity) player).whoAmI,
+                    speedY * 1.85f, ProjectileID.Boulder, (int) ((double) damage * 1.5), 10f, player.whoAmI,
                     0f, 0f );
-                Main.PlaySound( SoundID.Item45, ((Entity) player).position );
+                Main.PlaySound( SoundID.Item45, player.position );
             }
 
             return false;

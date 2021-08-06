@@ -1,10 +1,16 @@
+using Microsoft.Xna.Framework;
+using Overdone.Base;
 using Overdone.Projectiles;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Overdone.Items.Egyptian {
-    public class WasSeptreOfSet : ModItem {
+    public class WasSeptreOfSet : DoubleUseDodoModItem {
+        protected override Mythology Mythology => Mythology.Egyptian;
+        protected override GodDomain GodDomain => GodDomain.Afterlife | GodDomain.Sun;
+        
+
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Set's Was Septre" );
             Tooltip.SetDefault( "LMB: melee boink. RMB: Heavy havoc" );
@@ -18,10 +24,27 @@ namespace Overdone.Items.Egyptian {
             item.rare = ItemRarityID.Yellow;
             item.noMelee = false;
             item.noUseGraphic = false;
-            SetStabMode();
+            ComboBuildPerHit = 2;
+            base.SetDefaults();
+        }
+  
+
+        public override void OnHitNPC( Player player, NPC target, int damage, float knockBack, bool crit ) {
+            if ( player.altFunctionUse == 2 ) {
+                target.AddBuff( BuffID.Ichor, 90 );
+            }
+            base.OnHitNPC( player, target, damage, knockBack, crit );
         }
 
-        private void SetStabMode() {
+        public override void AddRecipes() {
+            var recipe = new ModRecipe( mod );
+            recipe.AddIngredient( ItemID.DirtBlock, 1 );
+            recipe.AddTile( TileID.WorkBenches );
+            recipe.SetResult( this );
+            recipe.AddRecipe();
+        }
+
+        protected override void SetLeftClickMode() {
             item.melee = true;
             item.magic = false;
             item.damage = 23;
@@ -35,10 +58,10 @@ namespace Overdone.Items.Egyptian {
             item.shoot = default;
             item.shootSpeed = default;
             item.noMelee = false;
-            item.autoReuse = true;
+            item.autoReuse = true;            
         }
 
-        private void SetThrowMode() {
+        protected override void SetRightClickMode() {
             item.melee = false;
             item.magic = true;
             item.damage = 35;
@@ -55,29 +78,12 @@ namespace Overdone.Items.Egyptian {
             item.autoReuse = true;
         }
 
-        public override bool AltFunctionUse( Player player ) => true;
-        public override bool CanUseItem( Player player ) {
-            if ( player.altFunctionUse == 2 ) { // Throw mode
-                SetThrowMode();
-            } else { // Stab mode
-                SetStabMode();
-            }
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
             return true;
         }
 
-        public override void OnHitNPC( Player player, NPC target, int damage, float knockBack, bool crit ) {
-            if ( player.altFunctionUse == 2 ) {
-                target.AddBuff( BuffID.Ichor, 90 );
-            }
-            else { }
-        }
-
-        public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
-            recipe.AddIngredient( ItemID.DirtBlock, 1 );
-            recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+            return true;
         }
     }
 }

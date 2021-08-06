@@ -23,6 +23,7 @@ namespace Overdone.Projectiles {
             projectile.tileCollide = true;
             projectile.friendly = true;
             projectile.ignoreWater = true;
+            UseCombo = false;
         }
 
         public override void AI() {

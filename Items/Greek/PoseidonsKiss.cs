@@ -39,7 +39,7 @@ namespace Overdone.Items.Greek {
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.noMelee = false;
             item.mana = 0;
-            item.crit = (int) (7 + (ComboManager.Combo / 5));
+            item.crit = (int) (7 + (ComboManager.Combo / 5f));
         }
 
         protected override void SetRightClickMode() {

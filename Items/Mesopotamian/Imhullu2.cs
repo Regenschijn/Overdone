@@ -9,7 +9,7 @@ namespace Overdone.Items.Mesopotamian {
     public class Imhullu2 : DoubleUseDodoModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Imhullu Restored " );
-            Tooltip.SetDefault( "LMB: Stab. RMB: Shoot Imhullu" );
+            Tooltip.SetDefault( "LMB: Spin. RMB: Shoot Imhullu" );
         }
 
         public override void SetDefaults() {
@@ -21,10 +21,11 @@ namespace Overdone.Items.Mesopotamian {
             item.noMelee = false;
             item.noUseGraphic = false;
             item.autoReuse = true;
+            item.shoot = ModContent.ProjectileType<ImhulluSpin>();
             base.SetDefaults();
-        }        
+        }
 
-        protected override void SetLeftClickMode () {
+        protected override void SetLeftClickMode() {
             item.damage = 26;
             item.mana = 0;
             item.useTime = 22;
@@ -32,11 +33,11 @@ namespace Overdone.Items.Mesopotamian {
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 1f;
             item.UseSound = SoundID.Item1;
-            item.noMelee = false;
+            item.noMelee = true;
             item.reuseDelay = 25;
         }
 
-        
+
         protected override void SetRightClickMode() {
             item.damage = 20;
             item.mana = 20;
@@ -45,20 +46,28 @@ namespace Overdone.Items.Mesopotamian {
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 5f;
             item.UseSound = SoundID.Item42;
-            item.shoot = ModContent.ProjectileType<ImhulluSpin>();
             item.shootSpeed = 4f;
             item.noMelee = true;
             item.reuseDelay = 50;
         }
 
+        public override bool CanUseItem( Player player ) {
+            base.CanUseItem( player );
+
+            if (IsUsingLeftClick)
+                return player.ownedProjectileCounts[ModContent.ProjectileType<ImhulluSpin>()] <= 0;
+            return true;
+        }
+
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
-            ref int damage, ref float knockBack ) {
+            ref int damage, ref float knockBack ) {            
+            Projectile.NewProjectile( player.Center, new Vector2(), ModContent.ProjectileType<ImhulluSpin>(), damage, 0f, player.whoAmI, 0f, 0f );
             return false;
         }
 
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
             ref int damage, ref float knockBack ) {
-            Projectile.NewProjectile( ((Entity)player).Center, new Vector2( 0f, 0f ), ModContent.ProjectileType<ImhulluSpin>(), 0, 0f, ((Entity)player).whoAmI, 0f, 0f ); ;
+            Projectile.NewProjectile( player.Center, new Vector2( 0f, 0f ), ModContent.ProjectileType<ImhulluSpin>(), 0, 0f, player.whoAmI, 0f, 0f );
             return false;
         }
 
@@ -71,9 +80,9 @@ namespace Overdone.Items.Mesopotamian {
         }
 
         public override Vector2? HoldoutOffset() => new Vector2( -5, -4 );
-        
-        
-        
+
+
+
         public override void UseStyle( Player player ) {
             base.UseStyle( player );
         }
