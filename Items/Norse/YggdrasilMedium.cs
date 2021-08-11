@@ -44,7 +44,7 @@ namespace Overdone.Items.Norse {
         protected override void SetRightClickMode() {
             item.damage = 13;
             item.mana = 15;
-            item.useTime = 25;
+            item.useTime = 36;
             item.useAnimation = 36;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 4f;
@@ -55,18 +55,8 @@ namespace Overdone.Items.Norse {
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
-            for ( var i = 0; i < 1; i++ ) {
-                Projectile.NewProjectile( 
-                    position.X - 8f, 
-                    position.Y + 8f, 
-                    speedX + Main.rand.Next( -130, 330 ) / 150f, 
-                    speedY + Main.rand.Next( -330, 130 ) / 150f, 
-                    ProjectileID.Leaf, 
-                    damage, 
-                    knockBack, 
-                    player.whoAmI, 
-                    0f, 
-                    0f );
+            for ( var i = 0; i < 2; i++ ) {
+                Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + Main.rand.Next( -130, 330 ) / 150f, speedY + Main.rand.Next( -330, 130 ) / 150f, ProjectileID.Leaf, damage, knockBack, player.whoAmI, 0f, 0f );
             }
             return true;
         }

@@ -4,9 +4,12 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.DataStructures;
+using Overdone.Base;
+using Overdone.Combo;
 
 namespace Overdone.Items.Greek {
-    public class BoulderStick : ModItem {
+    public class BoulderStick : DoubleUseDodoModItem {
+
         public override void SetStaticDefaults() {
             Tooltip.SetDefault( "Sisyphus' problems on a stick\nLMB: Smack. RMB: Shoot boulders" );
         }
@@ -23,58 +26,14 @@ namespace Overdone.Items.Greek {
             item.value = 10000;
             item.rare = ItemRarityID.LightRed;
             item.crit = 0;
-            item.rare = 1;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.shootSpeed = 10f;
             item.shoot = ProjectileID.Boulder;
-        }
-
-        public override bool AltFunctionUse( Player player ) {
-            return true;
-        }
-
-        public override bool CanUseItem( Player player ) {
-            if ( player.altFunctionUse == 2 ) {
-                item.noMelee = true;
-                item.mana = 3;
-                item.melee = false;
-                item.magic = true;
-                item.useAnimation = 40;
-                item.useTime = 40;
-            } else {
-                item.useStyle = 1;
-                item.noMelee = false;
-                item.mana = 0;
-                item.melee = true;
-                item.useTime = 30;
-                item.useAnimation = 20;
-            }
-
-            return base.CanUseItem( player );
-        }
-
-        public override void HoldItem( Player player ) {
-            if ( player.altFunctionUse == 2 ) {
-                player.itemRotation = -20f * player.direction;
-                player.itemLocation.Y = player.Center.Y;
-                player.itemLocation.X = player.Center.X;
-            }
-        }
-
-
-        public override bool Shoot( Player player, ref Vector2 position, ref float speedX, ref float speedY,
-            ref int type, ref int damage, ref float knockBack ) {
-            if ( player.altFunctionUse == 2 ) {
-                Projectile.NewProjectile( position.X - 20f * player.direction, position.Y - 46, speedX * 1.85f,
-                    speedY * 1.85f, ProjectileID.Boulder, (int) ((double) damage * 1.5), 10f, player.whoAmI,
-                    0f, 0f );
-                Main.PlaySound( SoundID.Item45, player.position );
-            }
-
-            return false;
-        }
-
+            ComboBuildPerHit = 3;
+            base.SetDefaults();
+        }      
+             
         public override void AddRecipes() {
             var recipe = new ModRecipe( mod );
             recipe.AddIngredient( ItemID.DirtBlock, 1 );
@@ -82,5 +41,42 @@ namespace Overdone.Items.Greek {
             recipe.SetResult( this );
             recipe.AddRecipe();
         }
+
+        protected override void SetLeftClickMode() {
+            item.noMelee = true;
+            item.mana = 1;
+            item.melee = false;
+            item.magic = true;
+            item.useAnimation = 40;
+            item.useTime = 40;
+            ComboBuildPerHit = 3;
+        }
+
+        protected override void SetRightClickMode() {
+            item.useStyle = 1;
+            item.noMelee = false;
+            item.mana = 0;
+            item.melee = true;
+            item.useTime = 30;
+            item.useAnimation = 30;
+            ComboBuildPerHit = 0;
+        }
+
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+            return false;
+        }
+
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+            if ( !ComboManager.UseCombo( 10 ) ) return false;
+            player.itemRotation = -20f * player.direction;
+            player.itemLocation.Y = player.Center.Y;
+            player.itemLocation.X = player.Center.X;
+            Projectile.NewProjectile( position.X - 20f * player.direction, position.Y - 46, speedX * 1.85f, speedY * 1.85f, ProjectileID.Boulder, (int)((double)damage * 1.5), 10f, player.whoAmI, 0f, 0f );
+            Main.PlaySound( SoundID.Item45, player.position );
+            return false;
+        }
+        protected override Mythology Mythology => Mythology.Greek;
+
+        protected override GodDomain GodDomain => GodDomain.Demi;
     }
 }

@@ -7,6 +7,7 @@ using Terraria.ModLoader;
 using Terraria;
 using Terraria.DataStructures;
 using Overdone.Base;
+using Overdone.Combo;
 
 namespace Overdone.Items.Norse {
     public class YggdrasilLarge : DoubleUseDodoModItem {
@@ -14,8 +15,6 @@ namespace Overdone.Items.Norse {
             DisplayName.SetDefault( "Full Twig of Yggdrasil" );
             Tooltip.SetDefault( "Someone tore a full branch off of the world tree. \n LMB: Shoot leaves. RMB: Nova blast of leaves." );
         }
-
-        // I switched around throw and melee for fun
 
         public override void SetDefaults() {
             item.melee = true;
@@ -26,10 +25,10 @@ namespace Overdone.Items.Norse {
             item.noMelee = false;
             item.noUseGraphic = false;
             item.shoot = ProjectileID.Leaf;
-            SetStabMode();
+            base.SetDefaults();
         }
 
-        private void SetStabMode() {
+        protected override void SetLeftClickMode() {
             item.damage = 10;
             item.mana = 4;
             item.useTime = 20;
@@ -43,7 +42,7 @@ namespace Overdone.Items.Norse {
             item.reuseDelay = 0;
         }
 
-        private void SetThrowMode() {
+        protected override void SetRightClickMode() {
             item.damage = 13;
             item.mana = 4;
             item.useTime = 50;
@@ -55,31 +54,10 @@ namespace Overdone.Items.Norse {
             item.noMelee = true;
             item.autoReuse = true;
             item.reuseDelay = 37;
-            
-        }
-
-        public override bool AltFunctionUse( Player player ) => true;
-        public override bool CanUseItem( Player player ) {
-            if ( player.altFunctionUse == 2 ) { // Throw mode
-                SetThrowMode();
-            }
-            else { // Stab mode
-                SetStabMode();
-            }
-            return true;
-        }
-
-
-        protected override void SetLeftClickMode() {
-            throw new NotImplementedException();
-        }
-
-        protected override void SetRightClickMode() {
-            throw new NotImplementedException();
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
-            for ( var i = 0; i < 2; i++ ) {
+            for ( var i = 0; i < 3; i++ ) {
                 Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + Main.rand.Next( -130, 330 ) / 150f, speedY + Main.rand.Next( -330, 130 ) / 150f, ProjectileID.Leaf, damage, knockBack, player.whoAmI, 0f, 0f );
             }
             return true;

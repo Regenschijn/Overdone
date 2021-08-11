@@ -14,7 +14,7 @@ namespace Overdone.Items.Greek {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Poseidons Kiss" );
-            Tooltip.SetDefault( "Poseidons Trident \n LMB: Swing- why stab?. Every 5th hit is a crit with large knockback. \n RMB: Use 10 favor to lob a medusa head. \n Passive: For every 10 combo, gain 1% crit chance." );
+            Tooltip.SetDefault( "Poseidons Trident \n LMB: Swing- why stab?. Every 5th hit is a crit with large knockback. \n RMB: Use 25 combo and mana to shoot Poseidons Kiss \n Passive: For every 25 combo, gain 1% crit chance." );
         }
 
         public override void SetDefaults() {
@@ -39,13 +39,13 @@ namespace Overdone.Items.Greek {
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.noMelee = false;
             item.mana = 0;
-            item.crit = (int) (7 + (ComboManager.Combo / 5f));
+            item.crit = (int) (7 + (ComboManager.Combo / 25f));
         }
 
         protected override void SetRightClickMode() {
             item.useStyle = ItemUseStyleID.HoldingUp;
             item.noMelee = true;
-            item.mana = 8;
+            item.mana = 25;
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {

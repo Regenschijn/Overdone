@@ -19,5 +19,6 @@ namespace Overdone.Base {
         Creation = 1 << 13,
         Crafts = 1 << 14,
         Wisdom = 1 << 15,
+        Demi = 1 << 16,
     }
 }
