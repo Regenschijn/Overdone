@@ -25,6 +25,7 @@ namespace Overdone.Items.Norse {
             item.noMelee = false;
             item.noUseGraphic = false;
             item.shoot = ProjectileID.Leaf;
+            ComboBuildPerHit = 1;
             base.SetDefaults();
         }
 
@@ -53,7 +54,6 @@ namespace Overdone.Items.Norse {
             item.shootSpeed = 25f;
             item.noMelee = true;
             item.autoReuse = true;
-            item.reuseDelay = 37;
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {

@@ -30,7 +30,6 @@ namespace Overdone.Items.Greek {
             item.autoReuse = true;
             item.shootSpeed = 10f;
             item.shoot = ProjectileID.Boulder;
-            ComboBuildPerHit = 3;
             base.SetDefaults();
         }      
              
@@ -43,7 +42,7 @@ namespace Overdone.Items.Greek {
         }
 
         protected override void SetLeftClickMode() {
-            item.noMelee = true;
+            item.noMelee = false;
             item.mana = 1;
             item.melee = false;
             item.magic = true;
@@ -54,7 +53,7 @@ namespace Overdone.Items.Greek {
 
         protected override void SetRightClickMode() {
             item.useStyle = 1;
-            item.noMelee = false;
+            item.noMelee = true;
             item.mana = 0;
             item.melee = true;
             item.useTime = 30;
@@ -63,7 +62,7 @@ namespace Overdone.Items.Greek {
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
-            return false;
+            return true;
         }
 
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {

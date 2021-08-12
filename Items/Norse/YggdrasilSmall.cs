@@ -7,6 +7,8 @@ using Terraria.ModLoader;
 using Terraria;
 using Terraria.DataStructures;
 using Overdone.Base;
+using Overdone.Combo;
+using Overdone.Items;
 
 namespace Overdone.Items.Norse {
     public class YggdrasilSmall : DoubleUseDodoModItem {
