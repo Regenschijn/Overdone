@@ -20,12 +20,13 @@ namespace Overdone.Items.Norse {
         // I switched around throw and melee for fun
 
         public override void SetDefaults() {
+            UseCombo = true;
             item.melee = true;
             item.width = 40;
             item.height = 40;
             item.value = Item.sellPrice( silver: 50 );
             item.rare = ItemRarityID.Green;
-            item.noMelee = false;
+            item.noMelee = true;
             item.noUseGraphic = false;
             base.SetDefaults();
         }
@@ -33,28 +34,34 @@ namespace Overdone.Items.Norse {
         protected override void SetLeftClickMode() {
             item.damage = 10;
             item.mana = 4;
+            item.thrown = false;
+
+            item.shootSpeed = 20f;
             item.useTime = 20;
             item.useAnimation = 20;
+
             item.useStyle = ItemUseStyleID.HoldingUp;
             item.knockBack = 5f;
             item.UseSound = SoundID.Item40;
-            item.shoot = ProjectileID.Leaf;
-            item.shootSpeed = 20f;
+            item.shoot = ModContent.ProjectileType<YggdrasilLeaf>();
+
             item.autoReuse = true;
-            item.noMelee = true;
         }
 
         protected override void SetRightClickMode() {
             item.damage = 5;
             item.mana = 15;
+            item.thrown = true;
+
+            item.shootSpeed = 5f;
             item.useTime = 50;
             item.useAnimation = 50;
+
             item.useStyle = ItemUseStyleID.EatingUsing;
             item.knockBack = 4f;
             item.UseSound = SoundID.Item2;
             item.shoot = ProjectileID.Seed;
-            item.shootSpeed = 5f;
-            item.noMelee = true;
+
             item.autoReuse = true;
         }
 

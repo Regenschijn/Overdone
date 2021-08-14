@@ -58,7 +58,8 @@ namespace Overdone.Items.Egyptian {
             item.shoot = default;
             item.shootSpeed = default;
             item.noMelee = false;
-            item.autoReuse = true;            
+            item.autoReuse = true;
+            ComboBuildPerHit = 1;
         }
 
         protected override void SetRightClickMode() {
@@ -76,6 +77,7 @@ namespace Overdone.Items.Egyptian {
             item.shootSpeed = 15f;
             item.noMelee = true;
             item.autoReuse = true;
+            ComboBuildPerHit = 0;
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {

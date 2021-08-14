@@ -14,7 +14,7 @@ namespace Overdone.Items.Egyptian {
     public class BowOfAnhur : DoubleUseDodoModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Bow of Anhur" );
-            Tooltip.SetDefault( "The book of Toth for when you don't have papyrus" );
+            Tooltip.SetDefault( "LMB: Shoot poison arrows \n RMB: shoot more arrows in an unconventional way" );
         }
 
         public override void SetDefaults() {
@@ -62,7 +62,7 @@ namespace Overdone.Items.Egyptian {
             for ( var i = 0; i < 2; i++ ) {
                 Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + Main.rand.Next( -130, 330 ) / 150f, speedY + Main.rand.Next( -330, 130 ) / 150f, ProjectileID.VenomArrow, damage, knockBack, player.whoAmI, 0f, 0f );
             }
-            return false;
+            return true;
         }
 
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
