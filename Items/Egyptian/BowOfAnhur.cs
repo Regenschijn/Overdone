@@ -14,39 +14,38 @@ namespace Overdone.Items.Egyptian {
     public class BowOfAnhur : DoubleUseDodoModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Bow of Anhur" );
-            Tooltip.SetDefault( "LMB: Shoot poison arrows \n RMB: shoot more arrows in an unconventional way" );
+            Tooltip.SetDefault( "LMB: Shoot 3 poison arrows \n RMB: shoot more arrows in an unconventional way" );
         }
 
         public override void SetDefaults() {
-            item.magic = true;
+            item.ranged = true;
             item.width = 40;
             item.height = 40;
             item.value = Item.sellPrice( gold: 14 );
             item.rare = ItemRarityID.Yellow;
             item.noMelee = true;
             item.noUseGraphic = false;
-            item.shoot = ProjectileID.VenomArrow;
+            item.shoot = ModContent.ProjectileType<ArrowEgypt>();
             ComboBuildPerHit = 1;
             base.SetDefaults();
         }
 
         protected override void SetLeftClickMode() {
-            item.damage = 10;
-            item.mana = 11;
-            item.useTime = 20;
-            item.useAnimation = 20;
+            item.damage = 2;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 5f;
             item.UseSound = SoundID.Item40;
             item.shootSpeed = 10;
             item.autoReuse = true;
             item.noMelee = true;
+            item.shoot = ModContent.ProjectileType<ArrowEgypt>();
             ComboBuildPerHit = 1;
         }
 
         protected override void SetRightClickMode() {
             item.damage = 13;
-            item.mana = 4;
             item.useTime = 50;
             item.useAnimation = 50;
             item.useStyle = ItemUseStyleID.EatingUsing;
@@ -55,23 +54,24 @@ namespace Overdone.Items.Egyptian {
             item.shootSpeed = 25f;
             item.noMelee = true;
             item.autoReuse = true;
+            item.shoot = ModContent.ProjectileType<ArrowEgypt>();
             ComboBuildPerHit = 1;
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
-            for ( var i = 0; i < 2; i++ ) {
-                Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + Main.rand.Next( -130, 330 ) / 150f, speedY + Main.rand.Next( -330, 130 ) / 150f, ProjectileID.VenomArrow, damage, knockBack, player.whoAmI, 0f, 0f );
-            }
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {            
             return true;
         }
 
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
-            const float numberProjectiles = 6;
-            const float rotation = (float) (1.5 * Math.PI);
-            position += Vector2.Normalize( new Vector2( speedX, speedY ) ) * 45f;
-            for ( int i = 0; i < numberProjectiles; i++ ) {
-                Vector2 perturbedSpeed = new Vector2( speedX, speedY ).RotatedBy( MathHelper.Lerp( -rotation, rotation, i / (numberProjectiles - 1) ) ) * .2f;
-                Projectile.NewProjectile( position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI );
+            if ( ComboManager.UseCombo( 3 ) ) {
+                const float numberProjectiles = 7;
+                const float rotation = (float)(0.7 * Math.PI);
+                position += Vector2.Normalize( new Vector2( speedX, speedY ) ) * 45f;
+
+                for ( int i = 0; i < numberProjectiles; i++ ) {
+                    Vector2 perturbedSpeed = new Vector2( speedX, speedY ).RotatedBy( MathHelper.Lerp( -rotation, rotation, i / (numberProjectiles - 1) ) ) * .2f;
+                    Projectile.NewProjectile( position.X, position.Y, perturbedSpeed.X * 2.5f, perturbedSpeed.Y * 2.5f, type, damage, knockBack, player.whoAmI );
+                }
             }
             return false;
         }

@@ -59,7 +59,7 @@ namespace Overdone.Items.Roman {
             item.useStyle = ItemUseStyleID.HoldingOut;
             item.knockBack = 4f;
             item.UseSound = SoundID.Item110;
-            item.shootSpeed = 25f;
+            item.shootSpeed = 12f;
             item.noMelee = true;
             item.autoReuse = true;
             item.reuseDelay = 37;
@@ -78,9 +78,9 @@ namespace Overdone.Items.Roman {
             return false;
         }
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
-            for ( var i = 0; i < 10; i++ ) {
-                Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + Main.rand.Next( -190, 590 ) / 150f, speedY + Main.rand.Next( -590, 190 ) / 150f, ProjectileID.Leaf, damage, knockBack, player.whoAmI, 0f, 0f );
-            }
+
+                Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + Main.rand.Next( -30, 30 ) / 150f, speedY + Main.rand.Next( -30, 30 ) / 150f, ModContent.ProjectileType<AquaKiss>(), damage, knockBack, player.whoAmI, 0f, 0f );
+            
             return true;
         }
 

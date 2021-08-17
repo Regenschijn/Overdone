@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class EgyptArrow : DodoModProjectile {
+    public class ArrowEgypt : DodoModProjectile {
         public override void SetDefaults() {
             projectile.width = 14;
             projectile.height = 40;
@@ -18,7 +18,7 @@ namespace Overdone.Projectiles {
             projectile.hide = false;
             projectile.ownerHitCheck = true;
             projectile.melee = false;
-            projectile.tileCollide = false;
+            projectile.tileCollide = true;
             projectile.friendly = true;
             projectile.ranged = true;
         }
@@ -28,8 +28,9 @@ namespace Overdone.Projectiles {
         }
 
         public override void OnHitNPC( NPC target, int damage, float knockback, bool crit ) {
-            // een of ander on hit effect?
             base.OnHitNPC(target, damage, knockback, crit);
+            Player owner = Main.player[projectile.owner];
+            target.AddBuff( 20, 180 );
         }
     }
 }
