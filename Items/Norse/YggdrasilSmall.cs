@@ -62,6 +62,8 @@ namespace Overdone.Items.Norse {
             item.UseSound = SoundID.Item2;
             item.shoot = ProjectileID.Seed;
 
+            
+
             item.autoReuse = true;
         }
 

@@ -22,6 +22,6 @@ namespace Overdone.Base {
             if ( currentHitCount % HitsBeforeComboHit == 0 ) {
                 ComboManager.Add( ComboBuildPerHit );
             }
-        }
+        }        
     }
 }

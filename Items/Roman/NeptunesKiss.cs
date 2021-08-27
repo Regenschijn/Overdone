@@ -11,13 +11,12 @@ using Overdone.Combo;
 
 namespace Overdone.Items.Roman {
     public class NeptunesKiss : DoubleUseDodoModItem {
-        private int _counter;
+        private int _counter;        
+
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Neptunes Kiss" );
             Tooltip.SetDefault( "Neptunes Trident \n LMB: Stabs. Every 5th hit is a quick smack. \n RMB: Shoot Neptunes Kiss \n every something, something happens" );
         }
-
-        // I switched around throw and melee for fun
 
         public override void SetDefaults() {
             item.damage = 24;
@@ -48,7 +47,7 @@ namespace Overdone.Items.Roman {
             item.shootSpeed = 10;
             item.autoReuse = true;
             item.noMelee = false;
-            item.crit = (int)(7 + (ComboManager.Combo / 25f));
+            item.crit = (int) (7 + (ComboManager.Combo / 25f));
         }
 
         protected override void SetRightClickMode() {
@@ -65,22 +64,23 @@ namespace Overdone.Items.Roman {
             item.reuseDelay = 37;
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {            
             _counter++;
             if ( _counter < 5 )
                 return false;
 
             for ( var i = 0; i < 3; i++ ) {
-                item.damage = 25;
+                item.damage = damage + 25;
                 item.useStyle = ItemUseStyleID.SwingThrow;
             }
             _counter = 0;
             return false;
         }
+
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
 
-                Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + Main.rand.Next( -30, 30 ) / 150f, speedY + Main.rand.Next( -30, 30 ) / 150f, ModContent.ProjectileType<AquaKiss>(), damage, knockBack, player.whoAmI, 0f, 0f );
-            
+            Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + Main.rand.Next( -30, 30 ) / 150f, speedY + Main.rand.Next( -30, 30 ) / 150f, ModContent.ProjectileType<AquaKiss>(), damage, knockBack, player.whoAmI, 0f, 0f );
+
             return true;
         }
 
@@ -91,7 +91,7 @@ namespace Overdone.Items.Roman {
             recipe.SetResult( this );
             recipe.AddRecipe();
         }
-        
+
         protected override Mythology Mythology => Mythology.Roman;
         protected override GodDomain GodDomain => GodDomain.Water;
     }
