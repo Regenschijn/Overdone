@@ -67,7 +67,7 @@ namespace Overdone.Items.Egyptian {
             item.magic = true;
             item.damage = 35;
             item.crit = 0;
-            item.mana = 1;
+            item.mana = 20;
             item.useTime = 18;
             item.useAnimation = 18;
             item.useStyle = ItemUseStyleID.HoldingOut;
