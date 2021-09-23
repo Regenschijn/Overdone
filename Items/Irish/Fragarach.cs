@@ -11,7 +11,7 @@ namespace Overdone.Items.Irish {
         private int _counter;
 
         public override void SetStaticDefaults() {
-            Tooltip.SetDefault( "The sword of Nuada, the first high king. \n LMB: Slash attack with a air attack on the Xth attack. \n RMB: Consume 25 combo to get an attack speed buff. \n At 100 combo, your attacks gain extra armor penetration." );
+            Tooltip.SetDefault( "The sword of Nuada, the first high king. \n LMB: Slash attack with a air attack on the Xth attack. \n RMB: Consume 25 combo to get an attack damage buff. \n At 100 combo, your attacks gain extra armor penetration." );
         }
 
         public override void SetDefaults() {
@@ -35,7 +35,6 @@ namespace Overdone.Items.Irish {
         protected override void SetLeftClickMode() {
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.noMelee = false;
-            item.crit = (int)(7 + (ComboManager.Combo / 5));
         }
 
         protected override void SetRightClickMode() {
@@ -49,16 +48,16 @@ namespace Overdone.Items.Irish {
                 return false;
 
 
-            Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + (float)Main.rand.Next( -230, 230 ) / 100f, speedY + (float)Main.rand.Next( -230, 230 ) / 100f, ModContent.ProjectileType<FragarachSlash>(), damage, knockBack, (player).whoAmI, 0f, 0f );
+            Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + (float)Main.rand.Next( -230, 230 ) / 100f, speedY + (float)Main.rand.Next( -230, 230 ) / 100f, ModContent.ProjectileType<FragarachSlash>(), damage, 0, (player).whoAmI, 0f, 0f );
 
             _counter = 0;
             return false;
         }
 
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
-            if ( !ComboManager.UseCombo( 10 ) ) return false;
+            if ( !ComboManager.UseCombo( 25 ) ) return false;
 
-            Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ModContent.ProjectileType<FragarachSlash>(), (int)(damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
+            player.AddBuff( ModContent.BuffType<Buffs.IrishFierceness>(), 1200 );
             Main.PlaySound( SoundID.Item45, player.position );
             return false;
         }

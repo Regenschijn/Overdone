@@ -17,6 +17,7 @@ namespace Overdone.Projectiles {
             projectile.penetrate = 3;
             projectile.timeLeft = 15;
             projectile.extraUpdates = 3;
+            projectile.knockBack = 0;
 
             projectile.hide = false;
             projectile.ownerHitCheck = true;
