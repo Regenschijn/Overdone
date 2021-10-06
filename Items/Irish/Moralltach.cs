@@ -8,7 +8,6 @@ using Terraria.ModLoader;
 
 namespace Overdone.Items.Irish {
     public class Moralltach : DoubleUseDodoModItem {
-        private int _counter;
 
         public override void SetStaticDefaults() {
             Tooltip.SetDefault( "The sword of Aengus (Macan Óc). \n LMB: Attack in various ways. \n RMB: Consume 25 combo to get an attack damage buff. \n At 100 combo, your attacks gain extra armor penetration." );
@@ -59,12 +58,6 @@ namespace Overdone.Items.Irish {
                     break;
             }
             return true;
-
-
-            Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + (float)Main.rand.Next( -230, 230 ) / 100f, speedY + (float)Main.rand.Next( -230, 230 ) / 100f, ModContent.ProjectileType<FragarachSlash>(), damage, 0, (player).whoAmI, 0f, 0f );
-
-            _counter = 0;
-            return false;
         }
 
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
@@ -84,6 +77,6 @@ namespace Overdone.Items.Irish {
 
 
         protected override Mythology Mythology => Mythology.Irish;
-        protected override GodDomain GodDomain => GodDomain.War | GodDomain.Crafts;
+        protected override GodDomain GodDomain => GodDomain.Love;
     }
 }
