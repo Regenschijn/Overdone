@@ -10,8 +10,8 @@ using Overdone.Base;
 namespace Overdone.Projectiles {
     public class ArrowEgypt : DodoModProjectile {
         public override void SetDefaults() {
-            projectile.width = 14;
-            projectile.height = 40;
+            projectile.width = 4;
+            projectile.height = 20;
             projectile.aiStyle = 1;
             projectile.penetrate = 2;
 
