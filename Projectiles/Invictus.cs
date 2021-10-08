@@ -15,7 +15,7 @@ namespace Overdone.Projectiles {
             projectile.height = 13;
             projectile.aiStyle = 0;
             projectile.penetrate = 1;
-            projectile.timeLeft = 45;
+            projectile.timeLeft = 30;
 
             projectile.hide = false;
             projectile.ownerHitCheck = true;
@@ -23,7 +23,7 @@ namespace Overdone.Projectiles {
             projectile.tileCollide = true;
             projectile.friendly = true;
             projectile.ignoreWater = false;
-            UseCombo = false;
+            UseCombo = true;
         }
 
         public override void AI() {

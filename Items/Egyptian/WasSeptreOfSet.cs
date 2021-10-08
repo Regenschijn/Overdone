@@ -24,7 +24,7 @@ namespace Overdone.Items.Egyptian {
             item.rare = ItemRarityID.Yellow;
             item.noMelee = false;
             item.noUseGraphic = false;
-            ComboBuildPerHit = 2;
+            ComboBuildPerHit = 1;
             base.SetDefaults();
         }
   
@@ -47,7 +47,7 @@ namespace Overdone.Items.Egyptian {
         protected override void SetLeftClickMode() {
             item.melee = true;
             item.magic = false;
-            item.damage = 23;
+            item.damage = 33;
             item.crit = 19;
             item.mana = 0;
             item.useTime = 33;
@@ -59,7 +59,7 @@ namespace Overdone.Items.Egyptian {
             item.shootSpeed = default;
             item.noMelee = false;
             item.autoReuse = true;
-            ComboBuildPerHit = 1;
+            ComboBuildPerHit = 3;
         }
 
         protected override void SetRightClickMode() {
