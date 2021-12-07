@@ -13,8 +13,8 @@ using Overdone.Projectiles;
 namespace Overdone.Items.Greek {
     public class BowOfApollo : DoubleUseDodoModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Bow of Anhur" );
-            Tooltip.SetDefault( "LMB: Shoot 3 poison arrows \n RMB: shoot more arrows in an unconventional way" );
+            DisplayName.SetDefault( "Bow of Apollo" );
+            Tooltip.SetDefault( "LMB: Burst of sun arrows \n RMB: Fling a sun blast" );
         }
 
         public override void SetDefaults() {

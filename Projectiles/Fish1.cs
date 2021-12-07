@@ -8,30 +8,29 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class FragarachSlash : DodoModProjectile {
+    public class Fish1 : DodoModProjectile {
         public override void SetDefaults() {
-            projectile.Name = "Fragarach Slash";
-            projectile.width = 10;
-            projectile.height = 64;
-            projectile.aiStyle = 1;
-            projectile.penetrate = 3;
-            projectile.timeLeft = 15;
-            projectile.extraUpdates = 3;
-            projectile.knockBack = 0;
+            projectile.Name = "Dead fish";
+            projectile.width = 20;
+            projectile.height = 20;
+            projectile.aiStyle = 5;
+            projectile.penetrate = 1;
+            projectile.timeLeft = 120;
+            projectile.extraUpdates = 1;
+            projectile.knockBack = 2;
 
             projectile.hide = false;
             projectile.ownerHitCheck = true;
-            projectile.ranged = true;
+            projectile.magic = true;
             projectile.tileCollide = false;
             projectile.friendly = true;
-            projectile.ignoreWater = true;
+            projectile.ignoreWater = false;
             UseCombo = false;
         }
 
         public override void AI() {
             Player owner = Main.player[projectile.owner]; 
-            projectile.light = 0.9f;
-        }        
+            }        
     
     }
 }
