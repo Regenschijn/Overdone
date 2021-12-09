@@ -59,9 +59,10 @@ namespace Overdone.Mounts
 				return;
 			}
 
-            mountData.textureWidth = mountData.textureHeight;
-			mountData.textureHeight = mountData.textureWidth;
-		}
+            mountData.textureWidth = mountData.backTexture.Width;
+			mountData.textureHeight = mountData.backTexture.Height;
+            
+        }
 
 		public override void UpdateEffects(Player player) {
 
