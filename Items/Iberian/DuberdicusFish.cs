@@ -15,35 +15,21 @@ namespace Overdone.Items.Iberian {
         public override void SetDefaults() {
             UseCombo = true;
             item.melee = true;
+            item.magic = false;
             item.width = 60;
             item.height = 60;
             item.value = Item.sellPrice( silver: 50 );
             item.rare = ItemRarityID.Blue;
-            item.noMelee = true;
+            item.noMelee = false;
             item.noUseGraphic = false;
             base.SetDefaults();
         }
         protected override void SetLeftClickMode() {
-            item.damage = 44;
-            item.mana = 0;
-            item.magic = false;
-            
-            item.shootSpeed = 4f;
-            item.useTime = 36;
-            item.useAnimation = 36;
-
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.knockBack = 5f;
-            item.UseSound = SoundID.Item1;
-            item.shoot = ModContent.ProjectileType<Fish1>();
-            
-            item.autoReuse = true;
-        }
-
-        protected override void SetRightClickMode() {
             item.damage = 33;
-            item.mana = 10;
-            item.magic = true;
+            item.mana = 0;
+            item.melee = true;
+            item.magic = false;
+            item.noMelee = false;
 
             item.shootSpeed = 15f;
             item.useTime = 18;
@@ -52,18 +38,39 @@ namespace Overdone.Items.Iberian {
             item.useStyle = ItemUseStyleID.SwingThrow;
             item.knockBack = 5f;
             item.UseSound = SoundID.Item5;
-            item.shoot = ModContent.ProjectileType<Fish1>();
 
             item.autoReuse = true;
         }
 
+        protected override void SetRightClickMode() {
+            item.damage = 44;
+            item.mana = 10;
+            item.magic = true;
+            item.melee = false;
+            item.noMelee = true;
+            
+            item.shootSpeed = 10f;
+            item.useTime = 36;
+            item.useAnimation = 36;
+
+            item.useStyle = ItemUseStyleID.HoldingOut;
+            item.knockBack = 1f;
+            item.UseSound = SoundID.Item1;
+            item.shoot = ModContent.ProjectileType<Fish1>();
+            
+            item.autoReuse = true;
+        }
+  
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
             ref int damage, ref float knockBack ) {
-            return true;
+            return false;
         }
-
+        
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
-            ref int damage, ref float knockBack ) {            
+            ref int damage, ref float knockBack ) {
+            Vector2 mousePosition = Main.MouseWorld;
+            player.itemLocation.Y = player.Center.Y + 60f;
+            player.itemLocation.X = mousePosition.X;
             return true;
         }
 
