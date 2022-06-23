@@ -18,52 +18,52 @@ namespace Overdone.Items.Roman {
         }
 
         public override void SetDefaults() {
-            item.damage = 24;
-            item.magic = true;
-            item.width = 40;
-            item.height = 40;
-            item.useTime = 24;
-            item.useAnimation = 24;
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.knockBack = 15;
-            item.value = 10000;
-            item.crit = 7;
-            item.rare = ItemRarityID.LightRed;
-            item.UseSound = SoundID.Item1;
-            item.autoReuse = true;
-            item.shootSpeed = 10f;
+            Item.damage = 24;
+            Item.DamageType = DamageClass.Magic;
+            Item.width = 40;
+            Item.height = 40;
+            Item.useTime = 24;
+            Item.useAnimation = 24;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.knockBack = 15;
+            Item.value = 10000;
+            Item.crit = 7;
+            Item.rare = ItemRarityID.LightRed;
+            Item.UseSound = SoundID.Item1;
+            Item.autoReuse = true;
+            Item.shootSpeed = 10f;
             base.SetDefaults();
         }
 
         protected override void SetLeftClickMode() {
-            item.damage = 25;
-            item.mana = 5;
-            item.useTime = 22;
-            item.useAnimation = 22;
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.knockBack = 5f;
-            item.UseSound = SoundID.Item40;
-            item.shootSpeed = 32f;
-            item.autoReuse = true;
-            item.noMelee = true;
-            item.noUseGraphic = true;
-            item.shoot = ModContent.ProjectileType<Projectiles.Invictus>();
+            Item.damage = 25;
+            Item.mana = 5;
+            Item.useTime = 22;
+            Item.useAnimation = 22;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.knockBack = 5f;
+            Item.UseSound = SoundID.Item40;
+            Item.shootSpeed = 32f;
+            Item.autoReuse = true;
+            Item.noMelee = true;
+            Item.noUseGraphic = true;
+            Item.shoot = ModContent.ProjectileType<Projectiles.Invictus>();
             
         }
 
         protected override void SetRightClickMode() {
-            item.damage = (int) (20 + (ComboManager.Combo / 25f));
-            item.mana = 0;
-            item.useTime = 12;
-            item.useAnimation = 12;
-            item.useStyle = ItemUseStyleID.EatingUsing;
-            item.knockBack = 2f;
-            item.UseSound = SoundID.Item110;
-            item.shootSpeed = 12f;
-            item.noMelee = true;
-            item.autoReuse = true;
-            item.reuseDelay = 0;
-            item.shoot = ModContent.ProjectileType<InvictusBolt>();
+            Item.damage = (int) (20 + (ComboManager.Combo / 25f));
+            Item.mana = 0;
+            Item.useTime = 12;
+            Item.useAnimation = 12;
+            Item.useStyle = ItemUseStyleID.EatFood;
+            Item.knockBack = 2f;
+            Item.UseSound = SoundID.Item110;
+            Item.shootSpeed = 12f;
+            Item.noMelee = true;
+            Item.autoReuse = true;
+            Item.reuseDelay = 0;
+            Item.shoot = ModContent.ProjectileType<InvictusBolt>();
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {            
@@ -81,11 +81,10 @@ namespace Overdone.Items.Roman {
         }
 
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 1 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
 
         protected override Mythology Mythology => Mythology.Roman;

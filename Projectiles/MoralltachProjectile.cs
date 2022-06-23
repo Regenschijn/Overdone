@@ -10,25 +10,25 @@ using Overdone.Base;
 namespace Overdone.Projectiles {
     public class MoralltachProjectile : DodoModProjectile {
         public override void SetDefaults() {
-            projectile.width = 60;
-            projectile.height = 60;
-            projectile.aiStyle = 19;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 10;
+            Projectile.width = 60;
+            Projectile.height = 60;
+            Projectile.aiStyle = 19;
+            Projectile.penetrate = -1;
+            Projectile.timeLeft = 10;
 
-            projectile.hide = false;
-            projectile.ownerHitCheck = true;
-            projectile.melee = true;
-            projectile.tileCollide = false;
-            projectile.friendly = true;
+            Projectile.hide = false;
+            Projectile.ownerHitCheck = true;
+            Projectile.DamageType = DamageClass.Melee;
+            Projectile.tileCollide = false;
+            Projectile.friendly = true;
 
-            aiType = 49;
+            AIType = 49;
         }
 
         public override void AI() {
-            Player owner = Main.player[projectile.owner]; 
-            projectile.light = 0.1f;
-            int dustId = Dust.NewDust( new Vector2( projectile.position.X, projectile.position.Y + 2f ), projectile.width + 4, projectile.height + 4, DustID.Copper, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 120, default, 0.75f );
+            Player owner = Main.player[Projectile.owner]; 
+            Projectile.light = 0.1f;
+            int dustId = Dust.NewDust( new Vector2( Projectile.position.X, Projectile.position.Y + 2f ), Projectile.width + 4, Projectile.height + 4, DustID.Copper, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 120, default, 0.75f );
             Main.dust[dustId].noGravity = true; 
         }
 

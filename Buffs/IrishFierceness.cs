@@ -8,17 +8,17 @@ using Terraria.ModLoader;
 
 namespace Overdone.Buffs {
     class IrishFierceness : ModBuff {
-        public override void SetDefaults() {
+        public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Irish Fierceness" );
             Description.SetDefault( "Deal 10% more damage" );
-            canBeCleared = true;
+            canBeCleared/* tModPorter Note: Removed. Use BuffID.Sets.NurseCannotRemoveDebuff instead, and invert the logic */ = true;
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false;
 
         }
 
         public override void Update( Player player, ref int buffIndex ) {
-            player.allDamage += 0.2f;
+            player.GetDamage(DamageClass.Generic) += 0.2f;
         }
     }
 }

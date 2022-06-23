@@ -10,22 +10,22 @@ using Overdone.Base;
 namespace Overdone.Projectiles {
     public class ArrowEgypt : DodoModProjectile {
         public override void SetDefaults() {
-            projectile.width = 4;
-            projectile.height = 20;
-            projectile.aiStyle = 1;
-            projectile.penetrate = 2;
+            Projectile.width = 4;
+            Projectile.height = 20;
+            Projectile.aiStyle = 1;
+            Projectile.penetrate = 2;
 
-            projectile.hide = false;
-            projectile.ownerHitCheck = true;
-            projectile.melee = false;
-            projectile.tileCollide = true;
-            projectile.friendly = true;
-            projectile.ranged = true;
+            Projectile.hide = false;
+            Projectile.ownerHitCheck = true;
+            Projectile.melee = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
+            Projectile.tileCollide = true;
+            Projectile.friendly = true;
+            Projectile.DamageType = DamageClass.Ranged;
         }
 
         public override void OnHitNPC( NPC target, int damage, float knockback, bool crit ) {
             base.OnHitNPC(target, damage, knockback, crit);
-            Player owner = Main.player[projectile.owner];
+            Player owner = Main.player[Projectile.owner];
             target.AddBuff( 20, 660 );
         }
     }

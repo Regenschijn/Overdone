@@ -10,42 +10,42 @@ namespace Overdone.Items.Mesopotamian {
         }
 
         public override void SetDefaults() {
-            item.melee = true;
-            item.width = 40;
-            item.height = 40;
-            item.value = Item.sellPrice( silver: 50 );
-            item.rare = ItemRarityID.Orange;
-            item.noMelee = false;
-            item.noUseGraphic = false;
-            item.autoReuse = true;
+            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.width = 40;
+            Item.height = 40;
+            Item.value = Item.sellPrice( silver: 50 );
+            Item.rare = ItemRarityID.Orange;
+            Item.noMelee = false;
+            Item.noUseGraphic = false;
+            Item.autoReuse = true;
             SetStabMode();
         }
 
         private void SetStabMode() {
-            item.damage = 13;
-            item.mana = 0;
-            item.useTime = 25;
-            item.useAnimation = 25;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.knockBack = 1f;
-            item.UseSound = SoundID.Item1;
-            item.shoot = ProjectileID.Arkhalis;
-            item.noMelee = false;
-            item.reuseDelay = 25;
+            Item.damage = 13;
+            Item.mana = 0;
+            Item.useTime = 25;
+            Item.useAnimation = 25;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.knockBack = 1f;
+            Item.UseSound = SoundID.Item1;
+            Item.shoot = ProjectileID.Arkhalis;
+            Item.noMelee = false;
+            Item.reuseDelay = 25;
         }
 
         private void SetThrowMode() {
-            item.damage = 13;
-            item.mana = 20;
-            item.useTime = 50;
-            item.useAnimation = 50;
-            item.useStyle = ItemUseStyleID.HoldingUp;
-            item.knockBack = 5f;
-            item.UseSound = SoundID.Item42;          
-            item.shoot = ProjectileID.SandnadoFriendly;
-            item.shootSpeed = 4f;
-            item.noMelee = true;
-            item.reuseDelay = 50;
+            Item.damage = 13;
+            Item.mana = 20;
+            Item.useTime = 50;
+            Item.useAnimation = 50;
+            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.knockBack = 5f;
+            Item.UseSound = SoundID.Item42;          
+            Item.shoot = ProjectileID.SandnadoFriendly;
+            Item.shootSpeed = 4f;
+            Item.noMelee = true;
+            Item.reuseDelay = 50;
         }
 
         public override bool AltFunctionUse( Player player ) => true;
@@ -59,11 +59,10 @@ namespace Overdone.Items.Mesopotamian {
         }
 
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 1 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
     }
 }

@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -15,49 +16,48 @@ namespace Overdone.Items.Greek {
         }
 
         public override void SetDefaults() {
-            item.damage = 13;
-            item.melee = true;
-            item.width = 40;
-            item.height = 40;
-            item.useTime = 30;
-            item.useAnimation = 20;
-            item.useStyle = 1;
-            item.knockBack = 2;
-            item.value = 10000;
-            item.rare = ItemRarityID.LightRed;
-            item.crit = 0;
-            item.UseSound = SoundID.Item1;
-            item.autoReuse = true;
-            item.shootSpeed = 10f;
-            item.shoot = ProjectileID.Boulder;
+            Item.damage = 13;
+            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.width = 40;
+            Item.height = 40;
+            Item.useTime = 30;
+            Item.useAnimation = 20;
+            Item.useStyle = 1;
+            Item.knockBack = 2;
+            Item.value = 10000;
+            Item.rare = ItemRarityID.LightRed;
+            Item.crit = 0;
+            Item.UseSound = SoundID.Item1;
+            Item.autoReuse = true;
+            Item.shootSpeed = 10f;
+            Item.shoot = ProjectileID.Boulder;
             base.SetDefaults();
         }      
              
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 1 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
 
         protected override void SetLeftClickMode() {
-            item.noMelee = false;
-            item.mana = 1;
-            item.melee = false;
-            item.magic = true;
-            item.useAnimation = 40;
-            item.useTime = 40;
+            Item.noMelee = false;
+            Item.mana = 1;
+            Item.melee = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
+            Item.DamageType = DamageClass.Magic;
+            Item.useAnimation = 40;
+            Item.useTime = 40;
             ComboBuildPerHit = 3;
         }
 
         protected override void SetRightClickMode() {
-            item.useStyle = 1;
-            item.noMelee = true;
-            item.mana = 0;
-            item.melee = true;
-            item.useTime = 30;
-            item.useAnimation = 30;
+            Item.useStyle = 1;
+            Item.noMelee = true;
+            Item.mana = 0;
+            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.useTime = 30;
+            Item.useAnimation = 30;
             ComboBuildPerHit = 0;
         }
 
@@ -71,7 +71,7 @@ namespace Overdone.Items.Greek {
             player.itemLocation.Y = player.Center.Y;
             player.itemLocation.X = player.Center.X;
             Projectile.NewProjectile( position.X - 20f * player.direction, position.Y - 46, speedX * 1.85f, speedY * 1.85f, ProjectileID.Boulder, (int)((double)damage * 1.5), 10f, player.whoAmI, 0f, 0f );
-            Main.PlaySound( SoundID.Item45, player.position );
+            SoundEngine.PlaySound( SoundID.Item45, player.position );
             return false;
         }
         protected override Mythology Mythology => Mythology.Greek;

@@ -20,26 +20,26 @@ namespace Overdone.Items
 
 		public override void SetDefaults() 
 		{
-			item.damage = 5;
-			item.melee = true;
-			item.width = 40;
-			item.height = 40;
-			item.useTime = 21;
-			item.useAnimation = 20;
-			item.useStyle = 1;
-			item.knockBack = 3;
-			item.value = 10000;
-			item.crit = 11;
-			item.rare = 1;
-			item.UseSound = SoundID.Item1;
-			item.autoReuse = true;
+			Item.damage = 5;
+			Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 21;
+			Item.useAnimation = 20;
+			Item.useStyle = 1;
+			Item.knockBack = 3;
+			Item.value = 10000;
+			Item.crit = 11;
+			Item.rare = 1;
+			Item.UseSound = SoundID.Item1;
+			Item.autoReuse = true;
 
-			item.shootSpeed = 6f;
-			item.shoot = ProjectileID.Seed; 
+			Item.shootSpeed = 6f;
+			Item.shoot = ProjectileID.Seed; 
 
 		}
 
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			counter++;
 			if (counter >= 3)
@@ -56,11 +56,10 @@ namespace Overdone.Items
 
 		public override void AddRecipes() 
 		{
-			var recipe = new ModRecipe(mod);
+			var recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.DirtBlock, 10);
 			recipe.AddTile(TileID.WorkBenches);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			recipe.Register();
 		}
 	}
 }

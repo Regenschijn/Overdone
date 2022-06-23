@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
@@ -18,34 +19,34 @@ namespace Overdone.Items.Greek {
         }
 
         public override void SetDefaults() {
-            item.damage = 24;
-            item.melee = true;
-            item.width = 40;
-            item.height = 40;
-            item.useTime = 24;
-            item.useAnimation = 24;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.knockBack = 15;
-            item.value = 10000;
-            item.crit = 7;
-            item.rare = ItemRarityID.LightRed;
-            item.UseSound = SoundID.Item1;
-            item.autoReuse = true;
-            item.shootSpeed = 8f;
+            Item.damage = 24;
+            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.width = 40;
+            Item.height = 40;
+            Item.useTime = 24;
+            Item.useAnimation = 24;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.knockBack = 15;
+            Item.value = 10000;
+            Item.crit = 7;
+            Item.rare = ItemRarityID.LightRed;
+            Item.UseSound = SoundID.Item1;
+            Item.autoReuse = true;
+            Item.shootSpeed = 8f;
             base.SetDefaults();
         }
 
         protected override void SetLeftClickMode() {
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.noMelee = false;
-            item.mana = 0;
-            item.crit = (int) (7 + (ComboManager.Combo / 25f));
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.noMelee = false;
+            Item.mana = 0;
+            Item.crit = (int) (7 + (ComboManager.Combo / 25f));
         }
 
         protected override void SetRightClickMode() {
-            item.useStyle = ItemUseStyleID.HoldingUp;
-            item.noMelee = true;
-            item.mana = 25;
+            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.noMelee = true;
+            Item.mana = 25;
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
@@ -54,8 +55,8 @@ namespace Overdone.Items.Greek {
                 return false;
 
             for ( var i = 0; i < 3; i++ ) {
-                item.knockBack = 15;
-                item.crit = 100;
+                Item.knockBack = 15;
+                Item.crit = 100;
             }
             _counter = 0;
             return false;
@@ -64,16 +65,15 @@ namespace Overdone.Items.Greek {
         public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
             if ( ComboManager.UseCombo( 25 ) ) {
                 Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ProjectileID.Typhoon, (int) (damage / 2f), 10f, player.whoAmI, 0f, 0f );
-                Main.PlaySound( SoundID.Item45, player.position );
+                SoundEngine.PlaySound( SoundID.Item45, player.position );
             }
             return false;
         }
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 10 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
 
 

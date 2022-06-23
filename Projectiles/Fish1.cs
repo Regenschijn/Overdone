@@ -10,30 +10,30 @@ using Overdone.Base;
 namespace Overdone.Projectiles {
     public class Fish1 : DodoModProjectile {
         public override void SetDefaults() {
-            projectile.Name = "Dead fish";
-            projectile.width = 20;
-            projectile.height = 20;
-            projectile.aiStyle = 1;
-            projectile.penetrate = 1;
-            projectile.timeLeft = 120;
-            projectile.knockBack = 2;
+            Projectile.Name = "Dead fish";
+            Projectile.width = 20;
+            Projectile.height = 20;
+            Projectile.aiStyle = 1;
+            Projectile.penetrate = 1;
+            Projectile.timeLeft = 120;
+            Projectile.knockBack = 2;
 
-            projectile.hide = false;
-            projectile.ownerHitCheck = true;
-            projectile.magic = true;
-            projectile.tileCollide = true;
-            projectile.friendly = true;
-            projectile.ignoreWater = false;
+            Projectile.hide = false;
+            Projectile.ownerHitCheck = true;
+            Projectile.DamageType = DamageClass.Magic;
+            Projectile.tileCollide = true;
+            Projectile.friendly = true;
+            Projectile.ignoreWater = false;
             UseCombo = false;
         }
 
         public override void AI() {
-            Player owner = Main.player[projectile.owner]; 
+            Player owner = Main.player[Projectile.owner]; 
         }
 
         public override void OnHitNPC( NPC target, int damage, float knockback, bool crit ) {
             base.OnHitNPC( target, damage, knockback, crit );
-            Player owner = Main.player[projectile.owner];
+            Player owner = Main.player[Projectile.owner];
             target.AddBuff( 103, 660 );
             target.AddBuff( 20, 60 );
         }

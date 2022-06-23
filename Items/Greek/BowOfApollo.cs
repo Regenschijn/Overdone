@@ -18,44 +18,44 @@ namespace Overdone.Items.Greek {
         }
 
         public override void SetDefaults() {
-            item.ranged = true;
-            item.width = 40;
-            item.height = 40;
-            item.value = Item.sellPrice( gold: 14 );
-            item.rare = ItemRarityID.Yellow;
-            item.noMelee = true;
-            item.noUseGraphic = false;
-            item.shoot = ModContent.ProjectileType<ArrowApollo>();
+            Item.DamageType = DamageClass.Ranged;
+            Item.width = 40;
+            Item.height = 40;
+            Item.value = Item.sellPrice( gold: 14 );
+            Item.rare = ItemRarityID.Yellow;
+            Item.noMelee = true;
+            Item.noUseGraphic = false;
+            Item.shoot = ModContent.ProjectileType<ArrowApollo>();
             ComboBuildPerHit = 1;
             base.SetDefaults();
         }
 
         protected override void SetLeftClickMode() {
-            item.damage = 44;
-            item.useTime = 5;
-            item.useAnimation = 20;
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.knockBack = 5f;
-            item.UseSound = SoundID.Item40;
-            item.shootSpeed = 20f;
-            item.autoReuse = true;
-            item.noMelee = true;
-            item.shoot = ModContent.ProjectileType<ArrowApollo>();
-            item.reuseDelay = 25;
+            Item.damage = 44;
+            Item.useTime = 5;
+            Item.useAnimation = 20;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.knockBack = 5f;
+            Item.UseSound = SoundID.Item40;
+            Item.shootSpeed = 20f;
+            Item.autoReuse = true;
+            Item.noMelee = true;
+            Item.shoot = ModContent.ProjectileType<ArrowApollo>();
+            Item.reuseDelay = 25;
             ComboBuildPerHit = 1;
         }
 
         protected override void SetRightClickMode() {
-            item.damage = 33;
-            item.useTime = 15;
-            item.useAnimation = 15;
-            item.useStyle = ItemUseStyleID.EatingUsing;
-            item.knockBack = 4f;
-            item.UseSound = SoundID.Item110;
-            item.shootSpeed = 25f;
-            item.noMelee = true;
-            item.autoReuse = true;
-            item.shoot = ModContent.ProjectileType<ApolloBlast>();
+            Item.damage = 33;
+            Item.useTime = 15;
+            Item.useAnimation = 15;
+            Item.useStyle = ItemUseStyleID.EatFood;
+            Item.knockBack = 4f;
+            Item.UseSound = SoundID.Item110;
+            Item.shootSpeed = 25f;
+            Item.noMelee = true;
+            Item.autoReuse = true;
+            Item.shoot = ModContent.ProjectileType<ApolloBlast>();
             ComboBuildPerHit = 1;
         }
 
@@ -69,11 +69,10 @@ namespace Overdone.Items.Greek {
         }
 
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 1 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
 
         protected override Mythology Mythology => Mythology.Greek;

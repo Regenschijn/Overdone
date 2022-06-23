@@ -11,23 +11,23 @@ namespace Overdone.Projectiles {
     public class ImhulluSpin : DodoModProjectile {
 
         public override void SetDefaults() {
-            projectile.Size = new Vector2( 80 );
-            projectile.friendly = true;
-            projectile.penetrate = -1;
-            projectile.ignoreWater = true;
-            projectile.melee = true;
-            projectile.damage = 10;
-            projectile.tileCollide = false;
+            Projectile.Size = new Vector2( 80 );
+            Projectile.friendly = true;
+            Projectile.penetrate = -1;
+            Projectile.ignoreWater = true;
+            Projectile.DamageType = DamageClass.Melee;
+            Projectile.damage = 10;
+            Projectile.tileCollide = false;
         }        
 
         public override void AI() {            
-            var player = Main.player[projectile.owner];
+            var player = Main.player[Projectile.owner];
             if ( !player.channel )
-                projectile.Kill();
+                Projectile.Kill();
 
-            projectile.direction = player.direction;
-            projectile.position = player.position + new Vector2( 50f, -20f );
-            projectile.rotation += 1f;            
+            Projectile.direction = player.direction;
+            Projectile.position = player.position + new Vector2( 50f, -20f );
+            Projectile.rotation += 1f;            
         }
     }
 }

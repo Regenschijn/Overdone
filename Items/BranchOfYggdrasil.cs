@@ -17,41 +17,41 @@ namespace Overdone.Items {
         // I switched around throw and melee for fun
 
         public override void SetDefaults() {
-            item.melee = true;
-            item.width = 40;
-            item.height = 40;
-            item.value = Item.sellPrice( silver: 50 );
-            item.rare = ItemRarityID.Blue;
-            item.noMelee = false;
-            item.noUseGraphic = false;
+            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.width = 40;
+            Item.height = 40;
+            Item.value = Item.sellPrice( silver: 50 );
+            Item.rare = ItemRarityID.Blue;
+            Item.noMelee = false;
+            Item.noUseGraphic = false;
             SetStabMode();
         }
 
         private void SetStabMode() {
-            item.damage = 10;
-            item.mana = 4;
-            item.useTime = 20;
-            item.useAnimation = 20;
-            item.useStyle = ItemUseStyleID.HoldingUp;
-            item.knockBack = 5f;
-            item.UseSound = SoundID.Item40;
-            item.shoot = ProjectileID.Leaf;
-            item.shootSpeed = 20f;
-            item.autoReuse = true;
-            item.noMelee = true;
+            Item.damage = 10;
+            Item.mana = 4;
+            Item.useTime = 20;
+            Item.useAnimation = 20;
+            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.knockBack = 5f;
+            Item.UseSound = SoundID.Item40;
+            Item.shoot = ProjectileID.Leaf;
+            Item.shootSpeed = 20f;
+            Item.autoReuse = true;
+            Item.noMelee = true;
         }
 
         private void SetThrowMode() {
-            item.damage = 13;
-            item.mana = 15;
-            item.useTime = 50;
-            item.useAnimation = 50;
-            item.useStyle = ItemUseStyleID.EatingUsing;
-            item.knockBack = 15f;
-            item.UseSound = SoundID.Item2;
-            item.shoot = ProjectileID.Leaf;
-            item.noMelee = true;
-            item.autoReuse = true;
+            Item.damage = 13;
+            Item.mana = 15;
+            Item.useTime = 50;
+            Item.useAnimation = 50;
+            Item.useStyle = ItemUseStyleID.EatFood;
+            Item.knockBack = 15f;
+            Item.UseSound = SoundID.Item2;
+            Item.shoot = ProjectileID.Leaf;
+            Item.noMelee = true;
+            Item.autoReuse = true;
         }
 
         public override bool AltFunctionUse( Player player ) => true;
@@ -72,11 +72,10 @@ namespace Overdone.Items {
         }
 
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 1 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
     }
 }

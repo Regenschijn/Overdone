@@ -3,6 +3,7 @@ using Overdone.Base;
 using Overdone.Combo;
 using Overdone.Projectiles;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,50 +15,50 @@ namespace Overdone.Items.Greek {
         }
 
         public override void SetDefaults() {
-            item.melee = true;
-            item.width = 40;
-            item.height = 40;
-            item.value = Item.sellPrice( gold: 5 );
-            item.rare = ItemRarityID.Orange;
-            item.noMelee = false;
-            item.noUseGraphic = false;
-            item.autoReuse = true;
+            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.width = 40;
+            Item.height = 40;
+            Item.value = Item.sellPrice( gold: 5 );
+            Item.rare = ItemRarityID.Orange;
+            Item.noMelee = false;
+            Item.noUseGraphic = false;
+            Item.autoReuse = true;
             base.SetDefaults();
         }        
 
         protected override void SetLeftClickMode () {
-            item.damage = 31;
-            item.mana = 20;
-            item.useTime = 27;
-            item.useAnimation = 27;
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.knockBack = 1f;
-            item.UseSound = SoundID.Item79;
-            item.shoot = ProjectileID.PoisonFang;
-            item.noMelee = true;
-            item.reuseDelay = 25;
-            item.mana = (int) (20 - ComboManager.Combo / 10);
+            Item.damage = 31;
+            Item.mana = 20;
+            Item.useTime = 27;
+            Item.useAnimation = 27;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.knockBack = 1f;
+            Item.UseSound = SoundID.Item79;
+            Item.shoot = ProjectileID.PoisonFang;
+            Item.noMelee = true;
+            Item.reuseDelay = 25;
+            Item.mana = (int) (20 - ComboManager.Combo / 10);
         }
 
         
         protected override void SetRightClickMode() {
-            item.damage = 0;
-            item.mana = 20;
-            item.useTime = 50;
-            item.useAnimation = 50;
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.knockBack = 5f;
-            item.UseSound = SoundID.Item42;
-            item.shoot = ModContent.ProjectileType<PoisonAura>();
-            item.shootSpeed = 4f;
-            item.noMelee = true;
-            item.reuseDelay = 50;
+            Item.damage = 0;
+            Item.mana = 20;
+            Item.useTime = 50;
+            Item.useAnimation = 50;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.knockBack = 5f;
+            Item.UseSound = SoundID.Item42;
+            Item.shoot = ModContent.ProjectileType<PoisonAura>();
+            Item.shootSpeed = 4f;
+            Item.noMelee = true;
+            Item.reuseDelay = 50;
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
             ref int damage, ref float knockBack ) {
             Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ProjectileID.PoisonFang, (int)(damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
-            Main.PlaySound( SoundID.Item45, player.position );
+            SoundEngine.PlaySound( SoundID.Item45, player.position );
             return false;
         }
 
@@ -72,18 +73,17 @@ namespace Overdone.Items.Greek {
       
 
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 1 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
 
         public override Vector2? HoldoutOffset() => new Vector2( -1, -1 );
         
         
         
-        public override void UseStyle( Player player ) {
+        public override void UseStyle(Player player, Rectangle heldItemFrame) {
             base.UseStyle( player );
         }
 

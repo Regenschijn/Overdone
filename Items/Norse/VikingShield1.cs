@@ -15,11 +15,11 @@ namespace Overdone.Items.Norse {
         }
 
         public override void SetDefaults() {
-            item.width = 30;
-            item.height = 32;
-            item.accessory = true;
-            item.value = 10000;
-            item.rare = ItemRarityID.Green;
+            Item.width = 30;
+            Item.height = 32;
+            Item.accessory = true;
+            Item.value = 10000;
+            Item.rare = ItemRarityID.Green;
         }
        
         

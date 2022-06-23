@@ -14,51 +14,51 @@ namespace Overdone.Items.Iberian {
 
         public override void SetDefaults() {
             UseCombo = true;
-            item.melee = true;
-            item.magic = false;
-            item.width = 60;
-            item.height = 60;
-            item.value = Item.sellPrice( silver: 50 );
-            item.rare = ItemRarityID.Blue;
-            item.noMelee = false;
-            item.noUseGraphic = false;
+            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.magic = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
+            Item.width = 60;
+            Item.height = 60;
+            Item.value = Item.sellPrice( silver: 50 );
+            Item.rare = ItemRarityID.Blue;
+            Item.noMelee = false;
+            Item.noUseGraphic = false;
             base.SetDefaults();
         }
         protected override void SetLeftClickMode() {
-            item.damage = 33;
-            item.mana = 0;
-            item.melee = true;
-            item.magic = false;
-            item.noMelee = false;
+            Item.damage = 33;
+            Item.mana = 0;
+            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.magic = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
+            Item.noMelee = false;
 
-            item.shootSpeed = 15f;
-            item.useTime = 18;
-            item.useAnimation = 18;
+            Item.shootSpeed = 15f;
+            Item.useTime = 18;
+            Item.useAnimation = 18;
             
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.knockBack = 5f;
-            item.UseSound = SoundID.Item5;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.knockBack = 5f;
+            Item.UseSound = SoundID.Item5;
 
-            item.autoReuse = true;
+            Item.autoReuse = true;
         }
 
         protected override void SetRightClickMode() {
-            item.damage = 44;
-            item.mana = 10;
-            item.magic = true;
-            item.melee = false;
-            item.noMelee = true;
+            Item.damage = 44;
+            Item.mana = 10;
+            Item.DamageType = DamageClass.Magic;
+            Item.melee = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
+            Item.noMelee = true;
             
-            item.shootSpeed = 10f;
-            item.useTime = 36;
-            item.useAnimation = 36;
+            Item.shootSpeed = 10f;
+            Item.useTime = 36;
+            Item.useAnimation = 36;
 
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.knockBack = 1f;
-            item.UseSound = SoundID.Item1;
-            item.shoot = ModContent.ProjectileType<Fish1>();
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.knockBack = 1f;
+            Item.UseSound = SoundID.Item1;
+            Item.shoot = ModContent.ProjectileType<Fish1>();
             
-            item.autoReuse = true;
+            Item.autoReuse = true;
         }
   
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
@@ -75,11 +75,10 @@ namespace Overdone.Items.Iberian {
         }
 
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 1 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
 
         protected override Mythology Mythology => Mythology.Iberian;

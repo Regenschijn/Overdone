@@ -18,43 +18,43 @@ namespace Overdone.Items.Egyptian {
         // I switched around throw and melee for fun
 
         public override void SetDefaults() {
-            item.magic = true;
-            item.width = 40;
-            item.height = 40;
-            item.value = Item.sellPrice( gold: 14 );
-            item.rare = ItemRarityID.Yellow;
-            item.noMelee = true;
-            item.noUseGraphic = false;
-            item.shoot = ProjectileID.UnholyArrow;
+            Item.DamageType = DamageClass.Magic;
+            Item.width = 40;
+            Item.height = 40;
+            Item.value = Item.sellPrice( gold: 14 );
+            Item.rare = ItemRarityID.Yellow;
+            Item.noMelee = true;
+            Item.noUseGraphic = false;
+            Item.shoot = ProjectileID.UnholyArrow;
             SetStabMode();
         }
 
         private void SetStabMode() {
-            item.damage = 10;
-            item.mana = 11;
-            item.useTime = 20;
-            item.useAnimation = 20;
-            item.useStyle = ItemUseStyleID.HoldingUp;
-            item.knockBack = 5f;
-            item.UseSound = SoundID.Item40;
-            item.shootSpeed = 10;
-            item.autoReuse = true;
-            item.noMelee = true;
-            item.reuseDelay = 0;
+            Item.damage = 10;
+            Item.mana = 11;
+            Item.useTime = 20;
+            Item.useAnimation = 20;
+            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.knockBack = 5f;
+            Item.UseSound = SoundID.Item40;
+            Item.shootSpeed = 10;
+            Item.autoReuse = true;
+            Item.noMelee = true;
+            Item.reuseDelay = 0;
         }
 
         private void SetThrowMode() {
-            item.damage = 13;
-            item.mana = 4;
-            item.useTime = 50;
-            item.useAnimation = 50;
-            item.useStyle = ItemUseStyleID.EatingUsing;
-            item.knockBack = 4f;
-            item.UseSound = SoundID.Item110;
-            item.shootSpeed = 25f;
-            item.noMelee = true;
-            item.autoReuse = true;
-            item.reuseDelay = 37;
+            Item.damage = 13;
+            Item.mana = 4;
+            Item.useTime = 50;
+            Item.useAnimation = 50;
+            Item.useStyle = ItemUseStyleID.EatFood;
+            Item.knockBack = 4f;
+            Item.UseSound = SoundID.Item110;
+            Item.shootSpeed = 25f;
+            Item.noMelee = true;
+            Item.autoReuse = true;
+            Item.reuseDelay = 37;
             
         }
 
@@ -97,11 +97,10 @@ namespace Overdone.Items.Egyptian {
         }
 
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 1 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
 
         protected override Mythology Mythology => Mythology.Egyptian;

@@ -10,30 +10,30 @@ using Overdone.Base;
 namespace Overdone.Projectiles {
     public class AhnkTinyProjectile : DodoModProjectile {
         public override void SetDefaults() {
-            projectile.Name = "Tiny Ahnk";
-            projectile.width = 16;
-            projectile.height = 16;
-            projectile.timeLeft = 90;
-            projectile.penetrate = 3;
-            projectile.friendly = true;
-            projectile.hostile = false;
-            projectile.tileCollide = false;
-            projectile.ignoreWater = true;
-            projectile.ranged = true;                    
+            Projectile.Name = "Tiny Ahnk";
+            Projectile.width = 16;
+            Projectile.height = 16;
+            Projectile.timeLeft = 90;
+            Projectile.penetrate = 3;
+            Projectile.friendly = true;
+            Projectile.hostile = false;
+            Projectile.tileCollide = false;
+            Projectile.ignoreWater = true;
+            Projectile.DamageType = DamageClass.Ranged;                    
         }
 
         public override void PostAI() {            
-            Lighting.AddLight( projectile.position + projectile.velocity * 5, new Vector3( 1f, .5f, .5f ) );
+            Lighting.AddLight( Projectile.position + Projectile.velocity * 5, new Vector3( 1f, .5f, .5f ) );
         }
 
         public override void Kill( int timeLeft ) {
             Projectile.NewProjectile(
-                projectile.position.X,
-                projectile.position.Y,
+                Projectile.position.X,
+                Projectile.position.Y,
                 0, 0,
                 ProjectileID.InfernoFriendlyBlast,
-                (int) (projectile.damage * 1.5f),
-                projectile.knockBack,
+                (int) (Projectile.damage * 1.5f),
+                Projectile.knockBack,
                 Main.myPlayer
             );
         }

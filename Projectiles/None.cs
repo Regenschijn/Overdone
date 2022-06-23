@@ -9,8 +9,8 @@ using Overdone;
 namespace Overdone.Projectiles {
     public class None : ModProjectile {
         public override void SetDefaults() {
-            projectile.width = 0;
-            projectile.height = 0;
+            Projectile.width = 0;
+            Projectile.height = 0;
 
         }
     }

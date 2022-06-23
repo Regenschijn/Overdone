@@ -17,45 +17,45 @@ namespace Overdone.Items.Norse {
         }
 
         public override void SetDefaults() {
-            item.damage = 10;
-            item.melee = true;
-            item.width = 40;
-            item.height = 40;
-            item.useTime = 20;
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.value = Item.sellPrice( silver: 50 );
-            item.rare = ItemRarityID.Green;
-            item.noMelee = false;
-            item.noUseGraphic = false;
+            Item.damage = 10;
+            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.width = 40;
+            Item.height = 40;
+            Item.useTime = 20;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.value = Item.sellPrice( silver: 50 );
+            Item.rare = ItemRarityID.Green;
+            Item.noMelee = false;
+            Item.noUseGraphic = false;
             ComboBuildPerHit = 1;
             base.SetDefaults();
         }
 
         protected override void SetLeftClickMode() {
-            item.damage = 10;
-            item.mana = 7;
-            item.useTime = 20;
-            item.useAnimation = 20;
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.knockBack = 5f;
-            item.UseSound = SoundID.Item40;
-            item.shootSpeed = 16f;
-            item.autoReuse = true;
-            item.noMelee = true;
-            item.shoot = ModContent.ProjectileType<YggdrasilLeaf>();
+            Item.damage = 10;
+            Item.mana = 7;
+            Item.useTime = 20;
+            Item.useAnimation = 20;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.knockBack = 5f;
+            Item.UseSound = SoundID.Item40;
+            Item.shootSpeed = 16f;
+            Item.autoReuse = true;
+            Item.noMelee = true;
+            Item.shoot = ModContent.ProjectileType<YggdrasilLeaf>();
         }
 
         protected override void SetRightClickMode() {
-            item.damage = 13;
-            item.mana = 0;
-            item.useTime = 50;
-            item.useAnimation = 50;
-            item.useStyle = ItemUseStyleID.HoldingUp;
-            item.knockBack = 4f;
-            item.UseSound = SoundID.Item110;
-            item.shootSpeed = 25f;
-            item.noMelee = true;
-            item.autoReuse = true;
+            Item.damage = 13;
+            Item.mana = 0;
+            Item.useTime = 50;
+            Item.useAnimation = 50;
+            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.knockBack = 4f;
+            Item.UseSound = SoundID.Item110;
+            Item.shootSpeed = 25f;
+            Item.noMelee = true;
+            Item.autoReuse = true;
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
@@ -80,11 +80,10 @@ namespace Overdone.Items.Norse {
         }
 
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 1 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
 
         protected override Mythology Mythology => Mythology.Norse;

@@ -17,13 +17,13 @@ namespace Overdone.Items.Egyptian {
         }
 
         public override void SetDefaults() {
-            item.melee = true;
-            item.width = 70;
-            item.height = 70;
-            item.value = Item.sellPrice( gold: 20 );
-            item.rare = ItemRarityID.Yellow;
-            item.noMelee = false;
-            item.noUseGraphic = false;
+            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.width = 70;
+            Item.height = 70;
+            Item.value = Item.sellPrice( gold: 20 );
+            Item.rare = ItemRarityID.Yellow;
+            Item.noMelee = false;
+            Item.noUseGraphic = false;
             ComboBuildPerHit = 1;
             base.SetDefaults();
         }
@@ -37,46 +37,45 @@ namespace Overdone.Items.Egyptian {
         }
 
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 1 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
 
         protected override void SetLeftClickMode() {
-            item.melee = true;
-            item.magic = false;
-            item.damage = 33;
-            item.crit = 19;
-            item.mana = 0;
-            item.useTime = 33;
-            item.useAnimation = 33;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.knockBack = 13f;
-            item.UseSound = SoundID.DD2_MonkStaffSwing;
-            item.shoot = default;
-            item.shootSpeed = default;
-            item.noMelee = false;
-            item.autoReuse = true;
+            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.magic = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
+            Item.damage = 33;
+            Item.crit = 19;
+            Item.mana = 0;
+            Item.useTime = 33;
+            Item.useAnimation = 33;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.knockBack = 13f;
+            Item.UseSound = SoundID.DD2_MonkStaffSwing;
+            Item.shoot = default;
+            Item.shootSpeed = default;
+            Item.noMelee = false;
+            Item.autoReuse = true;
             ComboBuildPerHit = 3;
         }
 
         protected override void SetRightClickMode() {
-            item.melee = false;
-            item.magic = true;
-            item.damage = 35;
-            item.crit = 0;
-            item.mana = 20;
-            item.useTime = 18;
-            item.useAnimation = 18;
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.knockBack = 5f;
-            item.UseSound = SoundID.DD2_FlameburstTowerShot;
-            item.shoot = ModContent.ProjectileType<AhnkProjectile>();
-            item.shootSpeed = 15f;
-            item.noMelee = true;
-            item.autoReuse = true;
+            Item.melee = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
+            Item.DamageType = DamageClass.Magic;
+            Item.damage = 35;
+            Item.crit = 0;
+            Item.mana = 20;
+            Item.useTime = 18;
+            Item.useAnimation = 18;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.knockBack = 5f;
+            Item.UseSound = SoundID.DD2_FlameburstTowerShot;
+            Item.shoot = ModContent.ProjectileType<AhnkProjectile>();
+            Item.shootSpeed = 15f;
+            Item.noMelee = true;
+            Item.autoReuse = true;
             ComboBuildPerHit = 0;
         }
 

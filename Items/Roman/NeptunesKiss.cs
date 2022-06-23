@@ -19,49 +19,49 @@ namespace Overdone.Items.Roman {
         }
 
         public override void SetDefaults() {
-            item.damage = 24;
-            item.melee = true;
-            item.width = 40;
-            item.height = 40;
-            item.useTime = 24;
-            item.useAnimation = 24;
-            item.useStyle = ItemUseStyleID.Stabbing;
-            item.knockBack = 15;
-            item.value = 10000;
-            item.crit = 7;
-            item.rare = ItemRarityID.LightRed;
-            item.UseSound = SoundID.Item1;
-            item.autoReuse = true;
-            item.shootSpeed = 8f;
+            Item.damage = 24;
+            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.width = 40;
+            Item.height = 40;
+            Item.useTime = 24;
+            Item.useAnimation = 24;
+            Item.useStyle = ItemUseStyleID.Thrust;
+            Item.knockBack = 15;
+            Item.value = 10000;
+            Item.crit = 7;
+            Item.rare = ItemRarityID.LightRed;
+            Item.UseSound = SoundID.Item1;
+            Item.autoReuse = true;
+            Item.shootSpeed = 8f;
             base.SetDefaults();
         }
 
         protected override void SetLeftClickMode() {
-            item.damage = 10;
-            item.mana = 0;
-            item.useTime = 10;
-            item.useAnimation = 10;
-            item.useStyle = ItemUseStyleID.Stabbing;
-            item.knockBack = 5f;
-            item.UseSound = SoundID.Item40;
-            item.shootSpeed = 10;
-            item.autoReuse = true;
-            item.noMelee = false;
-            item.crit = (int) (7 + (ComboManager.Combo / 25f));
+            Item.damage = 10;
+            Item.mana = 0;
+            Item.useTime = 10;
+            Item.useAnimation = 10;
+            Item.useStyle = ItemUseStyleID.Thrust;
+            Item.knockBack = 5f;
+            Item.UseSound = SoundID.Item40;
+            Item.shootSpeed = 10;
+            Item.autoReuse = true;
+            Item.noMelee = false;
+            Item.crit = (int) (7 + (ComboManager.Combo / 25f));
         }
 
         protected override void SetRightClickMode() {
-            item.damage = 13;
-            item.mana = 10;
-            item.useTime = 50;
-            item.useAnimation = 50;
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.knockBack = 4f;
-            item.UseSound = SoundID.Item110;
-            item.shootSpeed = 12f;
-            item.noMelee = true;
-            item.autoReuse = true;
-            item.reuseDelay = 37;
+            Item.damage = 13;
+            Item.mana = 10;
+            Item.useTime = 50;
+            Item.useAnimation = 50;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.knockBack = 4f;
+            Item.UseSound = SoundID.Item110;
+            Item.shootSpeed = 12f;
+            Item.noMelee = true;
+            Item.autoReuse = true;
+            Item.reuseDelay = 37;
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {            
@@ -70,8 +70,8 @@ namespace Overdone.Items.Roman {
                 return false;
 
             for ( var i = 0; i < 3; i++ ) {
-                item.damage = damage + 25;
-                item.useStyle = ItemUseStyleID.SwingThrow;
+                Item.damage = damage + 25;
+                Item.useStyle = ItemUseStyleID.Swing;
             }
             _counter = 0;
             return false;
@@ -85,11 +85,10 @@ namespace Overdone.Items.Roman {
         }
 
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 1 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
 
         protected override Mythology Mythology => Mythology.Roman;

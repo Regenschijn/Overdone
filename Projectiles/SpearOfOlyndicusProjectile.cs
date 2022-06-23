@@ -10,18 +10,18 @@ using Overdone.Base;
 namespace Overdone.Projectiles {
     public class SpearOfOlyndicusProjectile : DodoModProjectile {
         public override void SetDefaults() {
-            projectile.width = 26;
-            projectile.height = 26;
-            projectile.aiStyle = 19;
-            projectile.penetrate = -1;
+            Projectile.width = 26;
+            Projectile.height = 26;
+            Projectile.aiStyle = 19;
+            Projectile.penetrate = -1;
 
-            projectile.hide = false;
-            projectile.ownerHitCheck = true;
-            projectile.melee = true;
-            projectile.tileCollide = false;
-            projectile.friendly = true;
+            Projectile.hide = false;
+            Projectile.ownerHitCheck = true;
+            Projectile.DamageType = DamageClass.Melee;
+            Projectile.tileCollide = false;
+            Projectile.friendly = true;
 
-            aiType = 49;
+            AIType = 49;
         }
 
         public override void AI() {

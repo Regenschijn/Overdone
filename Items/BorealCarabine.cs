@@ -20,27 +20,27 @@ namespace Overdone.Items
 
 		public override void SetDefaults() 
 		{
-			item.damage = 10;
-			item.ranged = true;
-			item.width = 40;
-			item.height = 40;
-			item.useTime = 14;
-			item.useAnimation = 20;
-			item.useStyle = ItemUseStyleID.HoldingOut;
-			item.noMelee = true;
-			item.knockBack = 2;
-			item.value = 10000;
-			item.UseSound = SoundID.Item11;
-			item.crit = 1;
-			item.rare = 1;
-			item.autoReuse = true;
+			Item.damage = 10;
+			Item.DamageType = DamageClass.Ranged;
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTime = 14;
+			Item.useAnimation = 20;
+			Item.useStyle = ItemUseStyleID.Shoot;
+			Item.noMelee = true;
+			Item.knockBack = 2;
+			Item.value = 10000;
+			Item.UseSound = SoundID.Item11;
+			Item.crit = 1;
+			Item.rare = 1;
+			Item.autoReuse = true;
 
-			item.shootSpeed = 10f;
-			item.shoot = ProjectileID.PineNeedleFriendly; 
+			Item.shootSpeed = 10f;
+			Item.shoot = ProjectileID.PineNeedleFriendly; 
 
 		}
 
-		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
 			Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5));
 			speedX = perturbedSpeed.X;
@@ -51,11 +51,10 @@ namespace Overdone.Items
 
 		public override void AddRecipes() 
 		{
-			var recipe = new ModRecipe(mod);
+			var recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.DirtBlock, 10);
 			recipe.AddTile(TileID.WorkBenches);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			recipe.Register();
 		}
 	}
 }

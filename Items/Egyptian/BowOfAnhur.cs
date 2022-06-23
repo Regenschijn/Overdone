@@ -18,43 +18,43 @@ namespace Overdone.Items.Egyptian {
         }
 
         public override void SetDefaults() {
-            item.ranged = true;
-            item.width = 40;
-            item.height = 40;
-            item.value = Item.sellPrice( gold: 14 );
-            item.rare = ItemRarityID.Yellow;
-            item.noMelee = true;
-            item.noUseGraphic = false;
-            item.shoot = ModContent.ProjectileType<ArrowEgypt>();
+            Item.DamageType = DamageClass.Ranged;
+            Item.width = 40;
+            Item.height = 40;
+            Item.value = Item.sellPrice( gold: 14 );
+            Item.rare = ItemRarityID.Yellow;
+            Item.noMelee = true;
+            Item.noUseGraphic = false;
+            Item.shoot = ModContent.ProjectileType<ArrowEgypt>();
             ComboBuildPerHit = 1;
             base.SetDefaults();
         }
 
         protected override void SetLeftClickMode() {
-            item.damage = 2;
-            item.useTime = 30;
-            item.useAnimation = 30;
-            item.useStyle = ItemUseStyleID.HoldingOut;
-            item.knockBack = 5f;
-            item.UseSound = SoundID.Item40;
-            item.shootSpeed = 10;
-            item.autoReuse = true;
-            item.noMelee = true;
-            item.shoot = ModContent.ProjectileType<ArrowEgypt>();
+            Item.damage = 2;
+            Item.useTime = 30;
+            Item.useAnimation = 30;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.knockBack = 5f;
+            Item.UseSound = SoundID.Item40;
+            Item.shootSpeed = 10;
+            Item.autoReuse = true;
+            Item.noMelee = true;
+            Item.shoot = ModContent.ProjectileType<ArrowEgypt>();
             ComboBuildPerHit = 1;
         }
 
         protected override void SetRightClickMode() {
-            item.damage = 13;
-            item.useTime = 50;
-            item.useAnimation = 50;
-            item.useStyle = ItemUseStyleID.EatingUsing;
-            item.knockBack = 4f;
-            item.UseSound = SoundID.Item110;
-            item.shootSpeed = 25f;
-            item.noMelee = true;
-            item.autoReuse = true;
-            item.shoot = ModContent.ProjectileType<ArrowEgypt>();
+            Item.damage = 13;
+            Item.useTime = 50;
+            Item.useAnimation = 50;
+            Item.useStyle = ItemUseStyleID.EatFood;
+            Item.knockBack = 4f;
+            Item.UseSound = SoundID.Item110;
+            Item.shootSpeed = 25f;
+            Item.noMelee = true;
+            Item.autoReuse = true;
+            Item.shoot = ModContent.ProjectileType<ArrowEgypt>();
             ComboBuildPerHit = 1;
         }
 
@@ -77,11 +77,10 @@ namespace Overdone.Items.Egyptian {
         }
 
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 1 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
 
         protected override Mythology Mythology => Mythology.Egyptian;

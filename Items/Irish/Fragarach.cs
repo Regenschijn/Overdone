@@ -3,6 +3,7 @@ using Overdone.Base;
 using Overdone.Combo;
 using Overdone.Projectiles;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,31 +16,31 @@ namespace Overdone.Items.Irish {
         }
 
         public override void SetDefaults() {
-            item.damage = 35;
-            item.melee = true;
-            item.width = 54;
-            item.height = 54;
-            item.useTime = 20;
-            item.useAnimation = 20;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.knockBack = 12;
-            item.value = 20000;
-            item.crit = 4;
-            item.rare = ItemRarityID.LightRed;
-            item.UseSound = SoundID.Item1;
-            item.autoReuse = true;
+            Item.damage = 35;
+            Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
+            Item.width = 54;
+            Item.height = 54;
+            Item.useTime = 20;
+            Item.useAnimation = 20;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.knockBack = 12;
+            Item.value = 20000;
+            Item.crit = 4;
+            Item.rare = ItemRarityID.LightRed;
+            Item.UseSound = SoundID.Item1;
+            Item.autoReuse = true;
             base.SetDefaults();
-            item.shootSpeed = 90f;
+            Item.shootSpeed = 90f;
         }
 
         protected override void SetLeftClickMode() {
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.noMelee = false;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.noMelee = false;
         }
 
         protected override void SetRightClickMode() {
-            item.useStyle = ItemUseStyleID.HoldingUp;
-            item.noMelee = true;
+            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.noMelee = true;
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
@@ -58,15 +59,14 @@ namespace Overdone.Items.Irish {
             if ( !ComboManager.UseCombo( 25 ) ) return false;
 
             player.AddBuff( ModContent.BuffType<Buffs.IrishFierceness>(), 1200 );
-            Main.PlaySound( SoundID.Item45, player.position );
+            SoundEngine.PlaySound( SoundID.Item45, player.position );
             return false;
         }
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 10 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
 
 

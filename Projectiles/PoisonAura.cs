@@ -10,19 +10,19 @@ using Overdone.Base;
 namespace Overdone.Projectiles {
     public class PoisonAura : DodoModProjectile {
         public override void SetDefaults() {
-            projectile.Name = "Asclepius' Cloud";
-            projectile.width = 100;
-            projectile.height = 100;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 600;
+            Projectile.Name = "Asclepius' Cloud";
+            Projectile.width = 100;
+            Projectile.height = 100;
+            Projectile.penetrate = -1;
+            Projectile.timeLeft = 600;
 
-            projectile.hide = false;
-            projectile.ownerHitCheck = true;
-            projectile.ranged = true;
-            projectile.tileCollide = false;
-            projectile.friendly = true;
-            projectile.ignoreWater = false;
-            projectile.aiStyle = 11;
+            Projectile.hide = false;
+            Projectile.ownerHitCheck = true;
+            Projectile.DamageType = DamageClass.Ranged;
+            Projectile.tileCollide = false;
+            Projectile.friendly = true;
+            Projectile.ignoreWater = false;
+            Projectile.aiStyle = 11;
         }
 
         public override void Kill( int timeLeft ) {

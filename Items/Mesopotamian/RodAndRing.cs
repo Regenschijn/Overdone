@@ -21,53 +21,53 @@ namespace Overdone.Items.Mesopotamian {
 
         public override void SetDefaults() {
             UseCombo = true;
-            item.magic = true;
-            item.width = 32;
-            item.height = 32;
-            item.value = Item.sellPrice( silver: 50 );
-            item.rare = ItemRarityID.Green;
-            item.noMelee = true;
-            item.noUseGraphic = false;
+            Item.DamageType = DamageClass.Magic;
+            Item.width = 32;
+            Item.height = 32;
+            Item.value = Item.sellPrice( silver: 50 );
+            Item.rare = ItemRarityID.Green;
+            Item.noMelee = true;
+            Item.noUseGraphic = false;
             base.SetDefaults();
         }
 
         protected override void SetLeftClickMode() {
-            item.damage = 20;
-            item.mana = 4;
-            item.magic = true;
+            Item.damage = 20;
+            Item.mana = 4;
+            Item.DamageType = DamageClass.Magic;
 
-            item.shootSpeed = 15f;
-            item.useTime = 20;
-            item.useAnimation = 20;
+            Item.shootSpeed = 15f;
+            Item.useTime = 20;
+            Item.useAnimation = 20;
 
-            item.useStyle = ItemUseStyleID.HoldingUp;
-            item.knockBack = 5f;
-            item.UseSound = SoundID.Item34;
+            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.knockBack = 5f;
+            Item.UseSound = SoundID.Item34;
             if ( ComboManager.Combo >= 50 ) {
-                item.shoot = ModContent.ProjectileType<WindBanana>();
-                item.damage = 30;
+                Item.shoot = ModContent.ProjectileType<WindBanana>();
+                Item.damage = 30;
             }
             else {
-                item.shoot = ModContent.ProjectileType<WindBananaSmall>();
-                item.damage = 20;
+                Item.shoot = ModContent.ProjectileType<WindBananaSmall>();
+                Item.damage = 20;
             }
-            item.autoReuse = true;
+            Item.autoReuse = true;
         }
 
         protected override void SetRightClickMode() {
-            item.damage = 25;
-            item.mana = 0;
-            item.magic = true;
+            Item.damage = 25;
+            Item.mana = 0;
+            Item.DamageType = DamageClass.Magic;
 
-            item.shootSpeed = 15f;
-            item.useTime = 35;
-            item.useAnimation = 35;
-            item.shoot = ModContent.ProjectileType<WindBanana>();
+            Item.shootSpeed = 15f;
+            Item.useTime = 35;
+            Item.useAnimation = 35;
+            Item.shoot = ModContent.ProjectileType<WindBanana>();
             
-            item.useStyle = ItemUseStyleID.EatingUsing;
-            item.knockBack = 5f;
-            item.UseSound = SoundID.Item45;
-            item.autoReuse = true;
+            Item.useStyle = ItemUseStyleID.EatFood;
+            Item.knockBack = 5f;
+            Item.UseSound = SoundID.Item45;
+            Item.autoReuse = true;
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
@@ -89,11 +89,10 @@ namespace Overdone.Items.Mesopotamian {
         }
 
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 1 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
         
         protected override Mythology Mythology => Mythology.Mesopotamian;

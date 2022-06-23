@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace Overdone.Base {
@@ -15,7 +16,7 @@ namespace Overdone.Base {
         public override bool AltFunctionUse( Player player ) => true;
 
         public override void SetDefaults() {
-            item.shoot = ModContent.ProjectileType<None>();
+            Item.shoot = ModContent.ProjectileType<None>();
             SetLeftClickMode();
         }
 
@@ -31,7 +32,7 @@ namespace Overdone.Base {
         }
 
 
-        public sealed override bool Shoot( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public sealed override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
             if ( player.altFunctionUse == 2 ) {
                 return ShootRightClick( player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack );                
             } else {

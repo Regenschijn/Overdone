@@ -10,31 +10,31 @@ using Overdone.Base;
 namespace Overdone.Projectiles {
     public class AhnkProjectile : DodoModProjectile {
         public override void SetDefaults() {
-            projectile.Name = "Ahnk";
-            projectile.width = 25;
-            projectile.height = 25;
-            projectile.aiStyle = 0;
-            projectile.penetrate = 1;
-            projectile.timeLeft = 100;
+            Projectile.Name = "Ahnk";
+            Projectile.width = 25;
+            Projectile.height = 25;
+            Projectile.aiStyle = 0;
+            Projectile.penetrate = 1;
+            Projectile.timeLeft = 100;
 
-            projectile.hide = false;
-            projectile.ownerHitCheck = true;
-            projectile.ranged = true;
-            projectile.tileCollide = true;
-            projectile.friendly = true;
-            projectile.ignoreWater = true;
+            Projectile.hide = false;
+            Projectile.ownerHitCheck = true;
+            Projectile.DamageType = DamageClass.Ranged;
+            Projectile.tileCollide = true;
+            Projectile.friendly = true;
+            Projectile.ignoreWater = true;
             UseCombo = false;
         }
 
         public override void AI() {
-            Player owner = Main.player[projectile.owner]; //Makes a player variable of owner set as the player using the projectile
-            projectile.light = 0.5f;
-            projectile.rotation += (float) projectile.direction * 0.5f;
-            int dustId = Dust.NewDust( new Vector2( projectile.position.X, projectile.position.Y + 2f ), projectile.width + 4, projectile.height + 4, 36, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 120, default, 0.75f ); //Spawns dust
+            Player owner = Main.player[Projectile.owner]; //Makes a player variable of owner set as the player using the projectile
+            Projectile.light = 0.5f;
+            Projectile.rotation += (float) Projectile.direction * 0.5f;
+            int dustId = Dust.NewDust( new Vector2( Projectile.position.X, Projectile.position.Y + 2f ), Projectile.width + 4, Projectile.height + 4, 36, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 120, default, 0.75f ); //Spawns dust
             Main.dust[dustId].noGravity = true; //Makes dust not fall
         }
         public override void OnHitNPC( NPC n, int damage, float knockback, bool crit ) {
-            Player owner = Main.player[projectile.owner];
+            Player owner = Main.player[Projectile.owner];
             var rand = Main.rand.Next( 2 );
             switch ( rand ) {
                 case 0:
@@ -50,12 +50,12 @@ namespace Overdone.Projectiles {
         //After the projectile is dead
         public override void Kill( int timeLeft ) {            
             Projectile.NewProjectile(
-                projectile.position.X,
-                projectile.position.Y,
-                projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f, 
+                Projectile.position.X,
+                Projectile.position.Y,
+                Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.5f, 
                 ModContent.ProjectileType<AhnkTinyProjectile>(),
-                (int) (projectile.damage * 1.5f),
-                projectile.knockBack,
+                (int) (Projectile.damage * 1.5f),
+                Projectile.knockBack,
                 Main.myPlayer
             );
         }

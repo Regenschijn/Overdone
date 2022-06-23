@@ -1,4 +1,5 @@
 using Overdone.Mounts;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,24 +12,23 @@ namespace Overdone.Items.Chariots
         }
 
         public override void SetDefaults() {
-            item.width = 40;
-            item.height = 40;
-            item.useTime = 20;
-            item.useAnimation = 20;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.value = 30000;
-            item.rare = ItemRarityID.Green;
-            item.UseSound = SoundID.Item79;
-            item.noMelee = true;
-            item.mountType = ModContent.MountType<Chariot>();
+            Item.width = 40;
+            Item.height = 40;
+            Item.useTime = 20;
+            Item.useAnimation = 20;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.value = 30000;
+            Item.rare = ItemRarityID.Green;
+            Item.UseSound = SoundID.Item79;
+            Item.noMelee = true;
+            Item.mountType = ModContent.MountType<Chariot>();
         }
 
         public override void AddRecipes() {
-            var recipe = new ModRecipe( mod );
+            var recipe = CreateRecipe( );
             recipe.AddIngredient( ItemID.DirtBlock, 1 );
             recipe.AddTile( TileID.WorkBenches );
-            recipe.SetResult( this );
-            recipe.AddRecipe();
+            recipe.Register();
         }
     }
 }
