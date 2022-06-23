@@ -58,10 +58,9 @@ namespace Overdone.Mounts
 			if (Main.netMode == NetmodeID.Server) {
 				return;
 			}
-
-            MountData.textureWidth = MountData.backTexture.Width;
-			MountData.textureHeight = MountData.backTexture.Height;
             
+            MountData.textureWidth = MountData.backTexture.Width();
+			MountData.textureHeight = MountData.backTexture.Height();
         }
 
 		public override void UpdateEffects(Player player) {

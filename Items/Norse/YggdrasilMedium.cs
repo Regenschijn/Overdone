@@ -55,16 +55,16 @@ namespace Overdone.Items.Norse {
             Item.autoReuse = true;
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             for ( var i = 0; i < 2; i++ ) {
-                Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + Main.rand.Next( -130, 330 ) / 150f, speedY + Main.rand.Next( -330, 130 ) / 150f, ModContent.ProjectileType<YggdrasilLeaf>(), damage, knockBack, player.whoAmI, 0f, 0f );
+                Projectile.NewProjectile( player.GetSource_FromAI(), position.X - 8f, position.Y + 8f, velocity.X + Main.rand.Next( -130, 330 ) / 150f, velocity.Y + Main.rand.Next( -330, 130 ) / 150f, ModContent.ProjectileType<YggdrasilLeaf>(), damage, knockBack, player.whoAmI, 0f, 0f );
             }
             return false;
         }
 
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             for ( var i = 0; i < 10; i++ ) {
-                Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + Main.rand.Next( -190, 590 ) / 150f, speedY + Main.rand.Next( -590, 190 ) / 150f, ModContent.ProjectileType<YggdrasilLeaf>(), damage, knockBack, player.whoAmI, 0f, 0f );
+                Projectile.NewProjectile( player.GetSource_FromAI(), position.X - 8f, position.Y + 8f, velocity.X + Main.rand.Next( -190, 590 ) / 150f, velocity.Y + Main.rand.Next( -590, 190 ) / 150f, ModContent.ProjectileType<YggdrasilLeaf>(), damage, knockBack, player.whoAmI, 0f, 0f );
             }
             return false;
         }                

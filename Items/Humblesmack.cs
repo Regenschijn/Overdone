@@ -46,7 +46,7 @@ namespace Overdone.Items
 			{
 				for (var i = 0; i < 3; i++)
 				{
-					Projectile.NewProjectile(position.X - 8f, position.Y + 8f, speedX + (float)Main.rand.Next(-230, 230) / 100f, speedY + (float)Main.rand.Next(-230, 230) / 100f, ProjectileID.Seed, damage, knockBack, ((Entity)player).whoAmI, 0f, 0f);
+					Projectile.NewProjectile(player.GetSource_FromAI(), position.X - 8f, position.Y + 8f, velocity.X + Main.rand.Next(-230, 230) / 100f, velocity.Y + Main.rand.Next(-230, 230) / 100f, ProjectileID.Seed, damage, knockback, player.whoAmI, 0f, 0f);
 				}
 				counter = 0;
 			}

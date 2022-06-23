@@ -45,7 +45,6 @@ namespace Overdone.Items.Egyptian {
 
         protected override void SetLeftClickMode() {
             Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
-            Item.magic = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
             Item.damage = 33;
             Item.crit = 19;
             Item.mana = 0;
@@ -62,7 +61,6 @@ namespace Overdone.Items.Egyptian {
         }
 
         protected override void SetRightClickMode() {
-            Item.melee = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
             Item.DamageType = DamageClass.Magic;
             Item.damage = 35;
             Item.crit = 0;
@@ -79,11 +77,11 @@ namespace Overdone.Items.Egyptian {
             ComboBuildPerHit = 0;
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             return true;
         }
 
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             return true;
         }
     }

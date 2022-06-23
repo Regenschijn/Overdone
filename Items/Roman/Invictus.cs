@@ -66,14 +66,14 @@ namespace Overdone.Items.Roman {
             Item.shoot = ModContent.ProjectileType<InvictusBolt>();
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {            
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {            
             return true;
         }
 
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             if ( ComboManager.UseCombo( 1 ) ) {
-                Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + Main.rand.Next( -30, 30 ) / 150f,
-                    speedY + Main.rand.Next( -30, 30 ) / 150f, ModContent.ProjectileType<Projectiles.InvictusBolt>(),
+                Projectile.NewProjectile( player.GetSource_FromAI(), position.X - 8f, position.Y + 8f, velocity.X + Main.rand.Next( -30, 30 ) / 150f,
+                    velocity.Y + Main.rand.Next( -30, 30 ) / 150f, ModContent.ProjectileType<Projectiles.InvictusBolt>(),
                     damage, knockBack, player.whoAmI, 0f, 0f );
             }
 

@@ -28,6 +28,7 @@ namespace Overdone.Projectiles {
 
         public override void Kill( int timeLeft ) {
             Projectile.NewProjectile(
+                Projectile.GetSource_FromThis(),
                 Projectile.position.X,
                 Projectile.position.Y,
                 0, 0,

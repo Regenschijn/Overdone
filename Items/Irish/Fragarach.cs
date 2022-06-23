@@ -43,19 +43,19 @@ namespace Overdone.Items.Irish {
             Item.noMelee = true;
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             _counter++;
             if ( _counter < 5 )
                 return false;
 
 
-            Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + (float)Main.rand.Next( -230, 230 ) / 100f, speedY + (float)Main.rand.Next( -230, 230 ) / 100f, ModContent.ProjectileType<FragarachSlash>(), damage, 0, (player).whoAmI, 0f, 0f );
+            Projectile.NewProjectile( player.GetSource_FromAI(), position.X - 8f, position.Y + 8f, velocity.X + (float)Main.rand.Next( -230, 230 ) / 100f, velocity.Y + (float)Main.rand.Next( -230, 230 ) / 100f, ModContent.ProjectileType<FragarachSlash>(), damage, 0, (player).whoAmI, 0f, 0f );
 
             _counter = 0;
             return false;
         }
 
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             if ( !ComboManager.UseCombo( 25 ) ) return false;
 
             player.AddBuff( ModContent.BuffType<Buffs.IrishFierceness>(), 1200 );

@@ -64,7 +64,7 @@ namespace Overdone.Items.Roman {
             Item.reuseDelay = 37;
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {            
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {            
             _counter++;
             if ( _counter < 5 )
                 return false;
@@ -77,9 +77,9 @@ namespace Overdone.Items.Roman {
             return false;
         }
 
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
 
-            Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + Main.rand.Next( -30, 30 ) / 150f, speedY + Main.rand.Next( -30, 30 ) / 150f, ModContent.ProjectileType<AquaKiss>(), damage, knockBack, player.whoAmI, 0f, 0f );
+            Projectile.NewProjectile( player.GetSource_FromAI(), position.X - 8f, position.Y + 8f, velocity.X + Main.rand.Next( -30, 30 ) / 150f, velocity.Y + Main.rand.Next( -30, 30 ) / 150f, ModContent.ProjectileType<AquaKiss>(), damage, knockBack, player.whoAmI, 0f, 0f );
 
             return true;
         }

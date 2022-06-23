@@ -31,6 +31,8 @@ namespace Overdone.Items.Greek {
             Item.autoReuse = true;
             Item.shootSpeed = 10f;
             Item.shoot = ProjectileID.Boulder;
+            Item.DamageType = DamageClass.Melee;
+            
             base.SetDefaults();
         }      
              
@@ -44,7 +46,6 @@ namespace Overdone.Items.Greek {
         protected override void SetLeftClickMode() {
             Item.noMelee = false;
             Item.mana = 1;
-            Item.melee = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
             Item.DamageType = DamageClass.Magic;
             Item.useAnimation = 40;
             Item.useTime = 40;
@@ -61,16 +62,16 @@ namespace Overdone.Items.Greek {
             ComboBuildPerHit = 0;
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             return true;
         }
 
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             if ( !ComboManager.UseCombo( 10 ) ) return false;
             player.itemRotation = -20f * player.direction;
             player.itemLocation.Y = player.Center.Y;
             player.itemLocation.X = player.Center.X;
-            Projectile.NewProjectile( position.X - 20f * player.direction, position.Y - 46, speedX * 1.85f, speedY * 1.85f, ProjectileID.Boulder, (int)((double)damage * 1.5), 10f, player.whoAmI, 0f, 0f );
+            Projectile.NewProjectile( player.GetSource_FromAI(), position.X - 20f * player.direction, position.Y - 46, velocity.X * 1.85f, velocity.Y * 1.85f, ProjectileID.Boulder, (int)((double)damage * 1.5), 10f, player.whoAmI, 0f, 0f );
             SoundEngine.PlaySound( SoundID.Item45, player.position );
             return false;
         }

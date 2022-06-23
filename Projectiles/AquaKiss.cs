@@ -37,6 +37,7 @@ namespace Overdone.Projectiles {
         
     public override void Kill( int timeLeft ) {
         Projectile.NewProjectile(
+            Projectile.GetSource_FromThis(),
                 Projectile.position.X,
                 Projectile.position.Y,
                 Projectile.oldVelocity.X * 0.75f, Projectile.oldVelocity.Y * 0.5f, 

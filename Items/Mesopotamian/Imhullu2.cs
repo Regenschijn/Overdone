@@ -59,15 +59,15 @@ namespace Overdone.Items.Mesopotamian {
             return true;
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type,
             ref int damage, ref float knockBack ) {            
-            Projectile.NewProjectile( player.Center, new Vector2(), ModContent.ProjectileType<ImhulluSpin>(), damage, 0f, player.whoAmI, 0f, 0f );
+            Projectile.NewProjectile( player.GetSource_FromAI(), player.Center, new Vector2(), ModContent.ProjectileType<ImhulluSpin>(), damage, 0f, player.whoAmI, 0f, 0f );
             return false;
         }
 
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type,
             ref int damage, ref float knockBack ) {
-            Projectile.NewProjectile( player.Center, new Vector2( 0f, 0f ), ModContent.ProjectileType<ImhulluSpin>(), 0, 0f, player.whoAmI, 0f, 0f );
+            Projectile.NewProjectile( player.GetSource_FromAI(), player.Center, new Vector2( 0f, 0f ), ModContent.ProjectileType<ImhulluSpin>(), 0, 0f, player.whoAmI, 0f, 0f );
             return false;
         }
 
@@ -83,7 +83,7 @@ namespace Overdone.Items.Mesopotamian {
 
 
         public override void UseStyle(Player player, Rectangle heldItemFrame) {
-            base.UseStyle( player );
+            base.UseStyle( player, heldItemFrame );
         }
 
         protected override Mythology Mythology => Mythology.Mesopotamian;

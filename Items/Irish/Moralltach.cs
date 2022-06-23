@@ -41,7 +41,7 @@ namespace Overdone.Items.Irish {
             Item.noMelee = true;
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             var rand = Main.rand.Next( 3 );
             switch ( rand ) {
                 case 0:
@@ -61,7 +61,7 @@ namespace Overdone.Items.Irish {
             return true;
         }
 
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             if ( !ComboManager.UseCombo( 25 ) ) return false;
 
             player.AddBuff( ModContent.BuffType<Buffs.IrishFierceness>(), 1200 );

@@ -33,16 +33,14 @@ namespace Overdone.Base {
 
 
         public sealed override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback) {
-            if ( player.altFunctionUse == 2 ) {
-                return ShootRightClick( player, ref position, ref velocity.X, ref velocity.Y, ref type, ref damage, ref knockback );                
-            } else {
-                return ShootLeftClick( player, ref position, ref velocity.X, ref velocity.Y, ref type, ref damage, ref knockback );
-            }
+            return player.altFunctionUse == 2 
+                ? ShootRightClick( player, ref position, ref velocity, ref type, ref damage, ref knockback ) 
+                : ShootLeftClick( player, ref position,  ref velocity, ref type, ref damage, ref knockback );
         }
 
         protected abstract void SetLeftClickMode();
         protected abstract void SetRightClickMode();
-        public abstract bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack );
-        public abstract bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack );
+        public abstract bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack );
+        public abstract bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack );
     }
 }

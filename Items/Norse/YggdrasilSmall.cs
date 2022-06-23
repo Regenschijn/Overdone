@@ -34,7 +34,7 @@ namespace Overdone.Items.Norse {
         protected override void SetLeftClickMode() {
             Item.damage = 10;
             Item.mana = 4;
-            Item.thrown = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
+            Item.DamageType = DamageClass.Melee;
 
             Item.shootSpeed = 20f;
             Item.useTime = 20;
@@ -67,11 +67,11 @@ namespace Overdone.Items.Norse {
             Item.autoReuse = true;
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             return true;
         }
 
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             if ( player.HasBuff( BuffID.Regeneration ) && player.HasBuff( BuffID.ManaRegeneration ) ) {
 
             } else {

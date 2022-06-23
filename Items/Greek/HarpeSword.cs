@@ -50,21 +50,21 @@ namespace Overdone.Items.Greek
             Item.mana = 8;            
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             _counter++;
             if ( _counter < 7 ) return false;
             
             for ( var i = 0; i < 3; i++ ) {
-                Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + (float) Main.rand.Next( -230, 230 ) / 100f, speedY + (float) Main.rand.Next( -230, 230 ) / 100f, ProjectileID.MedusaHead, damage, knockBack, (player).whoAmI, 0f, 0f );
+                Projectile.NewProjectile( player.GetSource_FromAI(), position.X - 8f, position.Y + 8f, velocity.X + (float) Main.rand.Next( -230, 230 ) / 100f, velocity.Y + (float) Main.rand.Next( -230, 230 ) / 100f, ProjectileID.MedusaHead, damage, knockBack, (player).whoAmI, 0f, 0f );
             }
             _counter = 0;
             return false;
         }
 
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             if ( !ComboManager.UseCombo( 10 ) ) return false;
             
-            Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ModContent.ProjectileType<HarpeSwordHead>(), (int) (damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
+            Projectile.NewProjectile( player.GetSource_FromAI(), position.X, position.Y, velocity.X * 1.85f, velocity.Y * 1.85f, ModContent.ProjectileType<HarpeSwordHead>(), (int) (damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
             SoundEngine.PlaySound( SoundID.Item45, player.position );
             return false;
         }

@@ -78,20 +78,20 @@ namespace Overdone.Items.Egyptian {
             throw new NotImplementedException();
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             for ( var i = 0; i < 2; i++ ) {
-                Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + Main.rand.Next( -130, 330 ) / 150f, speedY + Main.rand.Next( -330, 130 ) / 150f, ProjectileID.UnholyArrow, damage, knockBack, player.whoAmI, 0f, 0f );
+                Projectile.NewProjectile( player.GetSource_FromAI(), position.X - 8f, position.Y + 8f, velocity.X + Main.rand.Next( -130, 330 ) / 150f, velocity.Y + Main.rand.Next( -330, 130 ) / 150f, ProjectileID.UnholyArrow, damage, knockBack, player.whoAmI, 0f, 0f );
             }
             return true;
         }
 
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             const float numberProjectiles = 6;
             const float rotation = (float) (1.5 * Math.PI);
-            position += Vector2.Normalize( new Vector2( speedX, speedY ) ) * 45f;
+            position += Vector2.Normalize( velocity ) * 45f;
             for ( int i = 0; i < numberProjectiles; i++ ) {
-                Vector2 perturbedSpeed = new Vector2( speedX, speedY ).RotatedBy( MathHelper.Lerp( -rotation, rotation, i / (numberProjectiles - 1) ) ) * .2f;
-                Projectile.NewProjectile( position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI );
+                Vector2 perturbedSpeed = velocity.RotatedBy( MathHelper.Lerp( -rotation, rotation, i / (numberProjectiles - 1) ) ) * .2f;
+                Projectile.NewProjectile( player.GetSource_FromAI(), position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI );
             }
             return true;
         }

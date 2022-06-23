@@ -49,7 +49,7 @@ namespace Overdone.Items.Greek {
             Item.mana = 25;
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             _counter++;
             if ( _counter < 5 )
                 return false;
@@ -62,9 +62,9 @@ namespace Overdone.Items.Greek {
             return false;
         }
 
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
             if ( ComboManager.UseCombo( 25 ) ) {
-                Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ProjectileID.Typhoon, (int) (damage / 2f), 10f, player.whoAmI, 0f, 0f );
+                Projectile.NewProjectile( player.GetSource_FromAI(), position.X, position.Y, velocity.X * 1.85f, velocity.Y * 1.85f, ProjectileID.Typhoon, (int) (damage / 2f), 10f, player.whoAmI, 0f, 0f );
                 SoundEngine.PlaySound( SoundID.Item45, player.position );
             }
             return false;

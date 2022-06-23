@@ -34,8 +34,8 @@ namespace Overdone.Items.Iberian {
         protected override void SetLeftClickMode() {
             Item.damage = 25;
             Item.mana = 0;
-            Item.thrown = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
-            
+            Item.DamageType = DamageClass.Melee;
+
             Item.shootSpeed = 4f;
             Item.useTime = 40;
             Item.useAnimation = 40;
@@ -65,12 +65,12 @@ namespace Overdone.Items.Iberian {
             Item.autoReuse = true;
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type,
             ref int damage, ref float knockBack ) {
             return true;
         }
 
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type,
             ref int damage, ref float knockBack ) {            
             return true;
         }

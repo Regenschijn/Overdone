@@ -17,7 +17,7 @@ namespace Overdone.Projectiles {
 
             Projectile.hide = false;
             Projectile.ownerHitCheck = true;
-            Projectile.melee = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
+            
             Projectile.tileCollide = true;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Ranged;

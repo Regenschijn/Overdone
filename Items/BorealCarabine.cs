@@ -42,9 +42,9 @@ namespace Overdone.Items
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
 		{
-			Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5));
-			speedX = perturbedSpeed.X;
-			speedY = perturbedSpeed.Y;
+			Vector2 perturbedSpeed = velocity.RotatedByRandom(MathHelper.ToRadians(5));
+			// speedX = perturbedSpeed.X;
+			// speedY = perturbedSpeed.Y;
 			return true;
 		}
 

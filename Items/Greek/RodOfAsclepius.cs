@@ -55,17 +55,17 @@ namespace Overdone.Items.Greek {
             Item.reuseDelay = 50;
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type,
             ref int damage, ref float knockBack ) {
-            Projectile.NewProjectile( position.X, position.Y, speedX * 1.85f, speedY * 1.85f, ProjectileID.PoisonFang, (int)(damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
+            Projectile.NewProjectile( player.GetSource_FromAI(), position.X, position.Y, velocity.X * 1.85f, velocity.Y * 1.85f, ProjectileID.PoisonFang, (int)(damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
             SoundEngine.PlaySound( SoundID.Item45, player.position );
             return false;
         }
 
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type,
             ref int damage, ref float knockBack ) {
             if ( ComboManager.UseCombo( 10 ) )
-                Projectile.NewProjectile( ((Entity)player). Center, new Vector2( 0f, 0f ), ModContent.ProjectileType<PoisonAura>(), 0, 0f, ((Entity)player).whoAmI, 0f, 0f );;
+                Projectile.NewProjectile( player.GetSource_FromAI(), player.Center, new Vector2( 0f, 0f ), ModContent.ProjectileType<PoisonAura>(), 0, 0f, player.whoAmI );;
             return false;       
 
         }
@@ -84,7 +84,7 @@ namespace Overdone.Items.Greek {
         
         
         public override void UseStyle(Player player, Rectangle heldItemFrame) {
-            base.UseStyle( player );
+            base.UseStyle( player, heldItemFrame );
         }
 
         protected override Mythology Mythology => Mythology.Greek;

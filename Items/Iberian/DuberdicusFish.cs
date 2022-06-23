@@ -15,7 +15,6 @@ namespace Overdone.Items.Iberian {
         public override void SetDefaults() {
             UseCombo = true;
             Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
-            Item.magic = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
             Item.width = 60;
             Item.height = 60;
             Item.value = Item.sellPrice( silver: 50 );
@@ -28,7 +27,6 @@ namespace Overdone.Items.Iberian {
             Item.damage = 33;
             Item.mana = 0;
             Item.DamageType = DamageClass.Melee/* tModPorter Suggestion: Consider MeleeNoSpeed for no attack speed scaling */;
-            Item.magic = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
             Item.noMelee = false;
 
             Item.shootSpeed = 15f;
@@ -46,7 +44,6 @@ namespace Overdone.Items.Iberian {
             Item.damage = 44;
             Item.mana = 10;
             Item.DamageType = DamageClass.Magic;
-            Item.melee = false/* tModPorter Suggestion: Remove. See Item.DamageType */;
             Item.noMelee = true;
             
             Item.shootSpeed = 10f;
@@ -61,12 +58,12 @@ namespace Overdone.Items.Iberian {
             Item.autoReuse = true;
         }
   
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type,
             ref int damage, ref float knockBack ) {
             return false;
         }
         
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type,
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type,
             ref int damage, ref float knockBack ) {
             Vector2 mousePosition = Main.MouseWorld;
             player.itemLocation.Y = player.Center.Y + 60f;

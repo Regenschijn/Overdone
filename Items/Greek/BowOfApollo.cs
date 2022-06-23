@@ -26,6 +26,7 @@ namespace Overdone.Items.Greek {
             Item.noMelee = true;
             Item.noUseGraphic = false;
             Item.shoot = ModContent.ProjectileType<ArrowApollo>();
+            Item.DamageType = DamageClass.Melee;
             ComboBuildPerHit = 1;
             base.SetDefaults();
         }
@@ -59,12 +60,12 @@ namespace Overdone.Items.Greek {
             ComboBuildPerHit = 1;
         }
 
-        public override bool ShootLeftClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {            
+        public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {            
             return true;
         }
 
-        public override bool ShootRightClick( Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack ) {
-            Projectile.NewProjectile( position.X - 8f, position.Y + 8f, speedX + Main.rand.Next( -130, 330 ) / 150f, speedY + Main.rand.Next( -330, 130 ) / 150f, ModContent.ProjectileType<ApolloBlast>(), damage, knockBack, player.whoAmI, 0f, 0f );
+        public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
+            Projectile.NewProjectile( player.GetSource_FromAI() , position.X - 8f, position.Y + 8f, velocity.X + Main.rand.Next( -130, 330 ) / 150f, velocity.Y + Main.rand.Next( -330, 130 ) / 150f, ModContent.ProjectileType<ApolloBlast>(), damage, knockBack, player.whoAmI, 0f, 0f );
             return false;
         }
 

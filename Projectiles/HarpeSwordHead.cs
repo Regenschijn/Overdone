@@ -27,7 +27,7 @@ namespace Overdone.Projectiles {
         }
 
         public override void Kill( int timeLeft ) {
-            Projectile.NewProjectile( Projectile.position.X, Projectile.position.Y, 0, 0, ProjectileID.Electrosphere, (int) (Projectile.damage * 1.5), Projectile.knockBack, Main.myPlayer );
+            Projectile.NewProjectile( Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, 0, 0, ProjectileID.Electrosphere, (int) (Projectile.damage * 1.5), Projectile.knockBack, Main.myPlayer );
         }
     }
 }
