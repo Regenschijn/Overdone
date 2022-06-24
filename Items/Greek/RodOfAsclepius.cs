@@ -33,8 +33,9 @@ namespace Overdone.Items.Greek {
             Item.useAnimation = 27;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 1f;
-            Item.UseSound = SoundID.Item79;
-            Item.shoot = ProjectileID.PoisonFang;
+            Item.UseSound = SoundID.DD2_OgreSpit;
+            Item.shoot = ModContent.ProjectileType<PoisonFang>();
+            Item.shootSpeed = 20f;
             Item.noMelee = true;
             Item.reuseDelay = 25;
             Item.mana = (int) (20 - ComboManager.Combo / 10);
@@ -57,7 +58,7 @@ namespace Overdone.Items.Greek {
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type,
             ref int damage, ref float knockBack ) {
-            Projectile.NewProjectile( player.GetSource_FromAI(), position.X, position.Y, velocity.X * 1.85f, velocity.Y * 1.85f, ProjectileID.PoisonFang, (int)(damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
+            Projectile.NewProjectile( player.GetSource_FromAI(), position.X, position.Y, velocity.X * 1.85f, velocity.Y * 1.85f, ModContent.ProjectileType<PoisonFang>(), (int)(damage * 1.5f), 10f, player.whoAmI, 0f, 0f );
             SoundEngine.PlaySound( SoundID.Item45, player.position );
             return false;
         }

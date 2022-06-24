@@ -25,6 +25,12 @@ namespace Overdone.Projectiles {
             Projectile.aiStyle = 11;
         }
 
+        public override void OnHitNPC( NPC target, int damage, float knockback, bool crit ) {
+            base.OnHitNPC( target, damage, knockback, crit );
+            Player owner = Main.player[Projectile.owner];
+            target.AddBuff( 20, 660 );
+        }
+
         public override void Kill( int timeLeft ) {
             
         }

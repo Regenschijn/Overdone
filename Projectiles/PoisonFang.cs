@@ -14,6 +14,7 @@ namespace Overdone.Projectiles {
             Projectile.height = 20;
             Projectile.aiStyle = 1;
             Projectile.penetrate = 2;
+            Projectile.timeLeft = 90;
 
             Projectile.hide = false;
             Projectile.ownerHitCheck = true;
