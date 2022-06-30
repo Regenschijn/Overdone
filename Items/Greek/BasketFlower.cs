@@ -69,9 +69,6 @@ namespace Overdone.Items.Greek {
                 Vector2 newVelocity = velocity.RotatedByRandom( MathHelper.ToRadians( 15 ) );
                 newVelocity *= 1f - Main.rand.NextFloat( 0.3f );
                 Projectile.NewProjectile( player.GetSource_FromAI(), position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<BasketSeed>(), damage, knockBack, player.whoAmI, 0f, 0f );
-                Projectile.NewProjectile( player.GetSource_FromAI(), position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<BasketSeed>(), damage, knockBack, player.whoAmI, 0f, 0f );
-                Projectile.NewProjectile( player.GetSource_FromAI(), position.X, position.Y, velocity.X, velocity.Y, ModContent.ProjectileType<BasketSeed>(), damage, knockBack, player.whoAmI, 0f, 0f );
-
             return false;
         }
 

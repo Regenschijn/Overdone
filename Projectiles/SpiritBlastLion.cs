@@ -27,6 +27,15 @@ namespace Overdone.Projectiles {
             UseCombo = true;
         }
 
+        public override bool PreDraw( ref Color lightColor ) {
+            SpriteEffects spriteEffects = SpriteEffects.None;
+            if ( Projectile.spriteDirection == -1 ) { 
+                spriteEffects = SpriteEffects.FlipHorizontally;
+                Texture2D texture = (Texture2D)ModContent.Request<Texture2D>( Texture );
+            }
+            return true;
+        }
+
         public override void AI() {
             Player owner = Main.player[Projectile.owner]; 
             Projectile.light = 0.1f;
