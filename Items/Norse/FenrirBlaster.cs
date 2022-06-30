@@ -35,12 +35,12 @@ namespace Overdone.Items.Norse {
             Item.useTime = 30;
             Item.useAnimation = 30;
             Item.useStyle = ItemUseStyleID.Shoot;
+            Item.shoot = ModContent.ProjectileType<SpiritBlastWolfGreenYellow>();
             Item.knockBack = 5f;
-            Item.UseSound = SoundID.Roar;
+            Item.UseSound = SoundID.Item124;
             Item.shootSpeed = 10;
             Item.autoReuse = true;
             Item.noMelee = true;
-            Item.shoot = ModContent.ProjectileType<SpiritBlastWolfGreenYellow>();
             ComboBuildPerHit = 1;
         }
 
@@ -50,11 +50,10 @@ namespace Overdone.Items.Norse {
             Item.useAnimation = 50;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 4f;
-            Item.UseSound = SoundID.ForceRoar;
+            Item.UseSound = SoundID.Item67;
             Item.shootSpeed = 20f;
             Item.noMelee = true;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<SpiritBlastWolfRed>();
             ComboBuildPerHit = 1;
         }
 
@@ -67,16 +66,16 @@ namespace Overdone.Items.Norse {
             var rand = Main.rand.Next( 3 );
             switch ( rand ) {
                 case 0:
-                    Item.shoot = ModContent.ProjectileType<SpiritBlastWolfRed>();
+                    Projectile.NewProjectile( player.GetSource_FromAI(), player.Center, velocity, ModContent.ProjectileType<SpiritBlastWolfRed>(), damage, 0f, player.whoAmI ); ;
                     break;
                 case 1:
-                    Item.shoot = ModContent.ProjectileType<SpiritBlastWolfGreenYellow>();
+                    Projectile.NewProjectile( player.GetSource_FromAI(), player.Center, velocity, ModContent.ProjectileType<SpiritBlastWolfGreenYellow>(), damage, 0f, player.whoAmI ); ;
                     break;
                 case 2:
-                    Item.shoot = ModContent.ProjectileType<SpiritBlastWolfBlue>();
+                    Projectile.NewProjectile( player.GetSource_FromAI(), player.Center, velocity, ModContent.ProjectileType<SpiritBlastWolfBlue>(), damage, 0f, player.whoAmI ); ;
                     break;
             }
-            return true;
+            return false;
         }
 
         public override void AddRecipes() {
@@ -87,6 +86,6 @@ namespace Overdone.Items.Norse {
         }
 
         protected override Mythology Mythology => Mythology.Norse;
-        protected override GodDomain GodDomain => GodDomain.Water;
+        protected override GodDomain GodDomain => GodDomain.Hunting;
     }
 }
