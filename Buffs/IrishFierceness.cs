@@ -11,7 +11,7 @@ namespace Overdone.Buffs {
     class IrishFierceness : ModBuff {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Irish Fierceness" );
-            Description.SetDefault( "Deal 10% more damage" );
+            Description.SetDefault( "Deal 20% more damage" );
             BuffID.Sets.NurseCannotRemoveDebuff[Type] = false;
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = false;
