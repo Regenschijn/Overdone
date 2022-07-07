@@ -33,9 +33,9 @@ namespace Overdone.Items.Greek {
             Item.mana = 4;
             Item.DamageType = DamageClass.Magic;
 
-            Item.shootSpeed = 5f;
-            Item.useTime = 20;
-            Item.useAnimation = 20;
+            Item.shootSpeed = 9f;
+            Item.useTime = 40;
+            Item.useAnimation = 40;
 
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.knockBack = 5f;

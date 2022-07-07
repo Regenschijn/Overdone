@@ -7,6 +7,8 @@ using Terraria.ModLoader;
 
 namespace Overdone.Items.Mesopotamian {
     public class Imhullu2 : DoubleUseDodoModItem {
+        private static readonly int _imhulluSpinType = ModContent.ProjectileType<ImhulluSpin>();
+
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Imhullu Restored " );
             Tooltip.SetDefault( "LMB: Spin. RMB: Shoot Imhullu" );
@@ -54,14 +56,16 @@ namespace Overdone.Items.Mesopotamian {
         public override bool CanUseItem( Player player ) {
             base.CanUseItem( player );
 
-            if (IsUsingLeftClick)
-                return player.ownedProjectileCounts[ModContent.ProjectileType<ImhulluSpin>()] <= 0;
+            if ( IsUsingLeftClick ) {
+                var totalProjectiles = player.ownedProjectileCounts[_imhulluSpinType];
+                return totalProjectiles <= 0;
+            }
             return true;
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type,
             ref int damage, ref float knockBack ) {            
-            Projectile.NewProjectile( player.GetSource_FromAI(), player.Center, new Vector2(), ModContent.ProjectileType<ImhulluSpin>(), damage, 0f, player.whoAmI, 0f, 0f );
+            Projectile.NewProjectile( player.GetSource_FromAI(), position, Vector2.Zero, _imhulluSpinType, damage, 1f, player.whoAmI );
             return false;
         }
 

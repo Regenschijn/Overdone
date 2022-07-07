@@ -15,7 +15,7 @@ namespace Overdone.Projectiles {
             Projectile.height = 20;
             Projectile.aiStyle = 0;
             Projectile.penetrate = 1;
-            Projectile.timeLeft = 180;
+            Projectile.timeLeft = 240;
             Projectile.knockBack = 2;
 
             Projectile.hide = false;
@@ -24,18 +24,27 @@ namespace Overdone.Projectiles {
             Projectile.tileCollide = true;
             Projectile.friendly = true;
             Projectile.ignoreWater = false;
+
+            Projectile.light = 0.1f;
+
             UseCombo = false;
         }
 
-        public override void AI() {
-            Player owner = Main.player[Projectile.owner];
-            Projectile.light = 0.1f;
+        private int _delayCounter = 0;
+
+        public override void AI() {            
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
             int dustId = Dust.NewDust( new Vector2( Projectile.position.X, Projectile.position.Y + 2f ), Projectile.width + 4, Projectile.height + 4, DustID.PurpleTorch, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 120, default, 1.25f ); //Spawns dust
             Main.dust[dustId].noGravity = true;
 
             float maxDetectRadius = 400f; // The maximum radius at which a projectile can detect a target
-            float projSpeed = 5f; // The speed at which the projectile moves towards the target
+            float projSpeed = 12f; // The speed at which the projectile moves towards the target
+
+            _delayCounter++;
+
+            if ( _delayCounter < 30 ) {
+                return;
+            }
 
             // Trying to find NPC closest to the projectile
             NPC closestNPC = FindClosestNPC( maxDetectRadius );
