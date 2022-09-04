@@ -31,7 +31,11 @@ namespace Overdone.Projectiles {
             Projectile.light = 0.9f;
             Projectile.rotation += (float) Projectile.direction * 0.5f;
             int dustId = Dust.NewDust( new Vector2( Projectile.position.X, Projectile.position.Y + 2f ), Projectile.width + 4, Projectile.height + 4, DustID.Torch, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 120, default, 1.75f ); //Spawns dust
-            Main.dust[dustId].noGravity = true; 
+            Main.dust[dustId].noGravity = true;
+
+            if ( Projectile.wet && Projectile.owner == Main.myPlayer ) {
+                Projectile.Kill();
+            }
         }
         public override void OnHitNPC( NPC n, int damage, float knockback, bool crit ) {
             Player owner = Main.player[Projectile.owner];

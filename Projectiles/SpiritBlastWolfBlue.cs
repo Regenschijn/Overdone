@@ -32,7 +32,7 @@ namespace Overdone.Projectiles {
             Projectile.light = 0.1f;
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
             int dustId = Dust.NewDust( new Vector2( Projectile.position.X, Projectile.position.Y + 2f ), Projectile.width + 4, Projectile.height + 4, DustID.Blood, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 120, default, 1.25f ); //Spawns dust
-            Main.dust[dustId].noGravity = true; 
+            Main.dust[dustId].noGravity = true;
         }
 
         public override void OnHitNPC( NPC target, int damage, float knockback, bool crit ) {

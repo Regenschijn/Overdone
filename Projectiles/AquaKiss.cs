@@ -29,7 +29,12 @@ namespace Overdone.Projectiles {
         public override void AI() {
             Player owner = Main.player[Projectile.owner]; 
             Projectile.light = 0.5f;
-        }
+
+            if ( Projectile.wet && Projectile.owner == Main.myPlayer ) {
+                Projectile.damage *= 2;
+            }
+        
+    }
         public override void OnHitNPC( NPC n, int damage, float knockback, bool crit ) {
             Player owner = Main.player[Projectile.owner];
                     n.AddBuff( 103, 180 ); 

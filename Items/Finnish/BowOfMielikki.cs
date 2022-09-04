@@ -10,11 +10,11 @@ using Overdone.Base;
 using Overdone.Combo;
 using Overdone.Projectiles;
 
-namespace Overdone.Items.Greek {
-    public class BowOfApollo : DoubleUseDodoModItem {
+namespace Overdone.Items.Finnish {
+    public class BowOfMielikki : DoubleUseDodoModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Bow of Apollo" );
-            Tooltip.SetDefault( "LMB: Burst of sun arrows \n RMB: Fling a sun blast" );
+            DisplayName.SetDefault( "Bow of Mielikki" );
+            Tooltip.SetDefault( "LMB: Shoot a forest arrow \n RMB: Arrow rain from the ground" );
         }
 
         public override void SetDefaults() {
@@ -57,7 +57,6 @@ namespace Overdone.Items.Greek {
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<ApolloBlast>();
-            Item.channel = true;
             ComboBuildPerHit = 1;
         }
 
@@ -77,7 +76,7 @@ namespace Overdone.Items.Greek {
             recipe.Register();
         }
 
-        protected override Mythology Mythology => Mythology.Greek;
-        protected override GodDomain GodDomain => GodDomain.Sun;
+        protected override Mythology Mythology => Mythology.Finnish;
+        protected override GodDomain GodDomain => GodDomain.Hunting;
     }
 }

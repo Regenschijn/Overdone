@@ -12,7 +12,7 @@ namespace Overdone.Items.Greek
     public class HarpeSword : DoubleUseDodoModItem
     {
         private int _counter;
-
+        const double CritBase = 7;
         public override void SetStaticDefaults() 
         {
             Tooltip.SetDefault("Used to decapitate Medusa \n LMB: Swing. Each 7th hit triggers a medusa ray. \n RMB: Use 10 favor to lob a medusa head. \n Passive: For every 10 combo, gain 1% crit chance.");
@@ -29,7 +29,7 @@ namespace Overdone.Items.Greek
             Item.useStyle = ItemUseStyleID.Swing;
             Item.knockBack = 15;
             Item.value = 10000;
-            Item.crit = 7;
+            Item.crit = (int) CritBase;
             Item.rare = ItemRarityID.LightRed;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
@@ -41,7 +41,7 @@ namespace Overdone.Items.Greek
             Item.useStyle = ItemUseStyleID.Swing;
             Item.noMelee = false;
             Item.mana = 0;
-            Item.crit = (int) (7 + (ComboManager.Combo / 25));
+            Item.crit = (int) (CritBase + (ComboManager.Combo / 25d));
         }
 
         protected override void SetRightClickMode() {

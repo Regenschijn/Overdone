@@ -10,8 +10,8 @@ using Terraria.ModLoader;
 namespace Overdone.Items.Norse {
     public class VikingShield1 : ModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Set's Was Septre" );
-            Tooltip.SetDefault( "LMB: melee boink. RMB: Heavy havoc" );
+            DisplayName.SetDefault( "Viking shield" );
+            Tooltip.SetDefault( "No idea yet" );
         }
 
         public override void SetDefaults() {
