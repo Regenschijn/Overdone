@@ -25,7 +25,7 @@ namespace Overdone.Items.Finnish {
             Item.rare = ItemRarityID.Yellow;
             Item.noMelee = true;
             Item.noUseGraphic = false;
-            Item.shoot = ModContent.ProjectileType<ArrowApollo>();
+            Item.shoot = ModContent.ProjectileType<MielikkiArrow>();
             Item.DamageType = DamageClass.Melee;
             ComboBuildPerHit = 1;
             base.SetDefaults();
@@ -33,7 +33,7 @@ namespace Overdone.Items.Finnish {
 
         protected override void SetLeftClickMode() {
             Item.damage = 44;
-            Item.useTime = 5;
+            Item.useTime = 20;
             Item.useAnimation = 20;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 5f;
@@ -41,7 +41,7 @@ namespace Overdone.Items.Finnish {
             Item.shootSpeed = 20f;
             Item.autoReuse = true;
             Item.noMelee = true;
-            Item.shoot = ModContent.ProjectileType<ArrowApollo>();
+            Item.shoot = ModContent.ProjectileType<MielikkiArrow>();
             Item.reuseDelay = 25;
             ComboBuildPerHit = 1;
         }
@@ -56,7 +56,7 @@ namespace Overdone.Items.Finnish {
             Item.shootSpeed = 25f;
             Item.noMelee = true;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<ApolloBlast>();
+            Item.shoot = ModContent.ProjectileType<MielikkiArrow>();
             ComboBuildPerHit = 1;
         }
 
