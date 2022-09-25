@@ -10,11 +10,11 @@ using Overdone.Base;
 using Overdone.Combo;
 using Overdone.Projectiles;
 
-namespace Overdone.Items.Greek {
-    public class BowOfApollo : DoubleUseDodoModItem {
+namespace Overdone.Items.Finnish {
+    public class BowOfMielikki : DoubleUseDodoModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Bow of Apollo" );
-            Tooltip.SetDefault( "LMB: Burst of sun arrows \n RMB: Fling a sun blast" );
+            DisplayName.SetDefault( "Bow of Mielikki" );
+            Tooltip.SetDefault( "LMB: Shoot a forest arrow \n RMB: Arrow rain from the ground" );
         }
 
         public override void SetDefaults() {
@@ -25,7 +25,7 @@ namespace Overdone.Items.Greek {
             Item.rare = ItemRarityID.Yellow;
             Item.noMelee = true;
             Item.noUseGraphic = false;
-            Item.shoot = ModContent.ProjectileType<ArrowApollo>();
+            Item.shoot = ModContent.ProjectileType<MielikkiArrow>();
             Item.DamageType = DamageClass.Melee;
             ComboBuildPerHit = 1;
             base.SetDefaults();
@@ -33,7 +33,7 @@ namespace Overdone.Items.Greek {
 
         protected override void SetLeftClickMode() {
             Item.damage = 44;
-            Item.useTime = 5;
+            Item.useTime = 20;
             Item.useAnimation = 20;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.knockBack = 5f;
@@ -41,7 +41,7 @@ namespace Overdone.Items.Greek {
             Item.shootSpeed = 20f;
             Item.autoReuse = true;
             Item.noMelee = true;
-            Item.shoot = ModContent.ProjectileType<ArrowApollo>();
+            Item.shoot = ModContent.ProjectileType<MielikkiArrow>();
             Item.reuseDelay = 25;
             ComboBuildPerHit = 1;
         }
@@ -56,8 +56,7 @@ namespace Overdone.Items.Greek {
             Item.shootSpeed = 25f;
             Item.noMelee = true;
             Item.autoReuse = true;
-            Item.shoot = ModContent.ProjectileType<ApolloBlast>();
-            Item.channel = true;
+            Item.shoot = ModContent.ProjectileType<MielikkiArrow>();
             ComboBuildPerHit = 1;
         }
 
@@ -77,7 +76,7 @@ namespace Overdone.Items.Greek {
             recipe.Register();
         }
 
-        protected override Mythology Mythology => Mythology.Greek;
-        protected override GodDomain GodDomain => GodDomain.Sun;
+        protected override Mythology Mythology => Mythology.Finnish;
+        protected override GodDomain GodDomain => GodDomain.Hunting;
     }
 }

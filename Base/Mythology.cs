@@ -11,5 +11,9 @@ namespace Overdone.Base {
         Polynesian,
         Irish,
         Celtic,
+        Finnish,
+        Mayan,
+        Aztec,
+        Incan,
     }
 }

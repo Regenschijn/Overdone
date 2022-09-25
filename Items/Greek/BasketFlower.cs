@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
 using Terraria.DataStructures;
+using Terraria.GameContent.Creative;
 using Overdone.Base;
 using Overdone.Combo;
 using Overdone.Projectiles;
@@ -15,6 +16,7 @@ namespace Overdone.Items.Greek {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Demeters Basket" );
             Tooltip.SetDefault( "LMB: Shoot \n RMB: Sow explosive seeds" );
+            CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 2;
         }
 
         public override void SetDefaults() {

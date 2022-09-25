@@ -14,7 +14,7 @@ namespace Overdone.Items.Norse {
     public class FenrirBlaster : DoubleUseDodoModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Fenrirs Spirit Gun" );
-            Tooltip.SetDefault( "LMB: Shoot something regular unimplemented \n RMB: Shoot different spirit wolves" );
+            Tooltip.SetDefault( "LMB: Shoot something regular unimplemented \n RMB: Shoot different spirit wolves" );            
         }
 
         public override void SetDefaults() {

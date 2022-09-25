@@ -31,6 +31,12 @@ namespace Overdone.Projectiles {
             }
         }
 
+        public override void AI() {
+            if ( Projectile.wet && Projectile.owner == Main.myPlayer ) {
+                Projectile.Kill();
+            }
+        }
+
         public override bool OnTileCollide( Vector2 oldVelocity ) {
             Projectile.Kill();
             SoundEngine.PlaySound(SoundID.Item10, Projectile.position);
