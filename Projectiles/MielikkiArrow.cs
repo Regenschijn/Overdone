@@ -65,6 +65,11 @@ namespace Overdone.Projectiles {
             //Projectile.Size = new Vector2( 10 );
             //Projectile.Center = Projectile.position;
 
+            for ( int i = 0; i < 50; i++ ) {
+                int dustIndex = Dust.NewDust( new Vector2( Projectile.position.X, Projectile.position.Y ), Projectile.width, Projectile.height, DustID.Grass, 0f, 0f, 100, default( Color ), 2f );
+                Main.dust[dustIndex].velocity *= 1.4f;
+            }
+
         }
     }
 }
