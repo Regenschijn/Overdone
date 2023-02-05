@@ -26,7 +26,7 @@ namespace Overdone.Projectiles {
                 Projectile.Kill();
 
             Projectile.direction = player.direction;
-            Projectile.position = player.position + new Vector2( 50f, -20f );
+            Projectile.position = player.position + new Vector2( 50f*player.direction, -20f );
             Projectile.rotation += 1f;            
         }
     }

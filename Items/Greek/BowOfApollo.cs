@@ -57,7 +57,7 @@ namespace Overdone.Items.Greek {
             Item.noMelee = true;
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<ApolloBlast>();
-            Item.channel = true;
+            Item.channel = false;
             ComboBuildPerHit = 1;
         }
 

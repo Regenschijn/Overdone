@@ -37,6 +37,7 @@ namespace Overdone.Items.Mesopotamian {
             Item.UseSound = SoundID.Item1;
             Item.noMelee = true;
             Item.reuseDelay = 25;
+            Item.channel = true;
         }
 
 
@@ -51,6 +52,7 @@ namespace Overdone.Items.Mesopotamian {
             Item.shootSpeed = 4f;
             Item.noMelee = true;
             Item.reuseDelay = 50;
+            Item.channel = false;
         }
 
         public override bool CanUseItem( Player player ) {
@@ -71,7 +73,7 @@ namespace Overdone.Items.Mesopotamian {
 
         public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type,
             ref int damage, ref float knockBack ) {
-            Projectile.NewProjectile( player.GetSource_FromAI(), player.Center, new Vector2( 0f, 0f ), ModContent.ProjectileType<ImhulluSpin>(), 0, 0f, player.whoAmI, 0f, 0f );
+            Projectile.NewProjectile( player.GetSource_FromAI(), player.Center, new Vector2( 0f, 0f ), ModContent.ProjectileType<MielikkiArrow>(), 0, 0f, player.whoAmI, 0f, 0f );
             return false;
         }
 
@@ -81,10 +83,6 @@ namespace Overdone.Items.Mesopotamian {
             recipe.AddTile( TileID.WorkBenches );
             recipe.Register();
         }
-
-        public override Vector2? HoldoutOffset() => new Vector2( -5, -4 );
-
-
 
         public override void UseStyle(Player player, Rectangle heldItemFrame) {
             base.UseStyle( player, heldItemFrame );
