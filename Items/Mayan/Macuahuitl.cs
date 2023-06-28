@@ -6,6 +6,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Overdone.Buffs;
 
 namespace Overdone.Items.Irish {
     public class Macuahuitl : DoubleUseDodoModItem {
@@ -44,10 +45,14 @@ namespace Overdone.Items.Irish {
         }
 
         public override bool ShootLeftClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
+            if ( player.HasBuff( ModContent.BuffType<Doom>() ) ) {
+                damage *= 3;
+            }
             return false;
         }
 
         public override bool ShootRightClick( Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockBack ) {
+            player.AddBuff( ModContent.BuffType<Doom>(), 60 * 10 );
             return false;
         }
         public override void AddRecipes() {

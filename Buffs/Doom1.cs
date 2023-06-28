@@ -36,7 +36,7 @@ namespace Overdone.Buffs {
                 player.GetModPlayer<OverdonePlayer>().doom = true;
             }
             if ( player.GetModPlayer<OverdonePlayer>().doom && player.buffTime[buffIndex] % 600 == 0 ) {
-                player.Hurt(PlayerDeathReason.ByCustomReason( player.name + " was doomed." ), 50, 0, false, false, false, 0 );
+                player.statLife -= 50;
             }
         }
 
