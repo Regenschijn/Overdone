@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Overdone.Items.Egyptian {
-    public class WasSeptreOfSet : DoubleUseDodoModItem {
+    public class WasSeptreOfSet : DoubleUseOverdoneModItem {
         protected override Mythology Mythology => Mythology.Egyptian;
         protected override GodDomain GodDomain => GodDomain.Afterlife | GodDomain.Sun;
         

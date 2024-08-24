@@ -10,7 +10,7 @@ using Overdone.Base;
 using Overdone.Combo;
 
 namespace Overdone.Items.Roman {
-    public class NeptunesKiss : DoubleUseDodoModItem {
+    public class NeptunesKiss : DoubleUseOverdoneModItem {
         private int _counter;        
 
         public override void SetStaticDefaults() {

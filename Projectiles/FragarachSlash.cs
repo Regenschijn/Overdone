@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class FragarachSlash : DodoModProjectile {
+    public class FragarachSlash : OverdoneModProjectile {
         public override void SetDefaults() {
             Projectile.Name = "Fragarach Slash";
             Projectile.width = 10;

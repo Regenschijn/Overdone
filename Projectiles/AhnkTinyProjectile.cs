@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class AhnkTinyProjectile : DodoModProjectile {
+    public class AhnkTinyProjectile : OverdoneModProjectile {
         public override void SetDefaults() {
             Projectile.Name = "Tiny Ahnk";
             Projectile.width = 16;

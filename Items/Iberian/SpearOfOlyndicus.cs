@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Overdone.Items.Iberian {
-    public class SpearOfOlyndicus : DoubleUseDodoModItem {
+    public class SpearOfOlyndicus : DoubleUseOverdoneModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "The Spear Of Olyndicus" );
             Tooltip.SetDefault( "LMB: Stab. RMB: Throw." );

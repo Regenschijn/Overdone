@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class Fish1 : DodoModProjectile {
+    public class Fish1 : OverdoneModProjectile {
         public override void SetDefaults() {
             Projectile.Name = "Dead fish";
             Projectile.width = 20;

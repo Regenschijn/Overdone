@@ -11,7 +11,7 @@ using Overdone.Combo;
 using Overdone.Items;
 
 namespace Overdone.Items.Norse {
-    public class YggdrasilSmall : DoubleUseDodoModItem {
+    public class YggdrasilSmall : DoubleUseOverdoneModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Twig of Yggdrasil");
             Tooltip.SetDefault( "Someone tore a branch off of the world tree. \n LMB: Shoot leaves. RMB: Take a bite of world tree wood for HP/MP regen" );

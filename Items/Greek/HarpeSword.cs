@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace Overdone.Items.Greek
 {
-    public class HarpeSword : DoubleUseDodoModItem
+    public class HarpeSword : DoubleUseOverdoneModItem
     {
         private int _counter;
         const double CritBase = 7;

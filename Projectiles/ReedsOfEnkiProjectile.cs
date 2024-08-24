@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class ReedsOfEnkiProjectile : DodoModProjectile {
+    public class ReedsOfEnkiProjectile : OverdoneModProjectile {
         public override void SetDefaults() {
             Projectile.Name = "Abzu Reed";
             Projectile.width = 18;

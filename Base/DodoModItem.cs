@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 
 namespace Overdone.Base {
-    public abstract class DodoModItem : ModItem {
+    public abstract class OverdoneModItem : ModItem {
         /// <summary>
         /// Enable the use of combos.
         /// </summary>

@@ -11,7 +11,7 @@ using Overdone.Combo;
 using Overdone.Projectiles;
 
 namespace Overdone.Items.Finnish {
-    public class BowOfMielikki : DoubleUseDodoModItem {
+    public class BowOfMielikki : DoubleUseOverdoneModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Bow of Mielikki" );
             Tooltip.SetDefault( "LMB: Shoot a forest arrow \n RMB: Arrow rain from the ground" );

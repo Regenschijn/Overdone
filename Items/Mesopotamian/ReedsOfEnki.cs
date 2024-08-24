@@ -11,7 +11,7 @@ using Overdone.Combo;
 using Overdone.Items;
 
 namespace Overdone.Items.Mesopotamian {
-    public class ReedsOfEnki : DoubleUseDodoModItem {
+    public class ReedsOfEnki : DoubleUseOverdoneModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Reeds of Enki");
             Tooltip.SetDefault( "By the power of Abzu! \n LMB: Shoot reed projectiles. If you have 40 or more combo, shoot faster and cheaper. RMB: Use 10 combo to shoot five projectiles instead. " );

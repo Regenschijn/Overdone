@@ -10,7 +10,7 @@ using Overdone.Projectiles;
 using Overdone.Combo;
 
 namespace Overdone.Items.Greek {
-    public class PoseidonsKiss : DoubleUseDodoModItem {
+    public class PoseidonsKiss : DoubleUseOverdoneModItem {
         private int _counter;
 
         public override void SetStaticDefaults() {

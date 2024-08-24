@@ -9,7 +9,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class YggdrasilLeaf : DodoModProjectile {
+    public class YggdrasilLeaf : OverdoneModProjectile {
         public override void SetDefaults() {
             var proj = Projectile;
             proj.width = 14;

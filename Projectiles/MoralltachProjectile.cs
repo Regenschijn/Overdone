@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class MoralltachProjectile : DodoModProjectile {
+    public class MoralltachProjectile : OverdoneModProjectile {
         public override void SetDefaults() {
             Projectile.width = 60;
             Projectile.height = 60;

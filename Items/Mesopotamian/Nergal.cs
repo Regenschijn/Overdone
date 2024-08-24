@@ -10,7 +10,7 @@ using Overdone.Base;
 using Overdone.Combo;
 
 namespace Overdone.Items.Mesopotamian {
-    public class Nergal : DoubleUseDodoModItem {
+    public class Nergal : DoubleUseOverdoneModItem {
         private int _counter;        
 
         public override void SetStaticDefaults() {

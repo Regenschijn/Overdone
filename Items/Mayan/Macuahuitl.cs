@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 using Overdone.Buffs;
 
 namespace Overdone.Items.Irish {
-    public class Macuahuitl : DoubleUseDodoModItem {
+    public class Macuahuitl : DoubleUseOverdoneModItem {
         private int _counter;
 
         public override void SetStaticDefaults() {

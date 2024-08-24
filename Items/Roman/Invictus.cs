@@ -10,7 +10,7 @@ using Overdone.Base;
 using Overdone.Combo;
 
 namespace Overdone.Items.Roman {
-    public class Invictus : DoubleUseDodoModItem {
+    public class Invictus : DoubleUseOverdoneModItem {
 
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Invictus" );

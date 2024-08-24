@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class SpiritBlastLion : DodoModProjectile {
+    public class SpiritBlastLion : OverdoneModProjectile {
         public override void SetDefaults() {
             Projectile.Name = "Spirit Lion";
             Projectile.width = 38;

@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Overdone.Items.Mesopotamian {
-    public class Imhullu2 : DoubleUseDodoModItem {
+    public class Imhullu2 : DoubleUseOverdoneModItem {
         private static readonly int _imhulluSpinType = ModContent.ProjectileType<ImhulluSpin>();
 
         public override void SetStaticDefaults() {

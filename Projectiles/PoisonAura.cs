@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class PoisonAura : DodoModProjectile {
+    public class PoisonAura : OverdoneModProjectile {
         public override void SetDefaults() {
             Projectile.Name = "Asclepius' Cloud";
             Projectile.width = 100;

@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class HarpeSwordHead : DodoModProjectile {
+    public class HarpeSwordHead : OverdoneModProjectile {
         public override void SetDefaults() {
             Projectile.Name = "Medusa Head";
             Projectile.width = 25;

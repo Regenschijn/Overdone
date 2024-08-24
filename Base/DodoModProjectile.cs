@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 
 namespace Overdone.Base {
-    public abstract class DodoModProjectile : ModProjectile {
+    public abstract class OverdoneModProjectile : ModProjectile {
         protected bool UseCombo = true;
         protected int ComboBuildPerHit = 1;
         protected int HitsBeforeComboHit = 1;

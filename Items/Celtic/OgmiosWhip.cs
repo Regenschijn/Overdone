@@ -12,7 +12,7 @@ using Overdone.Items;
 
 namespace Overdone.Items.Celtic
 {
-	public class OgmiosWhip : DoubleUseDodoModItem
+	public class OgmiosWhip : DoubleUseOverdoneModItem
 	{
 		public override void SetDefaults() {
 			// This method quickly sets the whip's properties.

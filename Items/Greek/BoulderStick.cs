@@ -9,7 +9,7 @@ using Overdone.Base;
 using Overdone.Combo;
 
 namespace Overdone.Items.Greek {
-    public class BoulderStick : DoubleUseDodoModItem {
+    public class BoulderStick : DoubleUseOverdoneModItem {
 
         public override void SetStaticDefaults() {
             Tooltip.SetDefault( "Sisyphus' problems on a stick\nLMB: Smack. RMB: Shoot boulders" );

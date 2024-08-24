@@ -11,7 +11,7 @@ using Overdone.Combo;
 using Overdone.Projectiles;
 
 namespace Overdone.Items.Egyptian {
-    public class BowOfAnhur : DoubleUseDodoModItem {
+    public class BowOfAnhur : DoubleUseOverdoneModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Bow of Anhur" );
             Tooltip.SetDefault( "LMB: Shoot 3 poison arrows \n RMB: shoot more arrows in an unconventional way" );

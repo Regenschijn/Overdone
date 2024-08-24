@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class BasketBlast : DodoModProjectile {
+    public class BasketBlast : OverdoneModProjectile {
         public override void SetDefaults() {
             Projectile.Name = "Flower Basket Blast";
             Projectile.width = 20;

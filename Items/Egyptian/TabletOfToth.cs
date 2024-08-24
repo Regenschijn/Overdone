@@ -9,7 +9,7 @@ using Terraria.DataStructures;
 using Overdone.Base;
 
 namespace Overdone.Items.Egyptian {
-    public class TabletOfToth : DoubleUseDodoModItem {
+    public class TabletOfToth : DoubleUseOverdoneModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Tablet of Toth" );
             Tooltip.SetDefault( "The book of Toth for when you don't have papyrus" );

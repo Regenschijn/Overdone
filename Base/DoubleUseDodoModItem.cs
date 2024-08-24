@@ -10,7 +10,7 @@ using Terraria.DataStructures;
 using Terraria.ModLoader;
 
 namespace Overdone.Base {
-    public abstract class DoubleUseDodoModItem : DodoModItem {
+    public abstract class DoubleUseOverdoneModItem : OverdoneModItem {
         protected bool IsUsingLeftClick = true;
 
         public override bool AltFunctionUse( Player player ) => true;

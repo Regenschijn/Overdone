@@ -11,7 +11,7 @@ using Overdone.Combo;
 using Overdone.Items;
 
 namespace Overdone.Items.Greek {
-    public class RodOfCharm : DoubleUseDodoModItem {
+    public class RodOfCharm : DoubleUseOverdoneModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault("Rod of Charm");
             Tooltip.SetDefault( "LMB: Shoots homing orbs RMB: Shoots bouncing orbs " );

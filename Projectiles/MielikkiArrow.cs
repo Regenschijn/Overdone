@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class MielikkiArrow : DodoModProjectile {
+    public class MielikkiArrow : OverdoneModProjectile {
         public override void SetDefaults() {
             Projectile.Name = "Mielikki Arrow";
             Projectile.width = 4;

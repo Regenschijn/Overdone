@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class ImhulluSpin : DodoModProjectile {
+    public class ImhulluSpin : OverdoneModProjectile {
 
         public override void SetDefaults() {
             Projectile.Size = new Vector2( 80 );

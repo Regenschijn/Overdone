@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class AquaKiss : DodoModProjectile {
+    public class AquaKiss : OverdoneModProjectile {
         public override void SetDefaults() {
             Projectile.Name = "Aquatic Kiss";
             Projectile.width = 24;

@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class PoisonFang : DodoModProjectile {
+    public class PoisonFang : OverdoneModProjectile {
         public override void SetDefaults() {
             Projectile.width = 4;
             Projectile.height = 20;

@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class SpearOfOlyndicusProjectile : DodoModProjectile {
+    public class SpearOfOlyndicusProjectile : OverdoneModProjectile {
         public override void SetDefaults() {
             Projectile.width = 26;
             Projectile.height = 26;

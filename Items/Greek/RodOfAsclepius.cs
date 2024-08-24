@@ -8,7 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Overdone.Items.Greek {
-    public class RodOfAsclepius : DoubleUseDodoModItem {
+    public class RodOfAsclepius : DoubleUseOverdoneModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Rod of Asclepius " );
             Tooltip.SetDefault( "LMB: Shoot venom. Every 10 combo decreases mana cost by 1. RMB: Create an aura that inflicts poison and gives hp regen to allies." );

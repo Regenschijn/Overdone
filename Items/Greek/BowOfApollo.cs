@@ -11,7 +11,7 @@ using Overdone.Combo;
 using Overdone.Projectiles;
 
 namespace Overdone.Items.Greek {
-    public class BowOfApollo : DoubleUseDodoModItem {
+    public class BowOfApollo : DoubleUseOverdoneModItem {
         public override void SetStaticDefaults() {
             DisplayName.SetDefault( "Bow of Apollo" );
             Tooltip.SetDefault( "LMB: Burst of sun arrows \n RMB: Fling a sun blast" );

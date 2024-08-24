@@ -8,7 +8,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Overdone.Items.Irish {
-    public class Fragarach : DoubleUseDodoModItem {
+    public class Fragarach : DoubleUseOverdoneModItem {
         private int _counter;
 
         public override void SetStaticDefaults() {

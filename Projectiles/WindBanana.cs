@@ -8,7 +8,7 @@ using Overdone;
 using Overdone.Base;
 
 namespace Overdone.Projectiles {
-    public class WindBanana : DodoModProjectile {
+    public class WindBanana : OverdoneModProjectile {
         public override void SetDefaults() {
             Projectile.Name = "Wind Banana";
             Projectile.width = 52;
