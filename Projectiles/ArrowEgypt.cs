@@ -23,7 +23,7 @@ namespace Overdone.Projectiles {
             Projectile.DamageType = DamageClass.Ranged;
         }
 
-        public override void OnHitNPC( NPC target, int damage, float knockback, bool crit ) {
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
             base.OnHitNPC(target, damage, knockback, crit);
             Player owner = Main.player[Projectile.owner];
             target.AddBuff( 20, 660 );

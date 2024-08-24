@@ -31,7 +31,7 @@ namespace Overdone.Projectiles {
             Player owner = Main.player[Projectile.owner]; 
         }
 
-        public override void OnHitNPC( NPC target, int damage, float knockback, bool crit ) {
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
             base.OnHitNPC( target, damage, knockback, crit );
             Player owner = Main.player[Projectile.owner];
             target.AddBuff( 103, 660 );

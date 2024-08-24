@@ -13,8 +13,8 @@ namespace Overdone.Items.Roman {
     public class Invictus : DoubleUseOverdoneModItem {
 
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Invictus" );
-            Tooltip.SetDefault( "Burn your foes with Sol's bright wrath! \n LMB: Shoot fireballs that cost mana. Burns enemies. \n RMB: Shoots firebolts that cost combo instead and gains attack for every 25 combo. \n damage while wet or in water is halved" );
+            // DisplayName.SetDefault( "Invictus" );
+            // Tooltip.SetDefault( "Burn your foes with Sol's bright wrath! \n LMB: Shoot fireballs that cost mana. Burns enemies. \n RMB: Shoots firebolts that cost combo instead and gains attack for every 25 combo. \n damage while wet or in water is halved" );
         }
 
         public override void SetDefaults() {

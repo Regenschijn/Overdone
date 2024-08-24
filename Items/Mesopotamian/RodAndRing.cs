@@ -13,8 +13,8 @@ using Overdone.Items;
 namespace Overdone.Items.Mesopotamian {
     public class RodAndRing : DoubleUseOverdoneModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Rod and Ring");
-            Tooltip.SetDefault( "Rule the world with a ruler. \n LMB: Shoots banana-shaped wind projectiles. If you have 50 or more combo, get an improved projectile. RMB: Use 10 combo to shoot five projectiles instead. " );
+            // DisplayName.SetDefault("Rod and Ring");
+            // Tooltip.SetDefault( "Rule the world with a ruler. \n LMB: Shoots banana-shaped wind projectiles. If you have 50 or more combo, get an improved projectile. RMB: Use 10 combo to shoot five projectiles instead. " );
         }
 
         // I switched around throw and melee for fun

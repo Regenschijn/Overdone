@@ -8,7 +8,7 @@ namespace Overdone.Items.Chariots
     public class Chariot1 : ModItem
     {
         public override void SetStaticDefaults() {
-            Tooltip.SetDefault("This is a chariot.");
+            // Tooltip.SetDefault("This is a chariot.");
         }
 
         public override void SetDefaults() {

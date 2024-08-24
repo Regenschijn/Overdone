@@ -6,8 +6,8 @@ namespace Overdone.Buffs
     public class ChariotMount : ModBuff
     {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Chariot");
-            Description.SetDefault("Ride to your glory or doom!");
+            // DisplayName.SetDefault("Chariot");
+            // Description.SetDefault("Ride to your glory or doom!");
             Main.buffNoTimeDisplay[Type] = true;
             Main.buffNoSave[Type] = true;
         }

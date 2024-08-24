@@ -12,8 +12,8 @@ namespace Overdone.Items.Egyptian {
         
 
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Set's Was Septre" );
-            Tooltip.SetDefault( "LMB: melee boink. RMB: Heavy havoc" );
+            // DisplayName.SetDefault( "Set's Was Septre" );
+            // Tooltip.SetDefault( "LMB: melee boink. RMB: Heavy havoc" );
         }
 
         public override void SetDefaults() {
@@ -29,7 +29,7 @@ namespace Overdone.Items.Egyptian {
         }
   
 
-        public override void OnHitNPC( Player player, NPC target, int damage, float knockBack, bool crit ) {
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone) {
             if ( player.altFunctionUse == 2 ) {
                 target.AddBuff( BuffID.Ichor, 90 );
             }

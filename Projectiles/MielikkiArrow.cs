@@ -39,7 +39,7 @@ namespace Overdone.Projectiles {
                 Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.PiOver2;
             }
         }
-        public override void Kill( int timeLeft ) {
+        public override void OnKill( int timeLeft ) {
             Projectile proj = Projectile;
             for ( var i = 0; i < 20; i++ ) {
                 Dust.NewDust( proj.position, proj.width, proj.height + Main.rand.Next( 0, 8 ), DustID.Grass,

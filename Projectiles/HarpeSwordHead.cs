@@ -26,7 +26,7 @@ namespace Overdone.Projectiles {
             Projectile.aiStyle = AiStyles.Boulder;
         }
 
-        public override void Kill( int timeLeft ) {
+        public override void OnKill( int timeLeft ) {
             Projectile.NewProjectile( Projectile.GetSource_FromThis(), Projectile.position.X, Projectile.position.Y, 0, 0, ProjectileID.Electrosphere, (int) (Projectile.damage * 1.5), Projectile.knockBack, Main.myPlayer );
         }
     }

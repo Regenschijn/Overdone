@@ -15,7 +15,7 @@ namespace Overdone.Items
 		public override void SetStaticDefaults() 
 		{
 			// DisplayName.SetDefault("BorealCarabine"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-			Tooltip.SetDefault("Need for Needles");
+			// Tooltip.SetDefault("Need for Needles");
 		}
 
 		public override void SetDefaults() 

@@ -14,8 +14,8 @@ namespace Overdone.Items.Mesopotamian {
         private int _counter;        
 
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Nergal" );
-            Tooltip.SetDefault( "Nergals lion-winged mace \n LMB: Boink - every 5th attack deals extra damage \n RMB: Shoot a lions blast ");
+            // DisplayName.SetDefault( "Nergal" );
+            // Tooltip.SetDefault( "Nergals lion-winged mace \n LMB: Boink - every 5th attack deals extra damage \n RMB: Shoot a lions blast ");
         }
 
         public override void SetDefaults() {

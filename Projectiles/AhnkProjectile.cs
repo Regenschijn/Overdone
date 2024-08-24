@@ -33,7 +33,7 @@ namespace Overdone.Projectiles {
             int dustId = Dust.NewDust( new Vector2( Projectile.position.X, Projectile.position.Y + 2f ), Projectile.width + 4, Projectile.height + 4, 36, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 120, default, 0.75f ); //Spawns dust
             Main.dust[dustId].noGravity = true; //Makes dust not fall
         }
-        public override void OnHitNPC( NPC n, int damage, float knockback, bool crit ) {
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
             Player owner = Main.player[Projectile.owner];
             var rand = Main.rand.Next( 2 );
             switch ( rand ) {
@@ -48,7 +48,7 @@ namespace Overdone.Projectiles {
             base.OnHitNPC(n, damage, knockback, crit);
         }
         //After the projectile is dead
-        public override void Kill( int timeLeft ) {            
+        public override void OnKill( int timeLeft ) {            
             Projectile.NewProjectile(
                 Projectile.GetSource_FromThis(),
                 Projectile.position.X,

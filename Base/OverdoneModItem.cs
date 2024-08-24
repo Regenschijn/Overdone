@@ -21,7 +21,7 @@ namespace Overdone.Base {
         protected abstract Mythology Mythology { get; }
         protected abstract GodDomain GodDomain { get; }
 
-        public override void OnHitNPC( Player player, NPC target, int damage, float knockBack, bool crit ) {
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone) {
             if ( UseCombo ) {
                 _hitCount++;
                 OnAddComboHit( _hitCount );

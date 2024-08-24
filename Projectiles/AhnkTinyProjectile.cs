@@ -26,7 +26,7 @@ namespace Overdone.Projectiles {
             Lighting.AddLight( Projectile.position + Projectile.velocity * 5, new Vector3( 1f, .5f, .5f ) );
         }
 
-        public override void Kill( int timeLeft ) {
+        public override void OnKill( int timeLeft ) {
             Projectile.NewProjectile(
                 Projectile.GetSource_FromThis(),
                 Projectile.position.X,

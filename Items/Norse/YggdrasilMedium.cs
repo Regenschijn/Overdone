@@ -11,8 +11,8 @@ using Overdone.Base;
 namespace Overdone.Items.Norse {
     public class YggdrasilMedium : DoubleUseOverdoneModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Lush Twig of Yggdrasil" );
-            Tooltip.SetDefault( "Someone tore a lush branch off of the world tree. \n LMB: Shoot leaves. RMB: Burst of leaves." );
+            // DisplayName.SetDefault( "Lush Twig of Yggdrasil" );
+            // Tooltip.SetDefault( "Someone tore a lush branch off of the world tree. \n LMB: Shoot leaves. RMB: Burst of leaves." );
         }
 
 

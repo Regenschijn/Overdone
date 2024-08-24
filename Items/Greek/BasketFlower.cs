@@ -14,8 +14,8 @@ using Overdone.Projectiles;
 namespace Overdone.Items.Greek {
     public class BasketFlower : DoubleUseOverdoneModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Demeters Basket" );
-            Tooltip.SetDefault( "LMB: Shoot \n RMB: Sow explosive seeds" );
+            // DisplayName.SetDefault( "Demeters Basket" );
+            // Tooltip.SetDefault( "LMB: Shoot \n RMB: Sow explosive seeds" );
             CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 2;
         }
 

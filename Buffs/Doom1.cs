@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
-using IL.Terraria.DataStructures;
 using Overdone.NPCs;
 using Overdone.Players;
 
 namespace Overdone.Buffs {
     public class Doom : ModBuff {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Doom" );
-            Description.SetDefault( "You are marked for death" );
+            // DisplayName.SetDefault( "Doom" );
+            // Description.SetDefault( "You are marked for death" );
 
             Main.debuff[Type] = true;
             Main.pvpBuff[Type] = true;

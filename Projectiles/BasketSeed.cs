@@ -27,7 +27,7 @@ namespace Overdone.Projectiles {
             UseCombo = false;
         }
         
-        public override void Kill( int timeLeft ) {
+        public override void OnKill( int timeLeft ) {
             Projectile.NewProjectile(
                 Projectile.GetSource_FromThis(),
                 Projectile.position.X,

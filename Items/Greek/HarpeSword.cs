@@ -15,7 +15,7 @@ namespace Overdone.Items.Greek
         const double CritBase = 7;
         public override void SetStaticDefaults() 
         {
-            Tooltip.SetDefault("Used to decapitate Medusa \n LMB: Swing. Each 7th hit triggers a medusa ray. \n RMB: Use 10 favor to lob a medusa head. \n Passive: For every 10 combo, gain 1% crit chance.");
+            // Tooltip.SetDefault("Used to decapitate Medusa \n LMB: Swing. Each 7th hit triggers a medusa ray. \n RMB: Use 10 favor to lob a medusa head. \n Passive: For every 10 combo, gain 1% crit chance.");
         }
 
         public override void SetDefaults() 

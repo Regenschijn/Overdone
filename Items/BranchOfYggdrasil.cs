@@ -10,8 +10,8 @@ using Terraria.DataStructures;
 namespace Overdone.Items {
     public class BranchOfYggdrasil : ModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("branch of Yggdrasil");
-            Tooltip.SetDefault( "Someone tore a branch off of the world tree. \n LMB: Shoot leaves. RMB: melee attack that restores health and mana" );
+            // DisplayName.SetDefault("branch of Yggdrasil");
+            // Tooltip.SetDefault( "Someone tore a branch off of the world tree. \n LMB: Shoot leaves. RMB: melee attack that restores health and mana" );
         }
 
         // I switched around throw and melee for fun

@@ -11,7 +11,7 @@ namespace Overdone.Items.Irish {
     public class Moralltach : DoubleUseOverdoneModItem {
 
         public override void SetStaticDefaults() {
-            Tooltip.SetDefault( "The sword of Aengus (Macan Óc). \n LMB: Attack in various ways. \n RMB: Consume 25 combo to get an attack damage buff. \n At 100 combo, your attacks gain extra armor penetration." );
+            // Tooltip.SetDefault( "The sword of Aengus (Macan Óc). \n LMB: Attack in various ways. \n RMB: Consume 25 combo to get an attack damage buff. \n At 100 combo, your attacks gain extra armor penetration." );
         }
 
         public override void SetDefaults() {

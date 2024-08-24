@@ -7,8 +7,8 @@ namespace Overdone.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hiccup");
-            Description.SetDefault("Your hiccups cause you to stumble.");
+            // DisplayName.SetDefault("Hiccup");
+            // Description.SetDefault("Your hiccups cause you to stumble.");
             Main.buffNoTimeDisplay[Type] = false;
             Main.debuff[Type] = true;
         }

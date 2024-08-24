@@ -12,7 +12,7 @@ namespace Overdone.Items.Greek {
     public class BoulderStick : DoubleUseOverdoneModItem {
 
         public override void SetStaticDefaults() {
-            Tooltip.SetDefault( "Sisyphus' problems on a stick\nLMB: Smack. RMB: Shoot boulders" );
+            // Tooltip.SetDefault( "Sisyphus' problems on a stick\nLMB: Smack. RMB: Shoot boulders" );
         }
 
         public override void SetDefaults() {

@@ -22,7 +22,7 @@ namespace Overdone.Projectiles {
             AIType = 1;
         }
 
-        public override void Kill( int timeLeft ) {
+        public override void OnKill( int timeLeft ) {
             Projectile proj = Projectile;
             for ( var i = 0; i < 10; i++ ) {
                 Dust.NewDust( proj.position, proj.width, proj.height + Main.rand.Next( 0, 8 ), DustID.Silver,

@@ -8,8 +8,8 @@ using Terraria.ModLoader;
 namespace Overdone.Items.Iberian {
     public class DuberdicusFish : DoubleUseOverdoneModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Leavings of Duberdicus" );
-            Tooltip.SetDefault( "LMB: Swing whatever is left of the fish RMB: Rain fish out of the sky" );
+            // DisplayName.SetDefault( "Leavings of Duberdicus" );
+            // Tooltip.SetDefault( "LMB: Swing whatever is left of the fish RMB: Rain fish out of the sky" );
         }
 
         public override void SetDefaults() {

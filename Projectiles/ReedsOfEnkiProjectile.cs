@@ -34,7 +34,7 @@ namespace Overdone.Projectiles {
             int dustId = Dust.NewDust( new Vector2( Projectile.position.X, Projectile.position.Y + 2f ), Projectile.width + 4, Projectile.height + 4, DustID.Water_Jungle, Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f, 120, default, 1.25f ); //Spawns dust
             Main.dust[dustId].noGravity = true; 
         }
-        public override void Kill( int timeLeft ) {
+        public override void OnKill( int timeLeft ) {
             Projectile proj = Projectile;
             for ( var i = 0; i < 10; i++ ) {
                 Dust.NewDust( proj.position, proj.width, proj.height + Main.rand.Next( 0, 8 ), DustID.Water_Jungle,

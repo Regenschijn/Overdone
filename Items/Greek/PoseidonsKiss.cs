@@ -14,8 +14,8 @@ namespace Overdone.Items.Greek {
         private int _counter;
 
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Poseidons Kiss" );
-            Tooltip.SetDefault( "Poseidons Trident \n LMB: Swing- why stab?. Every 5th hit is a crit with large knockback. \n RMB: Use 25 combo and mana to shoot Poseidons Kiss \n Passive: For every 25 combo, gain 1% crit chance." );
+            // DisplayName.SetDefault( "Poseidons Kiss" );
+            // Tooltip.SetDefault( "Poseidons Trident \n LMB: Swing- why stab?. Every 5th hit is a crit with large knockback. \n RMB: Use 25 combo and mana to shoot Poseidons Kiss \n Passive: For every 25 combo, gain 1% crit chance." );
         }
 
         public override void SetDefaults() {

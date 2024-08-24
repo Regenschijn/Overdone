@@ -9,7 +9,7 @@ namespace Overdone.Base {
         protected int HitsBeforeComboHit = 1;
         private long _hitCount;
 
-        public override void OnHitNPC( NPC target, int damage, float knockBack, bool crit ) {
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
             if ( UseCombo ) {
                 _hitCount++;
                 OnAddComboHit( _hitCount );

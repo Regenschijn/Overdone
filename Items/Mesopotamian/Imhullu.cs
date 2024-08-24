@@ -5,8 +5,8 @@ using Terraria.ModLoader;
 namespace Overdone.Items.Mesopotamian {
     public class Imhullu : ModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Imhullu, the weapon used by the sky god Marduk " );
-            Tooltip.SetDefault( "LMB: Stab. RMB: Elemental Attack." );
+            // DisplayName.SetDefault( "Imhullu, the weapon used by the sky god Marduk " );
+            // Tooltip.SetDefault( "LMB: Stab. RMB: Elemental Attack." );
         }
 
         public override void SetDefaults() {

@@ -37,7 +37,7 @@ namespace Overdone.Projectiles {
                 Projectile.Kill();
             }
         }
-        public override void OnHitNPC( NPC n, int damage, float knockback, bool crit ) {
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone) {
             Player owner = Main.player[Projectile.owner];
             var rand = Main.rand.Next( 2 );
             n.AddBuff( 24, 180 );

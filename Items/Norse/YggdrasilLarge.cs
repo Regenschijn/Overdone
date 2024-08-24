@@ -12,8 +12,8 @@ using Overdone.Combo;
 namespace Overdone.Items.Norse {
     public class YggdrasilLarge : DoubleUseOverdoneModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Full Twig of Yggdrasil" );
-            Tooltip.SetDefault( "Someone tore a full branch off of the world tree. \n LMB: Shoot leaves. RMB: Nova blast of leaves." );
+            // DisplayName.SetDefault( "Full Twig of Yggdrasil" );
+            // Tooltip.SetDefault( "Someone tore a full branch off of the world tree. \n LMB: Shoot leaves. RMB: Nova blast of leaves." );
         }
 
         public override void SetDefaults() {

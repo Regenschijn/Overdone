@@ -12,7 +12,7 @@ namespace Overdone.Items.Irish {
         private int _counter;
 
         public override void SetStaticDefaults() {
-            Tooltip.SetDefault( "The sword of Nuada, the first high king. \n LMB: Slash attack with a air attack on the Xth attack. \n RMB: Consume 25 combo to get an attack damage buff. \n At 100 combo, your attacks gain extra armor penetration." );
+            // Tooltip.SetDefault( "The sword of Nuada, the first high king. \n LMB: Slash attack with a air attack on the Xth attack. \n RMB: Consume 25 combo to get an attack damage buff. \n At 100 combo, your attacks gain extra armor penetration." );
         }
 
         public override void SetDefaults() {

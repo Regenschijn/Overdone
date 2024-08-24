@@ -14,8 +14,8 @@ namespace Overdone.Items.Roman {
         private int _counter;        
 
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Neptunes Kiss" );
-            Tooltip.SetDefault( "Neptunes Trident \n LMB: Stabs. Every 5th hit is a quick smack. \n RMB: Shoot Neptunes Kiss \n every something, something happens" );
+            // DisplayName.SetDefault( "Neptunes Kiss" );
+            // Tooltip.SetDefault( "Neptunes Trident \n LMB: Stabs. Every 5th hit is a quick smack. \n RMB: Shoot Neptunes Kiss \n every something, something happens" );
         }
 
         public override void SetDefaults() {

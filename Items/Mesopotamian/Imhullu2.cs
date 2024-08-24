@@ -10,8 +10,8 @@ namespace Overdone.Items.Mesopotamian {
         private static readonly int _imhulluSpinType = ModContent.ProjectileType<ImhulluSpin>();
 
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault( "Imhullu Restored " );
-            Tooltip.SetDefault( "LMB: Spin. RMB: Shoot Imhullu" );
+            // DisplayName.SetDefault( "Imhullu Restored " );
+            // Tooltip.SetDefault( "LMB: Spin. RMB: Shoot Imhullu" );
         }
 
         public override void SetDefaults() {

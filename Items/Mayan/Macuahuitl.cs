@@ -13,7 +13,7 @@ namespace Overdone.Items.Irish {
         private int _counter;
 
         public override void SetStaticDefaults() {
-            Tooltip.SetDefault(" Macuahuitl. \n RMB: Apply doom(I) to yourself and deal triple damage with Macuahuitl for the duration. \n At 100 combo, your attacks gain extra armor penetration.");
+            // Tooltip.SetDefault(" Macuahuitl. \n RMB: Apply doom(I) to yourself and deal triple damage with Macuahuitl for the duration. \n At 100 combo, your attacks gain extra armor penetration.");
         }
 
         public override void SetDefaults() {

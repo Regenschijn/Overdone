@@ -13,8 +13,8 @@ using Overdone.Items;
 namespace Overdone.Items.Norse {
     public class YggdrasilSmall : DoubleUseOverdoneModItem {
         public override void SetStaticDefaults() {
-            DisplayName.SetDefault("Twig of Yggdrasil");
-            Tooltip.SetDefault( "Someone tore a branch off of the world tree. \n LMB: Shoot leaves. RMB: Take a bite of world tree wood for HP/MP regen" );
+            // DisplayName.SetDefault("Twig of Yggdrasil");
+            // Tooltip.SetDefault( "Someone tore a branch off of the world tree. \n LMB: Shoot leaves. RMB: Take a bite of world tree wood for HP/MP regen" );
         }
 
         // I switched around throw and melee for fun
